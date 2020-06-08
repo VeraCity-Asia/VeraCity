@@ -46,11 +46,11 @@ puts "#######################################################################"
 puts "Creating certifications"
 4.times do
   certification = Certification.create!(
-    number: Faker::Alphanumeric.alphanumeric, 
+    number: rand(23..5746), 
     validity: Faker::Date.forward(days: 170),
-    type:["Annual", "Permanent"].sample,
+    category:["Annual", "Permanent"].sample,
     listing_number: Faker::Number.leading_zero_number(digits: 10),
-    code: rand(34..674),
+    code: Faker::Alphanumeric.alphanumeric(number: 5),
     authority: Faker::IndustrySegments.sub_sector
   )
   puts "#{certification.number} created…"
