@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_131006) do
+ActiveRecord::Schema.define(version: 2020_06_08_141046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2020_06_08_131006) do
   create_table "certifications", force: :cascade do |t|
     t.integer "number"
     t.date "validity"
-    t.string "type"
+    t.string "category"
     t.integer "listing_number"
-    t.integer "code"
+    t.string "code"
     t.string "authority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
