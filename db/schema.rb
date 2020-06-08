@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_122633) do
+ActiveRecord::Schema.define(version: 2020_06_08_125843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,8 @@ ActiveRecord::Schema.define(version: 2020_06_08_122633) do
     t.integer "listing_number"
     t.integer "code"
     t.string "authority"
-    t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["supplier_id"], name: "index_certifications_on_supplier_id"
   end
 
   create_table "licenses", force: :cascade do |t|
@@ -36,6 +34,19 @@ ActiveRecord::Schema.define(version: 2020_06_08_122633) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["supplier_id"], name: "index_licenses_on_supplier_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.bigint "product_id", null: false
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_messages_on_product_id"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -52,6 +63,11 @@ ActiveRecord::Schema.define(version: 2020_06_08_122633) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["supplier_id"], name: "index_offers_on_supplier_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
+  end
+
+  create_table "offers_products", id: false, force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "offer_id", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -107,8 +123,10 @@ ActiveRecord::Schema.define(version: 2020_06_08_122633) do
     t.index ["supplier_id"], name: "index_verifications_on_supplier_id"
   end
 
-  add_foreign_key "certifications", "suppliers"
   add_foreign_key "licenses", "suppliers"
+  add_foreign_key "messages", "products"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "offers", "suppliers"
   add_foreign_key "offers", "users"
   add_foreign_key "products", "certifications"
