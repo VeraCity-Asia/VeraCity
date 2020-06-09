@@ -1,12 +1,27 @@
+$dark-blue: #193B68;
+
 .navbar-veracity {
+  display: flex;
   justify-content: space-between;
-  background: white;
+  background-color: white;
+  width: 100vw;
+  z-index: 10;
+  margin: 0px;
+  right: -2rem
+  & a {
+    color: $dark-blue;
+  }
 }
 
 .navbar-veracity .navbar-collapse {
-  flex-grow: 0;
+  flex-grow: 1;
 }
 
 .navbar-veracity .navbar-brand img {
   width: 60px;
+}
+
+.navbar-veracity .nav-right {
+  position: absolute;
+  right: 0;
 }

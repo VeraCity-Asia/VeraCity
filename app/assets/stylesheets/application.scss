@@ -7,6 +7,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
 
 // Your CSS partials
 @import "components/index";
@@ -15,3 +16,9 @@
 @import "pages/index";
 
 @import "bootstrap/scss/bootstrap";
+
+body {
+    text-align: center;
+    margin-bottom: 1em;
+    font-family: 'Open Sans', sans-serif;
+}

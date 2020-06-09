@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-veracity">
-  <%= link_to root_path, class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand navbar-left" do %>
     <%= image_tag 'logo' %>
   <% end %>
 
@@ -8,7 +8,7 @@
   </button>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
