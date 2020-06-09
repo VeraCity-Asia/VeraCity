@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_141046) do
+ActiveRecord::Schema.define(version: 2020_06_09_023258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 2020_06_08_141046) do
     t.string "authority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "certifications_products", id: false, force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "certification_id", null: false
   end
 
   create_table "licenses", force: :cascade do |t|
@@ -76,10 +81,8 @@ ActiveRecord::Schema.define(version: 2020_06_08_141046) do
     t.integer "production_quantity"
     t.integer "minimum_order_quantity"
     t.bigint "supplier_id", null: false
-    t.bigint "certification_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["certification_id"], name: "index_products_on_certification_id"
     t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
@@ -128,7 +131,6 @@ ActiveRecord::Schema.define(version: 2020_06_08_141046) do
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "offers", "suppliers"
   add_foreign_key "offers", "users"
-  add_foreign_key "products", "certifications"
   add_foreign_key "products", "suppliers"
   add_foreign_key "suppliers", "users"
   add_foreign_key "verifications", "suppliers"
