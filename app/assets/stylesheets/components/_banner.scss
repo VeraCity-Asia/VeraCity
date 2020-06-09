@@ -1,0 +1,23 @@
+$dark-blue: #193B68;
+.banner {
+    background-size: cover;
+    background-position: center;
+    padding: 150px 0;
+    margin-bottom: 3em;
+    font-size: larger;
+  }
+  
+  .banner h1 {
+    margin: 0;
+    color: $dark-blue;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-size: 64px;
+    font-weight: bold;
+  }
+  
+  .banner p {
+    font-size: 20px;
+    color: $dark-blue;
+    opacity: .7;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
