@@ -92,6 +92,11 @@ end
 puts "#{Certification.count} Certifications created…"
 
 puts "#######################################################################"
-puts "Seeding Product Certifications join table"
+puts "Seeding Product Offers join table"
 Product.all.each { |p| p.offers << Offer.all.sample }
+puts "#######################################################################"
+
+puts "#######################################################################"
+puts "Seeding Product Certifications join table"
+Product.all.each { |p| p.certifications << Certification.all.sample }
 puts "#######################################################################"
