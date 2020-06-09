@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :verifications, only: [:edit, :update]
     resources :certifications, only: [:new, :create, :edit, :update]
     resources :licenses, only: [:new, :create, :destroy]
+    resources :offers, only: [:index, :show, :update]
   end
 end
