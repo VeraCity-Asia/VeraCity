@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get 'aboutus', to: 'pages#aboutus'
   resources :products, only: [:index, :show]
   resources :messages, only: [:index, :new, :create] do
     collection do
