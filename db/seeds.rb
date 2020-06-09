@@ -12,15 +12,15 @@ end
 puts "#######################################################################"
 puts "Generating test user"
 User.create!(
-    name: Faker::Name.name,
-    email: "test@gmail.com",
-    password: "123456",
-    country: Faker::Address.country,
-    user_type: Faker::Company.buzzword
-  )
+  name: Faker::Name.name,
+  email: "test@gmail.com",
+  password: "123456",
+  country: Faker::Address.country,
+  user_type: Faker::Company.buzzword
+)
 puts "Test account email: #{User.first.email}"
 puts "#######################################################################"
-4.times do 
+4.times do
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -55,23 +55,23 @@ puts "#######################################################################"
 puts "Generating licenses…"
 
 Supplier.all.each { |s| License.create!(
-  authority: Faker::IndustrySegments.sector, 
-  number: Faker::Alphanumeric.alphanumeric(number: 10), 
-  supplier: s
-  )}
+    authority: Faker::IndustrySegments.sector,
+    number: Faker::Alphanumeric.alphanumeric(number: 10),
+    supplier: s
+)}
 puts "#{Supplier.all.count} Suppliers generated."
 puts "#######################################################################"
 puts "Creating products"
 
 Supplier.all.each { |s| rand(1..4).times do Product.create!(
-  name: Faker::Commerce.product_name,
-  price: Faker::Commerce.price(range: 2..848.0, as_string: false),
-  category: Faker::Company.industry,
-  production_quantity: Faker::Number.number(digits: 6),
-  minimum_order_quantity: rand(50..1000),
-  supplier: s
-)
-end
+      name: Faker::Commerce.product_name,
+      price: Faker::Commerce.price(range: 2..848.0, as_string: false),
+      category: Faker::Company.industry,
+      production_quantity: Faker::Number.number(digits: 6),
+      minimum_order_quantity: rand(50..1000),
+      supplier: s
+    )
+  end
 }
 puts "#{Product.all.count} Products generated."
 
@@ -81,7 +81,7 @@ puts "Creating certifications"
 
 4.times do
   certification = Certification.create!(
-    number: rand(23..5746), 
+    number: rand(23..5746),
     validity: Faker::Date.forward(days: 170),
     category:["Annual", "Permanent"].sample,
     listing_number: Faker::Number.leading_zero_number(digits: 10),
