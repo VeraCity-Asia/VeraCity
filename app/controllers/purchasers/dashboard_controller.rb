@@ -1,4 +1,4 @@
-class Suppliers::DashboardsController < ApplicationController
+class Purchasers::DashboardController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
   end
