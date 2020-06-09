@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_024322) do
+ActiveRecord::Schema.define(version: 2020_06_09_072633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_024322) do
     t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "kind"
     t.index ["supplier_id"], name: "index_licenses_on_supplier_id"
   end
 
@@ -92,6 +93,12 @@ ActiveRecord::Schema.define(version: 2020_06_09_024322) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "industry"
+    t.string "delivery_terms"
+    t.string "payment_terms"
+    t.string "nearest_port"
+    t.boolean "whitelisted"
+    t.date "established"
     t.index ["user_id"], name: "index_suppliers_on_user_id"
   end
 
@@ -106,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_024322) do
     t.string "name"
     t.string "country"
     t.string "user_type"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
