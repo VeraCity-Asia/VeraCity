@@ -8,4 +8,7 @@ Rails.application.routes.draw do
     resources :licenses, only: [:new, :create, :destroy]
     resources :offers, only: [:index, :show, :update]
   end
+  namespace :purchasers do
+    resources :offers, only: [:new, :show, :index, :create, :delete]
+  end
 end
