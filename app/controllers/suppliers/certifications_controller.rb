@@ -3,9 +3,12 @@ class Suppliers::CertificationsController < ApplicationController
 
 
   def new
+    @certification = Certification.new
   end
 
   def create
+    @certification = Certification.new(certification_params)
+    raise
   end
 
   def edit
@@ -14,4 +17,15 @@ class Suppliers::CertificationsController < ApplicationController
   def update
   end
 
+
+
+  private
+
+  def find_certification
+    @certification = Certification.find(params[:id])
+  end
+
+  def certification_params
+    params.require(:certification).permit(:number, :validity, :category, :listing_number, :code, :authority)
+  end
 end
