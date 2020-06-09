@@ -1,2 +1,9 @@
 <h1>Products#show</h1>
 <p>Find me in app/views/products/show.html.erb</p>
+
+<div>Product: <%= @product.name %></div>
+<div>Price: $<%= @product.price %>/unit</div>
+<div>Category: <%= @product.category %></div>
+<div>In Stock: <%= @product.production_quantity %></div>
+<div>Minimum order: <%= @product.minimum_order_quantity %></div>
+<div>Supplier: <%= @product.supplier.name %></div>
