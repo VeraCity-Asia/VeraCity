@@ -1,10 +1,12 @@
 $dark-blue: #193B68;
+
 .banner {
     background-size: cover;
     background-position: center;
     padding: 150px 0;
     margin-bottom: 3em;
     font-size: larger;
+    // background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../../images/logo.png");
   }
   
   .banner h1 {

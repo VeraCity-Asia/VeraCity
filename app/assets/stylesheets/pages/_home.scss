@@ -1,1 +1,14 @@
 // Specific CSS for your home-page
+h2 {
+    font-size: larger;
+}
+.certification-checks-icons {
+    width: 88vw;
+    margin-left: auto;
+    margin-right: auto;
+
+    .certification-logo img {
+        width: 20px;
+        height: 20px;
+    }
+}
