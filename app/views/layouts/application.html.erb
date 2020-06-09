@@ -15,8 +15,12 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     
+    <% if current_page?(root_path) %>
+      <%= yield %>
+    <% else %>
     <div class="container" style="min-height: 100vh;">
       <%= yield %>
+    <% end %>
     </div>
 
     <%= render 'shared/footer' %>
