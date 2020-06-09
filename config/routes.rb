@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :products
+  resources :messages, only: [:index, :new, :create]
   resources :suppliers, only: [:show]
   namespace :suppliers do
     resources :verifications, only: [:edit, :update]
