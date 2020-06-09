@@ -1,5 +1,6 @@
 class Suppliers::CertificationsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:new, :edit]
+  before_action :find_certification, only: [:edit,:update]
 
 
   def new
@@ -8,13 +9,22 @@ class Suppliers::CertificationsController < ApplicationController
 
   def create
     @certification = Certification.new(certification_params)
-    raise
+    if @certification.save
+      redirect_to products_path
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
+    if @certification.update(certification_params)
+      redirect_to products_path
+    else
+      render :edit
+    end
   end
 
 

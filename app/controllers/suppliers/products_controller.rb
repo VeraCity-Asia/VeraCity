@@ -1,14 +1,14 @@
 class Suppliers::ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :edit]
-  before_action :find_product, only: [:edit,:update, :destroy,]
+  before_action :find_product, only: [:edit,:update, :destroy]
   def new
     @product = Product.new
   end
 
   def create
     @product = Product.new(product_params)
-    @supplier = Supplier.where(user: current_user)
-    @product.supplier = @supplier.user
+    supplier = Supplier.where(user: current_user)
+    @product.supplier = supplier.user
     raise
     if @product.save
       redirect_to products_path
