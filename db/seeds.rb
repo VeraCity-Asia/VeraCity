@@ -1,5 +1,6 @@
 # development wipe
 if Rails.env.development?
+  Product.destroy_all
   Certification.destroy_all
   License.destroy_all
   Offer.destroy_all
@@ -25,6 +26,7 @@ puts "#######################################################################"
       user: User.all.sample
     )
   end
+
   rand(1..3).times do
     offer = Offer.create!(
       amount: rand(100..320),
@@ -38,12 +40,35 @@ puts "#######################################################################"
     )
   end
 end
+
 puts "#######################################################################"
 puts "Generating licenses…"
-Supplier.all.each { |s| License.create!(authority: Faker::IndustrySegments.sector, number: Faker::Alphanumeric.alphanumeric(number: 10), supplier: s) }
-puts "#{Supplier.all.count} generated."
+
+Supplier.all.each { |s| License.create!(
+  authority: Faker::IndustrySegments.sector, 
+  number: Faker::Alphanumeric.alphanumeric(number: 10), 
+  supplier: s
+  )}
+puts "#{Supplier.all.count} Suppliers generated."
+puts "#######################################################################"
+puts "Creating products"
+
+Supplier.all.each { |s| rand(1..4).times do Product.create!(
+  name: Faker::Commerce.product_name,
+  price: Faker::Commerce.price(range: 2..848.0, as_string: false),
+  category: Faker::Company.industry,
+  production_quantity: Faker::Number.number(digits: 6),
+  minimum_order_quantity: rand(50..1000),
+  supplier: s
+)
+end
+}
+puts "#{Product.all.count} Products generated."
+
+
 puts "#######################################################################"
 puts "Creating certifications"
+
 4.times do
   certification = Certification.create!(
     number: rand(23..5746), 
@@ -53,6 +78,10 @@ puts "Creating certifications"
     code: Faker::Alphanumeric.alphanumeric(number: 5),
     authority: Faker::IndustrySegments.sub_sector
   )
-  puts "#{certification.number} created…"
 end
+puts "#{Certification.count} Certifications created…"
+
+puts "#######################################################################"
+puts "Seeding Product Certifications join table"
+Product.all.each { |p| p.offers << Offer.all.sample }
 puts "#######################################################################"
