@@ -10,6 +10,16 @@ end
 
 # users seed
 puts "#######################################################################"
+puts "Generating test user"
+User.create!(
+    name: Faker::Name.name,
+    email: "test@gmail.com",
+    password: "123456",
+    country: Faker::Address.country,
+    user_type: Faker::Company.buzzword
+  )
+puts "Test account email: #{User.first.email}"
+puts "#######################################################################"
 4.times do 
   user = User.create!(
     name: Faker::Name.name,
