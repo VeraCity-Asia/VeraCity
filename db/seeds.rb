@@ -16,9 +16,30 @@ User.create!(
     email: "test@gmail.com",
     password: "123456",
     country: Faker::Address.country,
-    user_type: Faker::Company.buzzword
+    user_type: "purchaser"
   )
-puts "Test account email: #{User.first.email}"
+puts "Test PURChASER account email: #{User.first.email}"
+
+User.create!(
+    name: Faker::Name.name,
+    email: "test2@gmail.com",
+    password: "123456",
+    country: Faker::Address.country,
+    user_type: "supplier"
+  )
+puts "Test SUPPLIER account email: #{User.last.email}"
+Supplier.create!(
+    name: Faker::Company.name,
+    location: Faker::Address.city,
+    industry: Faker::IndustrySegments.sector,
+    delivery_terms: ["FOB", "EXW", "FAS", "FCA", "CFR", "CPT", "CIF", "CIP", "DES", "DAF", "DEQ", "DDP", "DDU"].sample,
+    payment_terms: ["T/T", "L/C", "D/P", "Western Union", "Moneygram"].sample,
+    nearest_port: "#{Faker::Address.city} Puerta",
+    whitelisted: nil,
+    established: Date.today - rand(200..10000),
+    user: User.last
+  )
+
 puts "#######################################################################"
 4.times do 
   user = User.create!(
@@ -29,13 +50,19 @@ puts "#######################################################################"
     user_type: Faker::Company.buzzword
   )
   puts "#{user.name} created…"
-  5.times do
-    supplier = Supplier.create!(
-      name: Faker::Company.name,
-      location: Faker::Address.city,
-      user: User.all.sample
-    )
-  end
+
+  # Supplier generation
+  supplier = Supplier.create!(
+    name: Faker::Company.name,
+    location: Faker::Address.city,
+    industry: Faker::IndustrySegments.sector,
+    delivery_terms: ["FOB", "EXW", "FAS", "FCA", "CFR", "CPT", "CIF", "CIP", "DES", "DAF", "DEQ", "DDP", "DDU"].sample,
+    payment_terms: ["T/T", "L/C", "D/P", "Western Union", "Moneygram"].sample,
+    nearest_port: "#{Faker::Address.city} Puerta",
+    whitelisted: nil,
+    established: Date.today - rand(200..10000),
+    user: user
+  )
 
   rand(1..3).times do
     offer = Offer.create!(
@@ -55,7 +82,7 @@ puts "#######################################################################"
 puts "Generating licenses…"
 
 Supplier.all.each { |s| License.create!(
-  authority: Faker::IndustrySegments.sector, 
+  authority: "#{Faker::Space.galaxy} #{Faker::ElectricalComponents.active} Agency", 
   number: Faker::Alphanumeric.alphanumeric(number: 10), 
   supplier: s
   )}
