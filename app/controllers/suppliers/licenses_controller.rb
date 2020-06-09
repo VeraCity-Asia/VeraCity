@@ -1,4 +1,4 @@
-class Suppliers::licensesController < ApplicationController
+class Suppliers::LicensesController < ApplicationController
   def new
   end
 
