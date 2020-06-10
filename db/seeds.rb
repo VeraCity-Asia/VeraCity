@@ -96,9 +96,9 @@ puts "Creating products"
 Supplier.all.each { |s| rand(1..4).times do Product.create!(
       name: Faker::Commerce.product_name,
       price: Faker::Commerce.price(range: 2..848.0, as_string: false),
-      category: Faker::Company.industry,
+      category: ["Mask","thermometer","Bandage"].sample,
       production_quantity: Faker::Number.number(digits: 6),
-      minimum_order_quantity: rand(50..1000),
+      minimum_order_quantity: [100,200,300].sample,
       supplier: s
     )
   end
