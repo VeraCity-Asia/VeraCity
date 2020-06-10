@@ -10,14 +10,15 @@ class Suppliers::ProductsController < ApplicationController
     # authorize Product
     # authorize(Product)
     # authorize @product
-    authorize([:suppliers, @product])  
+    authorize([:suppliers, @product])
   end
 
   def create
     @product = Product.new(product_params)
     supplier = Supplier.find_by(user: current_user)
-    @product.supplier = supplier
-
+    @product.supplier = supplier.id
+    authorize([:suppliers, @product])
+    raise
     if @product.save
       redirect_to @product
     else
