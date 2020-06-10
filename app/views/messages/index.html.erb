@@ -1,2 +1,19 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<h1>Message#index</h1>
+<div class="message-container">
+  <% @messages.each do |message| %>
+    <div class="card">
+      <h5>
+        <%= message.title %>
+      </h3>
+      <p>
+        <%= message.content %>
+      </p>
+      <p>
+        Product Name: <%= message.product.name %>
+      </p>
+      <p>
+        Supplier: <%= message.product.supplier.name %>
+      </p>
+    </div>
+  <% end %>
+</div>
