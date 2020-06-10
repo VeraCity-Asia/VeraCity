@@ -20,7 +20,7 @@ class Purchasers::OffersController < ApplicationController
     @offer.supplier = @product.supplier
     @offer.save
     if @offer.save
-      redirect_to purchasers_offers_path
+      redirect_to @product
     else
       render :new
     end

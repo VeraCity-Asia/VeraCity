@@ -17,9 +17,12 @@ class MessagesController < ApplicationController
     @product = Product.find(params[:message][:product_id])
     @message.product_id = @product.id
     @message.sender_id = current_user.id
-    @message.receiver_id = @product.supplier_id
-    @message.save
-    raise
+    @message.receiver_id = @product.supplier.user_id
+    if @message.save
+      redirect_to messages_path
+    else
+      render :new
+    end
   end
 
 
