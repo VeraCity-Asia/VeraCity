@@ -9,15 +9,16 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    # @product = Product.find(params[:product_id])
+    @product = Product.find(params[:product_id])
   end
 
   def create
     @message = Message.new(message_params)
-    # @product = Product.find(params[:product_id])
-    @user = current_user
-    @message.sender_id = user.id
-    @message.receiver_id = @product.supplier.id
+    @product = Product.find(params[:message][:product_id])
+    @message.product_id = @product.id
+    @message.sender_id = current_user.id
+    @message.receiver_id = @product.supplier_id
+    @message.save
     raise
   end
 
