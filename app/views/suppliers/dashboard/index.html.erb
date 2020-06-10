@@ -1,0 +1,15 @@
+<p>Supplier name: <%= @user.name %></p>
+<div class="supplier-dashboard d-flex">
+  <div class="supplier-dashboard-offers mx-3">
+    <h4>Offer I got</h4>
+    <% @supplier %>
+  </div>
+  <div class="supplier-dashboard-products mx-3">
+    <h4>Product I own</h4>
+    <% @supplier.products.each do |product| %>
+      <p>Product Name: <%= product.name %></p>
+      <p>Price: <%= product.price%></p>
+      <p>Category: <%= product.category%></p>
+    <% end %>
+  </div>
+</div>

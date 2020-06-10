@@ -1,5 +1,5 @@
 class Purchasers::DashboardController < ApplicationController
-  def show
-    @user = User.find(params[id])
+  def index
+    @user = current_user
   end
 end

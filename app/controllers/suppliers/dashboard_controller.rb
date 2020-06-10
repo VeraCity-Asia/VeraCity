@@ -1,5 +1,6 @@
 class Suppliers::DashboardController < ApplicationController
-  def show
-    @supplier = Supplier.find(params[id])
+  def index
+    @user = current_user
+    @supplier = Supplier.find_by(user: current_user)
   end
 end

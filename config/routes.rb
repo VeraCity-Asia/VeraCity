@@ -14,11 +14,11 @@ Rails.application.routes.draw do
     resources :licenses, only: [:new, :create, :destroy]
     resources :offers, only: [:index, :show, :update]
     resources :products, only: [:create, :new, :edit, :update, :destroy]
-    get 'dashboard', to: 'dashboard#show'
+    get 'dashboard', to: 'dashboard#index'
   end
   resources :suppliers, only: [:show]
   namespace :purchasers do
     resources :offers, only: [:new, :show, :index, :create, :destroy]
-    get 'dashboard', to: 'dashboard#show'
+    get 'dashboard', to: 'dashboard#index'
   end
 end
