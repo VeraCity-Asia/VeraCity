@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :messages_as_receiver, source: :messages, foreign_key: :receiver_id
   has_many :offers
   validates :name, :country, presence: true
+  has_one :supplier
 end
