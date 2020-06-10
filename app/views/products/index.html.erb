@@ -6,6 +6,31 @@
   <div class="row">
     <div class="col-xs-0 col-md-4">
       <h1>some text here</h1>
+
+      <div class="checkboxes-certs row">
+      <h3>Product certifications I need:</h3>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+          CE
+          </label>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+            FDA
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+            ISO
+            </label>
+          </div>
+      </div>
+        
+      </div>
     </div>
 
     <div class="col-xs-12 col-md-6">
@@ -18,7 +43,7 @@
       </div>
     </div>
 
-    <div class="col-xs-0 col-md-2">
+    <div class="right-col col-xs-0 col-md-2">
       <h5><em>Most Viewed</em></h5>
       <%= render 'shared/mv_product_card', size: '100x100'%>
       <%= render 'shared/mv_product_card', size: '100x100'%>
