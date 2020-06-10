@@ -4,9 +4,18 @@ class Suppliers::ProductPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def update?
+    record.supplier.user == user
+  end  
   
   def create?
     return true
   end
+
+  def destroy?
+    record.supplier.user == user
+  end
+  
   
 end

@@ -4,6 +4,11 @@ class ProductPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def show?
+    true
+  end
+  
   
   def create?
     return true

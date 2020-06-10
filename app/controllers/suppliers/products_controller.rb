@@ -2,24 +2,15 @@ class Suppliers::ProductsController < ApplicationController
   before_action :find_product, only: [:edit,:update, :destroy]
   def new
     @product = Product.new
-    # wrong ways to do this
-    # Pundit.policy!(user, Product)
-    # authorize @product, policy_class: ProductPolicy
-    # authorize(product)
-    # authorize @product
-    # authorize Product
-    # authorize(Product)
-    # authorize @product
     authorize([:suppliers, @product])
   end
 
   def create
     @product = Product.new(product_params)
     supplier = Supplier.find_by(user: current_user)
-    @product.supplier = supplier.id
-    authorize([:suppliers, @product])
-    raise
+    @product.supplier = supplier
     if @product.save
+      authorize([:suppliers, @product])
       redirect_to @product
     else
       render :new
@@ -27,18 +18,21 @@ class Suppliers::ProductsController < ApplicationController
   end
 
   def edit
+    authorize([:suppliers, @product])
   end
-
+  
   def update
     if @product.update(product_params)
+      authorize([:suppliers, @product])
       redirect_to @product
     else
       render :new
     end
   end
-
+  
   def destroy
     @product.destroy
+    authorize([:suppliers, @product])
     redirect_to products_path
   end
 
