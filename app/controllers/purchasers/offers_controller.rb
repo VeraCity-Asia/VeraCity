@@ -14,12 +14,13 @@ class Purchasers::OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    @product = Product.find(params[:product_id])
-    user = current_user
+    @product = Product.find(params[:offer][:product_id])
+    @offer.products << @product
+    @offer.user = current_user
+    @offer.supplier =  @product.supplier
+    @offer.save
+    raise
     #find the supplier from product supplier
-    supplier = Offer.find_by(supplier: @product.supplier)
-    @offer.supplier = supplier
-    @offer.user = user
     if @offer.save
       redirect_to purchasers_offers_path
     else
@@ -37,6 +38,6 @@ class Purchasers::OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:amount, :destination, :price, :payment, :product_id)
+    params.require(:offer).permit(:amount, :destination, :price, :payment)
   end
 end

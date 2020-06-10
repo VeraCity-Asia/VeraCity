@@ -7,6 +7,7 @@
         <%= f.input :destination %>
         <%= f.input :price %>
         <%= f.input :payment %>
+        <%= f.hidden_field :product_id, :value => @product.id %>
       </div>
       <div class="form-actions">
         <%= f.button :submit %>
