@@ -1,5 +1,6 @@
 # development wipe
 if Rails.env.development?
+  Message.destroy_all
   Product.destroy_all
   Certification.destroy_all
   License.destroy_all
@@ -112,7 +113,7 @@ puts "Creating certifications"
   certification = Certification.create!(
     number: rand(23..5746),
     validity: Faker::Date.forward(days: 170),
-    category:["Annual", "Permanent"].sample,
+    category:["CE", "FDA", "ISO"].sample,
     listing_number: Faker::Number.leading_zero_number(digits: 10),
     code: Faker::Alphanumeric.alphanumeric(number: 5),
     authority: Faker::IndustrySegments.sub_sector
