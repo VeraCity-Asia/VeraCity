@@ -1,5 +1,5 @@
 class Purchasers::DashboardController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
-  def index
+  def show
+    @user = User.find(params[id])
   end
 end
