@@ -1,1 +1,18 @@
-purchaser offer index
+<h1>Buyer-offers#index</h1>
+<p><%= link_to "Make new offer", new_purchasers_offer_path %></p>
+<div class="purchaser-offer-container">
+  <% @offers.each do |offer| %>
+    <div class="card">
+      <h5>
+        Amount<%= offer.amount  %>
+      </h3>
+      <p>
+        Destination: $<%= offer.destination %>/unit
+      </p>
+      <p>
+        Payment: <%= offer.payment %>
+      </p>
+      <%= link_to "Details", purchasers_offer_path(offer) %>
+    </div>
+  <% end %>
+</div>

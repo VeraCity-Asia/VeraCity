@@ -1,1 +1,8 @@
-purchaser offer show page
+<h1>Buyer#offer#show</h1>
+<div>Product: <%= @offer.products.first.name %> </div>
+<div>Amount: <%= @offer.amount %></div>
+<div>Destination: <%= @offer.destination %></div>
+<div>Price: $<%= @offer.price %>/unit</div>
+<div>Payment: <%= @offer.payment %></div>
+<div>Approved Date: <%= @offer.approved_date %></div>
+<div>Supplier: <%= @offer.supplier.name %></div>
