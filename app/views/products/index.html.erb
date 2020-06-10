@@ -1,23 +1,26 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<%# <h1>Products#index</h1>
+<p>Find me in app/views/products/index.html.erb</p> %>
 
-<div class="row">
-  <div class="left-col">
-    <h1>some text here</h1>
-  </div>
+<div class="container-fluid">
 
-  <div class="center-col">
-    <div class="product-container">
-      <div class="card-products">
-        <% @products.each do |product| %>
-          <%= render :partial => 'shared/product_card', locals: {:product => product }%>
-        <% end %>
+  <div class="row">
+    <div class="col-xs-0 col-md-4">
+      <h1>some text here</h1>
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+      <div class="product-container">
+        <div class="card-products">
+          <% @products.each do |product| %>
+            <%= render :partial => 'shared/product_card', locals: {:product => product }%>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
-    <div class="right-col">
+    <div class="col-xs-0 col-md-2">
       <h1>some other text here</h1>
     </div>
-</div>
+  </div>
 
+</div>

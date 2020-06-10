@@ -1,22 +1,9 @@
 .row {
-  justify-content: space-around;
+  justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
 }
-.left-col {
-  width: 25%;
-  float: left;
-  margin-left: initial;
-  margin-right: 2em;
 
-}
-
-.center-col {
-  width: 50%;
-  float: left;
-}
-
-.right-col {
-  width: 25%;
-  float: left;
+.container-fluid {
+  width: 100vw;
 }
