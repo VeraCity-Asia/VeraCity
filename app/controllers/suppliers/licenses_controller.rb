@@ -6,9 +6,10 @@ class Suppliers::LicensesController < ApplicationController
 
   def create
     @license = License.new(license_params)
-    raise
+    supplier = Supplier.find_by(user: current_user)
+    @license.supplier = supplier
     if @license.save
-      redirect_to products_path
+      redirect_to products_path, notice: 'Your license was successfully created.'
     else
       render :new
     end
