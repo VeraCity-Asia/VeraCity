@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   resources :suppliers, only: [:show]
   namespace :purchasers do
-    resources :offers, only: [:new, :show, :index, :create, :delete]
+    resources :offers, only: [:new, :show, :index, :create, :destroy]
     get 'dashboard', to: 'dashboard#index'
   end
 end

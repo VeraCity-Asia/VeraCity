@@ -18,16 +18,16 @@
       <%= render 'shared/jiayou' %>
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
-      
       <%= yield %>
     
     <% else %>
-    
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
       
       <div class="container" style="min-height: 100vh;">
-        <%= yield %>
+        <div class="filler-page" style="min-height: 100vh;">
+          <%= yield %>
+        </div>
       </div>
 
     <% end %>
