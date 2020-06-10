@@ -1,53 +1,23 @@
 <h1>Products#index</h1>
 <p>Find me in app/views/products/index.html.erb</p>
 
-
-<div class="product-container">
-
-  <div class="card-products">
-    <%# <%= render partial: 'shared/product_card'%> 
-
-    <% @products.each do |product| %>
-
-    <%= render :partial => 'shared/product_card', locals: {:product => product }%>
-
-    <%# <div class="card-product"> %>
-      <%# <div class="col-md-4"> %>
-        <%# <img src="#" class="card-img" alt="product image"> %>
-      <%# </div> %>
-
-      <%# <div class="card-product-infos"> %>
-        <%# <h2><%= product.name</h2>  %>
-        <%# <p>Cost: $<%= product.price/unit</p>  %>
-        <%# <p>Category: <%= product.category</p> %>
-        <%# <%= link_to "Details", product_path(product) %>
-        <%# <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> %>
-
-      <%# </div> %>
-    <%# </div> %>
-
-    
-      <%# <div class="card-product mb-3" style="max-width: 540px;"> %>
-        <%# <div class="row no-gutters"> %>
-          
-            <%# <div class="col-md-4"> %>
-              <%# <img src="#" class="card-img" alt="product image"> %>
-            <%# </div> %>
-            
-            <%# <div class="col-md-8"> %>
-              <%# <div class="card-body"> %>
-                <%# <h3 class="card-title"><%= product.name</h3> %>
-                <%# <p class="card-text">Cost: $<%= product.price/unit</p> %>
-                <%# <p class="card-text">Category: <%= product.category</p> %>
-
-                <%# <%= link_to "Details", product_path(product) %>
-                <%# <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> %>
-              <%# </div> %>
-            <%# </div> %>
-        
-        <%# </div> %>
-      <%# </div> %>
-    <% end %>
-
+<div class="container">
+  <div class="left-col">
+    <h1>some text here</h1>
   </div>
+  
+  <div class="center-col">
+    <div class="product-container">
+      <div class="card-products">
+        <% @products.each do |product| %>
+          <%= render :partial => 'shared/product_card', locals: {:product => product }%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+    <div class="right-col">
+      <h1>some other text here</h1>
+    </div>
 </div>
+
