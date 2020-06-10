@@ -10,13 +10,12 @@ placeholder: "Search by Product name or Certification type" %>
 <% end %>
 <div class="product-container d-flex">
   <div class="product-search-filter">
-    <%= simple_form_for :search, url: products_path, method: "GET" do |f| %>
+    <%= simple_form_for :filter, url: products_path, method: "GET" do |f| %>
       <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
       <%= f.input :minimum_order_quantity, label: "minimun order", collection: $minimum_order_quantity, as: :check_boxes %>
       <%= f.fields_for :certificaions do |s| %>
         <%= s.input :category, label: "Certification",collection: $certification, as: :check_boxes %>
       <% end %>
-      <%= f.submit "Search", class: "btn btn-info" %>
     <% end %>
   </div>
   <div class="card-products">

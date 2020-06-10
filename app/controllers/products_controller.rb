@@ -7,6 +7,18 @@ class ProductsController < ApplicationController
     if @query.present?
       @products = @products.search_by_name_certification(@query)
     end
+
+    # if params["filter"]
+    #   @filter = params["filter"]
+    #   @products = Product.all.filter_search("#{@filter}")
+    # else
+    #   @products = Product.all
+    # end
+
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: { products: @products} }
+    # end
   end
 
   def show
