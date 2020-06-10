@@ -1,1 +1,18 @@
-supplier add product view
+<div class="row">
+  <div class="col-xs-12 col-sm-8 offset-sm-2 my-2">
+    <h1>Add new product</h1>
+    <%= simple_form_for @product, url: suppliers_products_path  do |f| %>
+      <div class="form-inputs">
+        <%= f.input :name %>
+        <%= f.input :price %>
+        <%= f.input :category %>
+        <%= f.input :production_quantity %>
+        <%= f.input :minimum_order_quantity %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit %>
+        <%= link_to "Back to product index", products_path %>
+      </div>
+    <% end %>
+  </div>
+</div>

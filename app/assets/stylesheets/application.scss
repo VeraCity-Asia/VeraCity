@@ -15,7 +15,8 @@
 @import "components/cards";
 @import "components/jiayou";
 @import "components/footer";
-@import "components/login_form";
+@import "components/search";
+@import "components/button";
 @import "components/product_card";
 @import "pages/products/index";
 @import "pages/index";
@@ -32,5 +33,10 @@ body {
 
 .filler-page {
     margin-top: 2em;
+<<<<<<< HEAD
     margin-bottom: 2em;
 }
+=======
+    // margin-bottom: 2em;
+}
+>>>>>>> master

@@ -1,9 +1,10 @@
 <h1>Products#show</h1>
 <p>Find me in app/views/products/show.html.erb</p>
-
 <div>Product: <%= @product.name %></div>
 <div>Price: $<%= @product.price %>/unit</div>
 <div>Category: <%= @product.category %></div>
 <div>In Stock: <%= @product.production_quantity %></div>
 <div>Minimum order: <%= @product.minimum_order_quantity %></div>
 <div>Supplier: <%= @product.supplier.name %></div>
+<div><%= link_to "Edit product", edit_suppliers_product_path(@product) %></div>
+<div><%= link_to "Destroy product", suppliers_product_path(@product.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>

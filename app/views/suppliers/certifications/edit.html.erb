@@ -1,1 +1,19 @@
-edit.html.erb
+<div class="row">
+  <div class="col-xs-12 col-sm-8 offset-sm-2 my-2">
+    <h1>Edit certificaion</h1>
+    <%= simple_form_for @certification, url: suppliers_certification_path, mothod: :PUT  do |f| %>
+      <div class="form-inputs">
+        <%= f.input :number %>
+        <%= f.input :validity %>
+        <%= f.input :category %>
+        <%= f.input :listing_number %>
+        <%= f.input :code %>
+        <%= f.input :authority %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit %>
+        <%= link_to "Back to product index", products_path %>
+      </div>
+    <% end %>
+  </div>
+</div>
