@@ -2,12 +2,22 @@ class Suppliers::ProductsController < ApplicationController
   before_action :find_product, only: [:edit,:update, :destroy]
   def new
     @product = Product.new
+    # wrong ways to do this
+    # Pundit.policy!(user, Product)
+    # authorize @product, policy_class: ProductPolicy
+    # authorize(product)
+    # authorize @product
+    # authorize Product
+    # authorize(Product)
+    # authorize @product
+    authorize([:suppliers, @product])  
   end
 
   def create
     @product = Product.new(product_params)
     supplier = Supplier.find_by(user: current_user)
     @product.supplier = supplier
+
     if @product.save
       redirect_to @product
     else
