@@ -1,5 +1,4 @@
 class Suppliers::ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :edit]
   before_action :find_product, only: [:edit,:update, :destroy]
   def new
     @product = Product.new
@@ -7,11 +6,10 @@ class Suppliers::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    supplier = Supplier.where(user: current_user)
-    @product.supplier = supplier.user
-    raise
+    supplier = Supplier.find_by(user: current_user)
+    @product.supplier = supplier
     if @product.save
-      redirect_to products_path
+      redirect_to @product
     else
       render :new
     end
@@ -21,9 +19,16 @@ class Suppliers::ProductsController < ApplicationController
   end
 
   def update
+    if @product.update(product_params)
+      redirect_to @product
+    else
+      render :new
+    end
   end
 
   def destroy
+    @product.destroy
+    redirect_to products_path
   end
 
   private
