@@ -12,36 +12,36 @@ end
 puts "#######################################################################"
 puts "Generating test user"
 User.create!(
-    name: Faker::Name.name,
-    email: "test@gmail.com",
-    password: "123456",
-    country: Faker::Address.country,
-    user_type: "purchaser"
-  )
+  name: Faker::Name.name,
+  email: "test@gmail.com",
+  password: "123456",
+  country: Faker::Address.country,
+  user_type: "purchaser"
+)
 puts "Test PURChASER account email: #{User.first.email}"
 
 User.create!(
-    name: Faker::Name.name,
-    email: "test2@gmail.com",
-    password: "123456",
-    country: Faker::Address.country,
-    user_type: "supplier"
-  )
+  name: Faker::Name.name,
+  email: "test2@gmail.com",
+  password: "123456",
+  country: Faker::Address.country,
+  user_type: "supplier"
+)
 puts "Test SUPPLIER account email: #{User.last.email}"
 Supplier.create!(
-    name: Faker::Company.name,
-    location: Faker::Address.city,
-    industry: Faker::IndustrySegments.sector,
-    delivery_terms: ["FOB", "EXW", "FAS", "FCA", "CFR", "CPT", "CIF", "CIP", "DES", "DAF", "DEQ", "DDP", "DDU"].sample,
-    payment_terms: ["T/T", "L/C", "D/P", "Western Union", "Moneygram"].sample,
-    nearest_port: "#{Faker::Address.city} Puerta",
-    whitelisted: nil,
-    established: Date.today - rand(200..10000),
-    user: User.last
-  )
+  name: Faker::Company.name,
+  location: Faker::Address.city,
+  industry: Faker::IndustrySegments.sector,
+  delivery_terms: ["FOB", "EXW", "FAS", "FCA", "CFR", "CPT", "CIF", "CIP", "DES", "DAF", "DEQ", "DDP", "DDU"].sample,
+  payment_terms: ["T/T", "L/C", "D/P", "Western Union", "Moneygram"].sample,
+  nearest_port: "#{Faker::Address.city} Puerta",
+  whitelisted: nil,
+  established: Date.today - rand(200..10000),
+  user: User.last
+)
 
 puts "#######################################################################"
-4.times do 
+4.times do
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -82,23 +82,25 @@ puts "#######################################################################"
 puts "Generating licenses…"
 
 Supplier.all.each { |s| License.create!(
-  authority: "#{Faker::Space.galaxy} #{Faker::ElectricalComponents.active} Agency", 
-  number: Faker::Alphanumeric.alphanumeric(number: 10), 
-  supplier: s
-  )}
+
+    authority: "#{Faker::Space.galaxy} #{Faker::ElectricalComponents.active} Agency",
+    number: Faker::Alphanumeric.alphanumeric(number: 10),
+    supplier: s
+)}
+
 puts "#{Supplier.all.count} Suppliers generated."
 puts "#######################################################################"
 puts "Creating products"
 
 Supplier.all.each { |s| rand(1..4).times do Product.create!(
-  name: Faker::Commerce.product_name,
-  price: Faker::Commerce.price(range: 2..848.0, as_string: false),
-  category: Faker::Company.industry,
-  production_quantity: Faker::Number.number(digits: 6),
-  minimum_order_quantity: rand(50..1000),
-  supplier: s
-)
-end
+      name: Faker::Commerce.product_name,
+      price: Faker::Commerce.price(range: 2..848.0, as_string: false),
+      category: Faker::Company.industry,
+      production_quantity: Faker::Number.number(digits: 6),
+      minimum_order_quantity: rand(50..1000),
+      supplier: s
+    )
+  end
 }
 puts "#{Product.all.count} Products generated."
 
@@ -108,7 +110,7 @@ puts "Creating certifications"
 
 4.times do
   certification = Certification.create!(
-    number: rand(23..5746), 
+    number: rand(23..5746),
     validity: Faker::Date.forward(days: 170),
     category:["Annual", "Permanent"].sample,
     listing_number: Faker::Number.leading_zero_number(digits: 10),
