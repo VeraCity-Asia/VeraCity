@@ -12,14 +12,18 @@
       <div class="product-container">
         <div class="card-products">
           <% @products.each do |product| %>
-            <%= render :partial => 'shared/product_card', locals: {:product => product }%>
+            <%= render :partial => 'shared/product_card', locals: {:product => product } %>
           <% end %>
         </div>
       </div>
     </div>
 
     <div class="col-xs-0 col-md-2">
-      <h1>some other text here</h1>
+      <%= render 'shared/mv_product_card', size: '100x100'%>
+      <%= render 'shared/mv_product_card', size: '100x100'%>
+      <%= render 'shared/mv_product_card', size: '100x100'%>
+      <%= render 'shared/mv_product_card', size: '100x100'%>
+
     </div>
   </div>
 
