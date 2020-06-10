@@ -1,5 +1,6 @@
 class Suppliers::DashboardController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
   def index
+    @user = current_user
+    @supplier = Supplier.find_by(user: current_user)
   end
 end
