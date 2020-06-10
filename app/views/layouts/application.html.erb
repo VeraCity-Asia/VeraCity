@@ -12,14 +12,30 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    
-    <div class="container" style="min-height: 100vh;">
-      <%= yield %>
-    </div>
 
-    <%= render 'shared/footer' %>
+    <% if current_page?(root_path) %>
+
+      <%= render 'shared/jiayou' %>
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      
+      <div class="filler-page" style="min-height: 100vh;">
+        <%= yield %>
+      </div>
+    
+    <% else %>
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      
+      <div class="container" style="min-height: 100vh;">
+        <div class="filler-page" style="min-height: 100vh;">
+          <%= yield %>
+        </div>
+      </div>
+
+    <% end %>
+
     </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>

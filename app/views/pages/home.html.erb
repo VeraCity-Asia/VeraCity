@@ -1,7 +1,24 @@
-<div class="jiayou">
-<h4>Stay safe</h4>
-</div>
 <%= render 'shared/banner' %>
+<div class="container-home">
+    <div class="container">
+        <div class="certification-checks-icons d-flex flex-row">
+
+            <h2>Pre-checked ✔️</h2>
+            <div class="certification-logo">
+                <%= image_tag 'ce-mark.png', size: '500x400' %>
+            </div>
+            <div class="certification-logo">
+                <%= image_tag 'fda.png', size: '250x300' %>
+            </div>
+            <div class="certification-logo">
+                <%= image_tag 'sgs.png', size: '500x400' %>
+            </div>
+            <div class="certification-logo">
+                <%= image_tag 'rohs.png', size: '300x200' %>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-home">
     <div class="container-info mx-auto", style="width: 100vw">
     <h1>We make your procurement easier and safer</h1>
@@ -9,6 +26,7 @@
             <%= render 'shared/cards' %>
             <%= render 'shared/cards' %>
             <%= render 'shared/cards' %>
+          </div>
         </div>
     </div>
 </div>

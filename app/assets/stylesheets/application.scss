@@ -13,7 +13,14 @@
 @import "components/index";
 @import "components/banner";
 @import "components/cards";
+@import "components/jiayou";
+@import "components/footer";
+@import "components/search";
+@import "components/button";
+@import "components/product_card";
+@import "pages/products/index";
 @import "pages/index";
+
 
 @import "bootstrap/scss/bootstrap";
 
@@ -21,4 +28,10 @@ body {
     text-align: center;
     margin-bottom: 1em;
     font-family: 'Open Sans', sans-serif;
+    background-color: #EEEEEE;
+}
+
+.filler-page {
+    margin-top: 2em;
+    // margin-bottom: 2em;
 }
