@@ -15,6 +15,9 @@
 @import "components/cards";
 @import "components/jiayou";
 @import "components/footer";
+@import "components/login_form";
+@import "components/product_card";
+@import "pages/products/index";
 @import "pages/index";
 
 
@@ -25,4 +28,9 @@ body {
     margin-bottom: 1em;
     font-family: 'Open Sans', sans-serif;
     background-color: #EEEEEE;
+}
+
+.filler-page {
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
