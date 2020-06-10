@@ -17,10 +17,8 @@ class Purchasers::OffersController < ApplicationController
     @product = Product.find(params[:offer][:product_id])
     @offer.products << @product
     @offer.user = current_user
-    @offer.supplier =  @product.supplier
+    @offer.supplier = @product.supplier
     @offer.save
-    raise
-    #find the supplier from product supplier
     if @offer.save
       redirect_to purchasers_offers_path
     else
@@ -29,6 +27,8 @@ class Purchasers::OffersController < ApplicationController
   end
 
   def destroy
+    @offer.destroy
+    redirect_to purchasers_offers_path
   end
 
   private

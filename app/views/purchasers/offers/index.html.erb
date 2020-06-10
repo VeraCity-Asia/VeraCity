@@ -13,6 +13,7 @@
         Payment: <%= offer.payment %>
       </p>
       <%= link_to "Details", purchasers_offer_path(offer) %>
+      <%= link_to "Cancel request", purchasers_offer_path(offer), method: :delete, data: {confirm: 'Are you sure?'} %>
     </div>
   <% end %>
 </div>
