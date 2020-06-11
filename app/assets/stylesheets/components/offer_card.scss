@@ -1,4 +1,4 @@
-.card-product {
+.card-offer {
     overflow: hidden;
     height: 120px;
     background: white;
@@ -11,30 +11,30 @@
     width: 600px;
 }
   
-  .card-product img {
+  .card-offer img {
     height: 100%;
     width: 120px;
     object-fit: cover;
   }
   
-  .card-product h3 {
+  .card-offer h3 {
     font-size: 16px;
     font-weight: bold;
     margin: 0;
   }
   
-  .card-product p {
+  .card-offer p {
     font-size: 12px;
     line-height: 1.4;
     opacity: .7;
     margin-top: 8px;
   }
   
-  .card-product .card-product-infos {
+  .card-offer .card-offer-infos {
     padding: 16px;
   }
   
-.card-product a {
+.card-offer a {
     color: black;
     &:hover {
         text-decoration: none;

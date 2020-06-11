@@ -1,9 +1,11 @@
 <%= render 'shared/dashboard_button' %>
+<div class="about-me">
+  <h1>My Profile</h1>
+  <p>Name: <%= @user.name %></p>
+  <p>Email: <%= @user.email %></p>
+  <p>Country: <%= @user.country %></p>
+</div>
 
-<h5>My Profile</h5>
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
-<p>Country: <%= @user.country %></p>
 <div class="purchaser-dashboard d-flex">
   <div class="purchaser-dashboard-offers mx-3">
     <h4>Products I reserved</h4>
@@ -16,8 +18,18 @@
         <p> Payment: <%= offer.payment %> </p>
         <hr>
         <% offer.products.each do | product| %>
-          <p>Product Name: <%= product.name %></p>
-          <p>Product Category: <%= product.category %></p>
+          <%= link_to purchasers_offer_path(offer) do %>
+            <div class="card-offer">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+              <div class="card-offer-infos">
+                <p>Product Name: <%= product.name %></p>
+                <p>Product Category: <%= product.category %></p>
+              </div>
+            </div>
+          <% end %>
+
+          <%# <p>Product Name: <%= product.name %></p>
+          <%# <p>Product Category: <%= product.category %></p>
         <% end %>
       <% end %>
     <% end %>
