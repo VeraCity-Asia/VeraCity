@@ -1,4 +1,20 @@
-<h1>Supplier Information</h1>
-<p>Name: <%= @supplier.name %></p>
-<p>Location: <%= @supplier.location %></p>
-<p>Industry: <%= @supplier.industry %></p>
+<div class="container">
+  <div class="row">
+    <div>
+      <h1>Supplier Information</h1>
+      <p>Name: <%= @supplier.name %></p>
+      <p>Location: <%= @supplier.location %></p>
+      <p>Industry: <%= @supplier.industry %></p>
+    </div>
+    <div>
+      <h1>Other Products</h1>
+      <% @supplier.products.each do |product|  %>
+        <p>Product name: <%= product.name %></p>
+        <p>Price: $<%= product.price %>/unit</p>
+        <p>Category: <%= product.category %></p>
+        <p>In Stock: <%= product.production_quantity %></p>
+        <p>Minimum order: <%= product.minimum_order_quantity %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
