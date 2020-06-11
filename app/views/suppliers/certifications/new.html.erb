@@ -5,7 +5,7 @@
       <div class="form-inputs">
         <%= f.input :number %>
         <%= f.input :validity %>
-        <%= f.input :category %>
+        <%= f.input :category, collection: Certification::CATEGORY, prompt: :translate %>
         <%= f.input :listing_number %>
         <%= f.input :code %>
         <%= f.input :authority %>
