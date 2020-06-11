@@ -7,4 +7,13 @@ class Offer < ApplicationRecord
   has_and_belongs_to_many :products
   validates :amount, :destination, :price, :payment, presence: true
   validates :payment, inclusion: { in: PAYMENT }
+
+
+  def approved
+    self.approved = true
+  end
+
+  def rejected
+    self.approved = false
+  end
 end

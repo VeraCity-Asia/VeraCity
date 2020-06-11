@@ -12,7 +12,13 @@ Rails.application.routes.draw do
     resources :verifications, only: [:edit, :update]
     resources :certifications, only: [:new, :create, :edit, :update]
     resources :licenses, only: [:new, :create, :destroy]
-    resources :offers, only: [:index, :show, :update]
+    resources :offers, only: [:index, :show] do
+      member do
+        put 'approved', to: 'offers#approved'
+        put 'rejected', to: 'offers#rejected'
+        get 'generateoffer', to: 'offers#generateoffer'
+      end
+    end
     resources :products, only: [:create, :new, :edit, :update, :destroy]
     get 'dashboard', to: 'dashboard#index'
   end
