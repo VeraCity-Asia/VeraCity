@@ -5,13 +5,17 @@ class Purchasers::OffersController < ApplicationController
   end
 
   def show
+    # policy_class: app/policies/offer_policy#show
+    authorize([:purchasers, @offer])
   end
-
+  
   def new
     @offer = Offer.new
+    # policy_class: app/policies/offer_policy#create 
+    authorize([:purchasers, @offer])
     @product = Product.find(params[:product_id])
   end
-
+  
   def create
     @offer = Offer.new(offer_params)
     @product = Product.find(params[:offer][:product_id])
@@ -20,14 +24,18 @@ class Purchasers::OffersController < ApplicationController
     @offer.supplier = @product.supplier
     @offer.save
     if @offer.save
+      # policy_class: app/policies/offer_policy#create 
+      authorize([:purchasers, @offer])
       redirect_to purchasers_offer_path(@offer)
     else
       render :new
     end
   end
-
+  
   def destroy
     @offer.destroy
+    # policy_class: app/policies/offer_policy#destroy
+    authorize([:purchasers, @offer])
     redirect_to purchasers_offers_path
   end
 
