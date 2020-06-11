@@ -1,9 +1,21 @@
-<%= render 'shared/dashboard_button' %>
-<div class="container-fluid">
-      <%= form_tag products_path, :method => 'get' do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search" %>
-      <% end %>
+<%# <%= render 'shared/dashboard_button' %>
+<%# <div class="container-fluid"> %>
+      <%# <%= form_tag products_path, :method => 'get' do %>
+        <%# <%= text_field_tag :search, params[:search] %>
+        <%# <%= submit_tag "Search" %>
+      <%# <% end %>
+
+<%# <%= form_for @search do |f| %>
+<%# <div class="field"> %>
+<--<%# <%= f.label :keywords %>
+<%# <%= f.text_field :keywords %>
+<%# </div> %>
+
+<%# <div class="field"> %>
+<%# <%= f.label :category_id %>
+<%# <%= f.collection_select :category_id, Category.order(:name), :id, :na %> %>
+<%# </div> %>
+
   <div class="row">
     <div class="col-xs-0 col-md-4">
       <h1>some text here</h1>
