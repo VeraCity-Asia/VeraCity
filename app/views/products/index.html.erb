@@ -1,4 +1,5 @@
-<%# <%= render 'shared/dashboard_button' %>
+<%= render 'shared/dashboard_button' %>
+<%= link_to "Add new product", new_suppliers_product_path %>
 <%# <div class="container-fluid"> %>
       <%# <%= form_tag products_path, :method => 'get' do %>
         <%# <%= text_field_tag :search, params[:search] %>
@@ -13,12 +14,12 @@
 
 <%# <div class="field"> %>
 <%# <%= f.label :category_id %>
-<%# <%= f.collection_select :category_id, Category.order(:name), :id, :na %> %>
+<%# <%= f.collection_select :category_id, Category.order(:name), :id, :na %>
 <%# </div> %>
 
   <div class="row">
-    <div class="col-xs-0 col-md-4">
-      <h1>some text here</h1>
+    <div class="left-col col-xs-0 col-md-4">
+      <h1>Search</h1>
 
       <div class="checkboxes-certs row">
       <h3>Product certifications I need:</h3>
@@ -28,19 +29,19 @@
           CE
           </label>
 
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-            FDA
-            </label>
-          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+          FDA
+          </label>
+        </div>
 
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-            ISO
-            </label>
-          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+          ISO
+          </label>
+        </div>
       </div>
         
       </div>
