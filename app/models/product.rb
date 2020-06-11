@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :supplier
-  has_and_belongs_to_many :offers
-  has_and_belongs_to_many :certifications
-  has_many :messages
+  has_and_belongs_to_many :offers, dependent: :destroy
+  has_and_belongs_to_many :certifications, dependent: :destroy
+  has_many :messages, dependent: :destroy
   accepts_nested_attributes_for :certifications
 
   validates :name, :price, :category, :production_quantity, :minimum_order_quantity, presence: true

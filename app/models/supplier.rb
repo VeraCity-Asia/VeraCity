@@ -1,7 +1,7 @@
 class Supplier < ApplicationRecord
   belongs_to :user
-  has_many :products
-  has_many :offers
-  has_many :licenses
-  has_many :verifications
+  has_many :products, dependent: :destroy
+  has_many :offers, dependent: :destroy
+  has_many :licenses, dependent: :destroy
+  has_many :verifications, dependent: :destroy
 end
