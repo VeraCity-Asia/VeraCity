@@ -1,17 +1,18 @@
 class Purchasers::OffersController < ApplicationController
   before_action :find_offer, only: [:show, :destroy]
+  
   def index
-    @offers = Offer.all
+    @offers = policy_scope([:purchasers, Offer])
   end
 
   def show
-    # policy_class: app/policies/offer_policy#show
+    # policy_class: app/policies/purchasers/offer_policy#show
     authorize([:purchasers, @offer])
   end
   
   def new
     @offer = Offer.new
-    # policy_class: app/policies/offer_policy#create 
+    # policy_class: app/policies/purchasers/offer_policy#create 
     authorize([:purchasers, @offer])
     @product = Product.find(params[:product_id])
   end
@@ -22,12 +23,14 @@ class Purchasers::OffersController < ApplicationController
     @offer.products << @product
     @offer.user = current_user
     @offer.supplier = @product.supplier
-    @offer.save
     if @offer.save
-      # policy_class: app/policies/offer_policy#create 
+      # policy_class: app/policies/purchasers/offer_policy#create 
       authorize([:purchasers, @offer])
       redirect_to purchasers_offer_path(@offer)
     else
+      # policy_class: app/policies/purchasers/offer_policy#create 
+      authorize([:purchasers, @offer])
+      # raise
       render :new
     end
   end
