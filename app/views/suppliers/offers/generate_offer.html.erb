@@ -1,0 +1,23 @@
+<div class="quote">
+  <h1>Offical Document</h1>
+  <h3>To: <%= @offer.user.name %> <%= @offer.user.email %> </h3>
+  <h3>Date: <%= @offer.approved_date.strftime("%B %d, %Y") %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Destination</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @offer.destination %></td>
+        <td><%= @offer.price %></td>
+      </tr>
+      <tr class="total">
+        <td style="text-align: right">Total: </td>
+        <td><%= number_to_currency(@offer.total) %></span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
