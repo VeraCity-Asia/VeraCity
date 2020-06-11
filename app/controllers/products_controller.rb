@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @message = Message.new
     authorize @product
   end
 end

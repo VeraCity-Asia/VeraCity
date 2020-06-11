@@ -1,19 +1,24 @@
 <h1>Products#show</h1>
 <p>Find me in app/views/products/show.html.erb</p>
-<div>Product: <%= @product.name %></div>
-<div>Price: $<%= @product.price %>/unit</div>
-<div>Category: <%= @product.category %></div>
-<div>In Stock: <%= @product.production_quantity %></div>
-<div>Minimum order: <%= @product.minimum_order_quantity %></div>
-<div>Supplier: <%= @product.supplier.name %></div>
-
-<div><%= link_to "Make an offer", new_purchasers_offer_path(product_id: @product.id) %></div>
-<div><%= link_to "Message to the supplier", new_message_path(product_id: @product.id) %></div>
-
-<% if policy([:suppliers, @product]).edit? %>
-  <div><%= link_to "Edit product", edit_suppliers_product_path(@product) %></div>
-<% end %>
-
-<% if policy([:suppliers, @product]).destroy? %>
-  <div><%= link_to "Destroy product", suppliers_product_path(@product.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>
-<% end %>
+<div class="product-container d-flex">
+  <div class="product-show col-sm-5">
+    <div>Product: <%= @product.name %></div>
+    <div>Price: $<%= @product.price %>/unit</div>
+    <div>Category: <%= @product.category %></div>
+    <div>In Stock: <%= @product.production_quantity %></div>
+    <div>Minimum order: <%= @product.minimum_order_quantity %></div>
+    <div>Supplier: <%= @product.supplier.name %></div>
+    <div><%= link_to "Make an offer", new_purchasers_offer_path(product_id: @product.id) %></div>
+    <div><%= link_to "Message to the supplier", new_message_path(product_id: @product.id) %></div>
+    <div><%= link_to "See supplier info", supplier_path(@product.supplier) %></div>
+    <% if policy([:suppliers, @product]).edit? %>
+      <div><%= link_to "Edit product", edit_suppliers_product_path(@product) %></div>
+    <% end %>
+    <% if policy([:suppliers, @product]).destroy? %>
+      <div><%= link_to "Destroy product", suppliers_product_path(@product.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>
+    <% end %>
+  </div>
+  <div class="product-show-message col-sm-5">
+    <%= render 'shared/message_form' %>
+  </div>
+</div>

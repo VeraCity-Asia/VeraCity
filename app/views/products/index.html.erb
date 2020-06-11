@@ -1,51 +1,29 @@
 <%= render 'shared/dashboard_button' %>
 <%= link_to "Add new product", new_suppliers_product_path %>
 
-<%= form_tag products_path, method: :get do %>
-  <%= text_field_tag :query,
-params[:query],
-class: "form-control",
-placeholder: "Search by Product name or Certification type" %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-<div class="product-container d-flex">
-  <div class="product-search-filter">
-    <%= simple_form_for :filter, url: products_path, method: "GET" do |f| %>
-      <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
-      <%= f.input :minimum_order_quantity, label: "minimun order", collection: $minimum_order_quantity, as: :check_boxes %>
-      <%= f.fields_for :certificaions do |s| %>
-        <%= s.input :category, label: "Certification",collection: $certification, as: :check_boxes %>
-      <% end %>
-    <% end %>
-  </div>
 
   <div class="row">
     <div class="left-col col-xs-0 col-md-4">
       <h1>Search</h1>
 
-      <div class="checkboxes-certs row">
-      <h3>Product certifications I need:</h3>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label" for="defaultCheck1">
-          CE
-          </label>
-
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label" for="defaultCheck1">
-          FDA
-          </label>
+      <%= form_tag products_path, method: :get do %>
+        <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search by Product name or Certification type" %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+      <div class="product-container d-flex">
+        <div class="product-search-filter">
+          <%= simple_form_for :filter, url: products_path, method: "GET" do |f| %>
+            <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
+            <%= f.input :minimum_order_quantity, label: "minimum order", collection: $minimum_order_quantity, as: :check_boxes %>
+            <%= f.fields_for :certificaions do |s| %>
+              <%= s.input :category, label: "Certification",collection: $certification, as: :check_boxes %>
+            <% end %>
+          <% end %>
         </div>
-
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label" for="defaultCheck1">
-          ISO
-          </label>
-        </div>
-      </div>
-        
+            
       </div>
     </div>
 
