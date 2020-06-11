@@ -1,5 +1,5 @@
 class Suppliers::OffersController < ApplicationController
-  before_action :find_offer, only: [:show,:update]
+  before_action :find_offer, only: [:show,:update, :approved, :rejected, :generateoffer]
   def index
     @offers = Offer.all
   end
@@ -7,9 +7,21 @@ class Suppliers::OffersController < ApplicationController
   def show
   end
 
-  def update
-    if
-    end
+
+
+  def approved
+    @offer.approved
+    @offer.update
+    redirect_to generateoffer_suppliers_offer_path(@offer)
+  end
+
+  def rejected
+    @offer.rejected
+    @offer.update
+  end
+
+  def generateoffer
+    #get offer id from approve form
   end
 
 
