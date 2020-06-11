@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container supplier-show">
   <div class="row">
-    <div>
+    <div class="col-sm-12 col-md-6 col-offset-2">
       <h1>Supplier Information</h1>
       <p>Name: <%= @supplier.name %></p>
       <p>Location: <%= @supplier.location %></p>
       <p>Industry: <%= @supplier.industry %></p>
     </div>
-    <div>
+    <div class="col-md-3 col-offset-2">
       <h1>Other Products</h1>
       <% @supplier.products.each do |product|  %>
         <p>Product name: <%= product.name %></p>
