@@ -5,6 +5,7 @@
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
+@import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
@@ -18,11 +19,11 @@
 @import "components/search";
 @import "components/button";
 @import "components/product_card";
+@import "components/mv_product_card";
+@import "components/dashboard_button";
 @import "pages/products/index";
 @import "pages/index";
 
-
-@import "bootstrap/scss/bootstrap";
 
 body {
     text-align: center;
@@ -34,4 +35,8 @@ body {
 .filler-page {
     margin-top: 2em;
     margin-bottom: 2em;
+}
+
+.container-fluid {
+    width: 70vw;
 }

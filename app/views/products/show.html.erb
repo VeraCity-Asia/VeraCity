@@ -43,6 +43,8 @@
     <p>Supplier: <%= @product.supplier.name %></p>
     <p><%= link_to "Make an offer", new_purchasers_offer_path(product_id: @product.id) %></p>
     <p><%= link_to "Message to the supplier", new_message_path(product_id: @product.id) %></p>
+    <div><%= link_to "See supplier info", supplier_path(@product.supplier) %></div>
+
     <% if policy([:suppliers, @product]).edit? %>
       <div><%= link_to "Edit product", edit_suppliers_product_path(@product) %></div>
     <% end %>
