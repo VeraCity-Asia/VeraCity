@@ -1,53 +1,55 @@
 <h1>Products#index</h1>
 <p>Find me in app/views/products/index.html.erb</p>
-
 <p><%= link_to "Add new product", new_suppliers_product_path %></p>
-<div class="product-container">
-
+<%= form_tag products_path, method: :get do %>
+  <%= text_field_tag :query,
+params[:query],
+class: "form-control",
+placeholder: "Search by Product name or Certification type" %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+<div class="product-container d-flex">
+  <div class="product-search-filter">
+    <%= simple_form_for :filter, url: products_path, method: "GET" do |f| %>
+      <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
+      <%= f.input :minimum_order_quantity, label: "minimun order", collection: $minimum_order_quantity, as: :check_boxes %>
+      <%= f.fields_for :certificaions do |s| %>
+        <%= s.input :category, label: "Certification",collection: $certification, as: :check_boxes %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="card-products">
-    <%# <%= render partial: 'shared/product_card'%> 
-
+    <%# <%= render partial: 'shared/product_card'%>
     <% @products.each do |product| %>
-
-    <%= render :partial => 'shared/product_card', locals: {:product => product }%>
-
-    <%# <div class="card-product"> %>
+      <%= render :partial => 'shared/product_card', locals: {:product => product }%>
+      <%# <div class="card-product"> %>
       <%# <div class="col-md-4"> %>
-        <%# <img src="#" class="card-img" alt="product image"> %>
+      <%# <img src="#" class="card-img" alt="product image"> %>
       <%# </div> %>
-
       <%# <div class="card-product-infos"> %>
-        <%# <h2><%= product.name</h2>  %>
-        <%# <p>Cost: $<%= product.price/unit</p>  %>
-        <%# <p>Category: <%= product.category</p> %>
-        <%# <%= link_to "Details", product_path(product) %>
-        <%# <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> %>
-
+      <%# <h2><%= product.name</h2>  %>
+      <%# <p>Cost: $<%= product.price/unit</p>  %>
+      <%# <p>Category: <%= product.category</p> %>
+      <%# <%= link_to "Details", product_path(product) %>
+      <%# <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> %>
       <%# </div> %>
-    <%# </div> %>
-
-    
+      <%# </div> %>
       <%# <div class="card-product mb-3" style="max-width: 540px;"> %>
-        <%# <div class="row no-gutters"> %>
-          
-            <%# <div class="col-md-4"> %>
-              <%# <img src="#" class="card-img" alt="product image"> %>
-            <%# </div> %>
-            
-            <%# <div class="col-md-8"> %>
-              <%# <div class="card-body"> %>
-                <%# <h3 class="card-title"><%= product.name</h3> %>
-                <%# <p class="card-text">Cost: $<%= product.price/unit</p> %>
-                <%# <p class="card-text">Category: <%= product.category</p> %>
-
-                <%# <%= link_to "Details", product_path(product) %>
-                <%# <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> %>
-              <%# </div> %>
-            <%# </div> %>
-        
-        <%# </div> %>
+      <%# <div class="row no-gutters"> %>
+      <%# <div class="col-md-4"> %>
+      <%# <img src="#" class="card-img" alt="product image"> %>
+      <%# </div> %>
+      <%# <div class="col-md-8"> %>
+      <%# <div class="card-body"> %>
+      <%# <h3 class="card-title"><%= product.name</h3> %>
+      <%# <p class="card-text">Cost: $<%= product.price/unit</p> %>
+      <%# <p class="card-text">Category: <%= product.category</p> %>
+      <%# <%= link_to "Details", product_path(product) %>
+      <%# <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> %>
+      <%# </div> %>
+      <%# </div> %>
+      <%# </div> %>
       <%# </div> %>
     <% end %>
-
   </div>
 </div>
