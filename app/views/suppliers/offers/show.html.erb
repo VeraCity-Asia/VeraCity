@@ -5,5 +5,13 @@
 <div>Payment: <%= @offer.payment %></div>
 <div>Approved Date: <%= @offer.approved_date %></div>
 <div>Purchaser: <%= @offer.user.name %></div>
-<%= button_to "Approved", {:controller => :offer, :action => 'approved'}, :method => :PUT %>
-<%= button_to "Rejected", {:controller => :offer, :action => 'rejected'}, :method => :PUT %>
+<% if @offer.approved.nil? %>
+  <p>Pending...</p>
+  <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put %>
+  <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put %>
+<% elsif @offer.approved.present? %>
+  <p>Generate your quote here</p>
+<% else  %>
+  <p>You have rejected the request</p>
+<% end %>
+<%= link_to 'Back to index', suppliers_offers_path %>

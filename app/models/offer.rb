@@ -9,11 +9,4 @@ class Offer < ApplicationRecord
   validates :payment, inclusion: { in: PAYMENT }
 
 
-  def approved
-    self.approved = true
-  end
-
-  def rejected
-    self.approved = false
-  end
 end
