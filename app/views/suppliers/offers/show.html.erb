@@ -5,3 +5,5 @@
 <div>Payment: <%= @offer.payment %></div>
 <div>Approved Date: <%= @offer.approved_date %></div>
 <div>Purchaser: <%= @offer.user.name %></div>
+<%= button_to "Approved", {:controller => :offer, :action => 'approved'}, :method => :PUT %>
+<%= button_to "Rejected", {:controller => :offer, :action => 'rejected'}, :method => :PUT %>
