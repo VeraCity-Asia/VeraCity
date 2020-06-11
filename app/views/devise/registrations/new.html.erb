@@ -1,7 +1,6 @@
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-<% raise %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -23,8 +22,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <% if params[:user_type] == "supplier" %>
+      <%= render "devise/shared/supplier_form", f: f, object: @supplier %>
+    <% end %>
   </div>
-  
 
 
   <div class="form-actions">
