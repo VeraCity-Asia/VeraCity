@@ -46,19 +46,21 @@
   }
 
   .card-category {
-      border: thin solid gray;
-      border-radius: 4px;
-      align-items: center;
-      justify-items: center;
-      img {
-          background-color: gray;
-          border-radius: 8px;
-          
-      }
-      .card-body {
-          text-align: center;
-      }
-      p {
-          bottom: 0;
-      }
+    border: thin solid gray;
+    border-radius: 4px;
+    align-items: center;
+    justify-items: center;
+    
+    img {
+      background-color: gray;
+      border-radius: 8px; 
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+    p {
+        bottom: 0;
+    }
   }
