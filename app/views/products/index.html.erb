@@ -1,8 +1,9 @@
-<%# <h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p> %>
-
+<%= render 'shared/dashboard_button' %>
 <div class="container-fluid">
-<%= render 'shared/search' %>
+      <%= form_tag products_path, :method => 'get' do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search" %>
+      <% end %>
   <div class="row">
     <div class="col-xs-0 col-md-4">
       <h1>some text here</h1>
