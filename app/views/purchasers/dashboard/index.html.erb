@@ -24,8 +24,10 @@
     <h4>Products I bought</h4>
     <!--   approved true -->
     <!-- current no product approved -->
+    <!-- for the design sake -->
     <% @user.offers.each do |offer| %>
-      <%  if offer.approved.present?  %>
+      <%  if offer.approved = true  %>
+        <!-- use present to condition -->
         <p> <%= offer.approved %></p>
         <p> Offer Amount: <%= offer.amount %></p>
         <p> Destination: <%= offer.destination %></p>
