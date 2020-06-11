@@ -1,14 +1,41 @@
-<p>User Name: <%= @user.name %></p>
+<h5>My Profile</h5>
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></p>
+<p>Country: <%= @user.country %></p>
 <div class="purchaser-dashboard d-flex">
   <div class="purchaser-dashboard-offers mx-3">
     <h4>Products I reserved</h4>
-    <!--   approved false -->
+    <!--   approved nil -->
     <% @user.offers.each do |offer| %>
-      <%= offer.amount %>
+      <%= offer.approved %>
+      <%  if offer.approved.nil?  %>
+        <p> Offer Amount: <%= offer.amount %></p>
+        <p> Destination: <%= offer.destination %></p>
+        <p> Payment: <%= offer.payment %> </p>
+        <hr>
+        <% offer.products.each do | product| %>
+          <p>Product Name: <%= product.name %></p>
+          <p>Product Category: <%= product.category %></p>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
   <div class="purchaser-dashboard-products mx-3">
     <h4>Products I bought</h4>
     <!--   approved true -->
+    <!-- current no product approved -->
+    <% @user.offers.each do |offer| %>
+      <%  if offer.approved.present?  %>
+        <p> <%= offer.approved %></p>
+        <p> Offer Amount: <%= offer.amount %></p>
+        <p> Destination: <%= offer.destination %></p>
+        <p> Payment: <%= offer.payment %> </p>
+        <hr>
+        <% offer.products.each do | product| %>
+          <p>Product Name: <%= product.name %></p>
+          <p>Product Category: <%= product.category %></p>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>
