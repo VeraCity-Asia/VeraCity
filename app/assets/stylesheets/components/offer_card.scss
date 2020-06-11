@@ -1,0 +1,42 @@
+.card-offer {
+    overflow: hidden;
+    height: 120px;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    text-align: left;
+    margin: 2em auto;
+    // align-items: center;
+    justify-items: left;
+    width: 600px;
+}
+  
+  .card-offer img {
+    height: 100%;
+    width: 120px;
+    object-fit: cover;
+  }
+  
+  .card-offer h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .card-offer p {
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: .7;
+    margin-top: 8px;
+  }
+  
+  .card-offer .card-offer-infos {
+    padding: 16px;
+  }
+  
+.card-offer a {
+    color: black;
+    &:hover {
+        text-decoration: none;
+    }
+}
