@@ -8,10 +8,10 @@
         <%= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
 <h1><%= @product.name %></h1>
-<div class="left-column">
-<div class="product-container d-flex">
+<div>
+<div class="product-container d-flex bd-highlight align-self-center" >
 
-  <!-- Bootstrap Carousel -->
+  <div class="p-2 flex-fill bd-highlight">
   <div id="carouselExampleControls" style="height: 400px; width: 500px; "class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -33,8 +33,9 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+</div>
 
-  <div class="product-show col-sm-5">
+  <div class="product-show p-2 flex-fill bd-highlight">
     <p>Price: $<%= @product.price %>/unit</p>
     <p>Category: <%= @product.category %></p>
     <p>In Stock: <%= @product.production_quantity %></p>
@@ -48,13 +49,15 @@
     <% if policy([:suppliers, @product]).destroy? %>
       <div><%= link_to "Destroy product", suppliers_product_path(@product.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>
     <% end %>
-  </div>
+    </div>
    </div>
   </div>
-  <div class="right-column">
-  <div class="product-show-message col-sm-5">
+  </main>
+
+  <div>
+  <div class="product-show-message p-2 flex-fill bd-highlight">
     <%= render 'shared/message_form' %>
   </div>
  </div>
 </div>
-</main>
+
