@@ -10,5 +10,5 @@ class Supplier < ApplicationRecord
   has_many :licenses, dependent: :destroy
   has_many :verifications, dependent: :destroy
   validates :delivery_terms, inclusion: { in: DELIVERYTERM }
-  validates :payment_terms, inclusion: { in: PAYMETTERM}
+  validates :payment_terms, inclusion: { in: PAYMETTERM }
 end
