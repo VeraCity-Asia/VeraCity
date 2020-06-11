@@ -1,17 +1,21 @@
 class Suppliers::OffersController < ApplicationController
   before_action :find_offer, only: [:show,:update, :approved, :rejected, :generateoffer]
   def index
-    @offers = Offer.all
+    @offers = policy_scope([:suppliers, Offer])
   end
 
   def show
+    # policy_class: app/policies/suppliers/offer_policy#show
+    authorize([:suppliers, @offer])
   end
-
-
-
+  
+  
+  
   def approved
     @offer.approved
     @offer.update
+    # policy_class: app/policies/suppliers/offer_policy#show
+    authorize([:suppliers, @offer])
     redirect_to generateoffer_suppliers_offer_path(@offer)
   end
 
