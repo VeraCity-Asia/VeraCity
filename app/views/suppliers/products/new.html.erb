@@ -5,7 +5,7 @@
       <div class="form-inputs">
         <%= f.input :name %>
         <%= f.input :price %>
-        <%= f.input :category %>
+        <%= f.input :category, collection: Product::CATEGORY, prompt: :translate %>
         <%= f.input :production_quantity %>
         <%= f.input :minimum_order_quantity %>
       </div>
