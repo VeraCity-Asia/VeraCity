@@ -1,21 +1,23 @@
 <%= render 'shared/dashboard_button' %>
 <%= link_to "Add new product", new_suppliers_product_path %>
-<%# <div class="container-fluid"> %>
-      <%# <%= form_tag products_path, :method => 'get' do %>
-        <%# <%= text_field_tag :search, params[:search] %>
-        <%# <%= submit_tag "Search" %>
-      <%# <% end %>
 
-<%# <%= form_for @search do |f| %>
-<%# <div class="field"> %>
-<%# <%= f.label :keywords %>
-<%# <%= f.text_field :keywords %>
-<%# </div> %>
-
-<%# <div class="field"> %>
-<%# <%= f.label :category_id %>
-<%# <%= f.collection_select :category_id, Category.order(:name), :id, :na %>
-<%# </div> %>
+<%= form_tag products_path, method: :get do %>
+  <%= text_field_tag :query,
+params[:query],
+class: "form-control",
+placeholder: "Search by Product name or Certification type" %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+<div class="product-container d-flex">
+  <div class="product-search-filter">
+    <%= simple_form_for :filter, url: products_path, method: "GET" do |f| %>
+      <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
+      <%= f.input :minimum_order_quantity, label: "minimun order", collection: $minimum_order_quantity, as: :check_boxes %>
+      <%= f.fields_for :certificaions do |s| %>
+        <%= s.input :category, label: "Certification",collection: $certification, as: :check_boxes %>
+      <% end %>
+    <% end %>
+  </div>
 
   <div class="row">
     <div class="left-col col-xs-0 col-md-4">

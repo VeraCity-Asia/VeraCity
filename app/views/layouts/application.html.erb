@@ -17,10 +17,7 @@
       <%= render 'shared/jiayou' %>
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
-      
-      <div class="filler-page" style="min-height: 100vh;">
-        <%= yield %>
-      </div>
+      <%= yield %>
     
     <% else %>
       <%= render 'shared/navbar' %>

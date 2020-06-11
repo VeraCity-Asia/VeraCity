@@ -1,5 +1,6 @@
 # development wipe
 if Rails.env.development?
+  Message.destroy_all
   Product.destroy_all
   Certification.destroy_all
   License.destroy_all
@@ -95,9 +96,9 @@ puts "Creating products"
 Supplier.all.each { |s| rand(1..4).times do Product.create!(
       name: Faker::Commerce.product_name,
       price: Faker::Commerce.price(range: 2..848.0, as_string: false),
-      category: Faker::Company.industry,
+      category: ["Mask","thermometer","Bandage"].sample,
       production_quantity: Faker::Number.number(digits: 6),
-      minimum_order_quantity: rand(50..1000),
+      minimum_order_quantity: [100,200,300].sample,
       supplier: s
     )
   end
@@ -112,7 +113,7 @@ puts "Creating certifications"
   certification = Certification.create!(
     number: rand(23..5746),
     validity: Faker::Date.forward(days: 170),
-    category:["Annual", "Permanent"].sample,
+    category:["CE", "FDA", "ISO"].sample,
     listing_number: Faker::Number.leading_zero_number(digits: 10),
     code: Faker::Alphanumeric.alphanumeric(number: 5),
     authority: Faker::IndustrySegments.sub_sector

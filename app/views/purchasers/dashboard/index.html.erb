@@ -1,1 +1,14 @@
-buyer dashboard
+<p>User Name: <%= @user.name %></p>
+<div class="purchaser-dashboard d-flex">
+  <div class="purchaser-dashboard-offers mx-3">
+    <h4>Products I reserved</h4>
+    <!--   approved false -->
+    <% @user.offers.each do |offer| %>
+      <%= offer.amount %>
+    <% end %>
+  </div>
+  <div class="purchaser-dashboard-products mx-3">
+    <h4>Products I bought</h4>
+    <!--   approved true -->
+  </div>
+</div>
