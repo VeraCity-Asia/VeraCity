@@ -48,11 +48,13 @@
     <% if policy([:suppliers, @product]).edit? %>
       <div><%= link_to "Edit product", edit_suppliers_product_path(@product) %></div>
     <% end %>
+
     <% if policy([:suppliers, @product]).destroy? %>
       <div><%= link_to "Destroy product", suppliers_product_path(@product.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>
     <% end %>
     </div>
    </div>
+
   </div>
   </main>
 
