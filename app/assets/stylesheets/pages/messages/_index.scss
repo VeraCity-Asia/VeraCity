@@ -1,0 +1,13 @@
+.messages-bg {
+    background-color: lighten($color: black, $amount: 85);
+    padding: 3em;
+    border-radius: 4px;
+    h1 {
+        text-align: left;
+    }
+    
+    img {
+        border-radius: 50%;
+        width: 75px;
+    }
+}
