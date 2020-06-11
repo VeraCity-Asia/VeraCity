@@ -1,13 +1,21 @@
 class Suppliers::OffersController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:show, :index]
+  before_action :find_offer, only: [:show,:update]
   def index
     @offers = Offer.all
   end
 
   def show
-    @offer = Offer.find(params[:id])
   end
 
   def update
+    if
+    end
+  end
+
+
+  private
+
+  def find_offer
+    @offer = Offer.find(params[:id])
   end
 end
