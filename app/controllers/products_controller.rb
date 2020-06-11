@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   def index
-    @products = Product.all
+    @products = policy_scope(Product)
     @query = params[:query]
 
     if @query.present?
@@ -23,6 +23,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    authorize @product
   end
-
 end
