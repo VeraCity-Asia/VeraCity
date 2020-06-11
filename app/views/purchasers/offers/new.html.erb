@@ -1,18 +1,22 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-8 offset-sm-2 my-2">
-    <h1>Make new offer</h1>
-    <%= simple_form_for [@product, @offer], url: purchasers_offers_path, method: :POST  do |f| %>
-      <div class="form-inputs">
-        <%= f.input :amount %>
-        <%= f.input :destination %>
-        <%= f.input :price %>
-        <%= f.input :payment , collection: Offer::PAYMENT, prompt: :translate %>
-        <%= f.hidden_field :product_id, :value => @product.id %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-offset-6">
+      <div class="form">
+        <h1>Make new offer</h1>
+        <%= simple_form_for [@product, @offer], url: purchasers_offers_path, method: :POST  do |f| %>
+          <div class="form-inputs">
+            <%= f.input :amount %>
+            <%= f.input :destination %>
+            <%= f.input :price %>
+            <%= f.input :payment , collection: Offer::PAYMENT, prompt: :translate %>
+            <%= f.hidden_field :product_id, :value => @product.id %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit %>
+          </div>
+            <%= link_to "Back to offer index", purchasers_offers_path %>
+        <% end %>
       </div>
-      <div class="form-actions">
-        <%= f.button :submit %>
-        <%= link_to "Back to offer index", purchasers_offers_path %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>

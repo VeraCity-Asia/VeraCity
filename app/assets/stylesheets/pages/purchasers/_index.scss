@@ -4,16 +4,19 @@
     padding: 2em;
     margin-bottom: 6em;
     box-shadow: 1px 0px 15px rgba(0, 0, 0, 0.1);
+    width: 1250px;
+    transform: translateX(-75px);
 }
 
 .purchaser-dashboard {
     transform: translateX(-80px);
 }
+
 .card-offer {
     overflow: hidden;
     height: 120px;
     background: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 0px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     text-align: left;
     margin: 2em auto;
