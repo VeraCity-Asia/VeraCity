@@ -1,29 +1,31 @@
-
-
 <div class="thankyou">
   <%= image_tag 'thankyou .jpg', size: '80x60'%>
 </div>
-<h1 class="text-primary">Your message has been submited successfully!</h1>
-<p><strong>Summary of your submission:</strong></p>
+<%# <h1 class="text-primary">Your message has been submited successfully!</h1> %>
+<p><strong>Your messages:</strong></p>
 <div class="message-container">
-  <% @messages.each do |message| %>
-    <div class="card">
-      <h5>
-        Title:<%= message.title %>
-      </h3>
-      <p>
-        Details:<%= message.content %>
-      </p>
-      <p>
-        Product Name: <%= message.product.name %>
-      </p>
-      <p>
-        Supplier: <%= message.product.supplier.name %>
-      </p>
-    </div>
+  <% if @messages.nil? %>
+    <p>Hmm.. Maybe you should message someone</p>
+  <% else %>
+    <% @messages.each do |message| %>
+      <div class="card">
+        <h5>
+          Title:<%= message.title %>
+        </h3>
+        <p>
+          Details:<%= message.content %>
+        </p>
+        <p>
+          Product Name: <%= message.product.name %>
+        </p>
+        <p>
+          Supplier: <%= message.product.supplier.name %>
+        </p>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
 <div>
-  <button onclick="window.location.href='/purchasers/dashboard'" class="btn btn-primary"> View my Dashboard</button>
+  <button onclick="window.location.href='/purchasers/dashboard'" class="btn btn-primary">View my Dashboard</button>
 </div>
