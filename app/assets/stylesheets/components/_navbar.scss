@@ -1,17 +1,51 @@
-$dark-blue: #193B68;
-
 .navbar-veracity {
   display: flex;
-  justify-content: space-between;
   background-color: white;
-  width: 100vw;
   z-index: 10;
   margin: 0px;
-  right: -2rem;
-  left: 0;
+  height: 88px;
+  padding: 0 32px;
+  box-sizing: border-box;
+
   & a {
     color: $dark-blue;
+
+    &:hover {
+      color: blue;
+    }
+
+    &:active {
+      color: gray;
+    }
   }
+
+  img {
+    height: 90%;
+    border-radius: 50%;
+  }
+
+  .avatar-img {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  height: 100%;
+  align-items: center;
+}
+
+.nav-link {
+  margin: 0 16px;
+}
+
+.navbar-left {
+  height: 100%;
+  flex-shrink: 0;
 }
 
 .navbar-veracity .navbar-collapse {

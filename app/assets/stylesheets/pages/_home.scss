@@ -4,12 +4,19 @@ h2 {
 }
 
 .certification-checks-icons {
-    width: 88vw;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 24px 32px;
+    height: 100px;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    .certification-logo {
+        height: 100%;
 
-    .certification-logo img {
-        width: 20px;
-        height: 20px;
+        img {
+            height: 100%;
+        }
     }
 }
