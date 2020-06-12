@@ -20,7 +20,7 @@ class Suppliers::ProductsController < ApplicationController
   def edit
     authorize([:suppliers, @product])
   end
-  
+
   def update
     if @product.update(product_params)
       authorize([:suppliers, @product])
@@ -29,7 +29,7 @@ class Suppliers::ProductsController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     @product.destroy
     authorize([:suppliers, @product])
@@ -39,17 +39,10 @@ class Suppliers::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :price, :category, :production_quantity,:minimum_order_quantity)
+    params.require(:product).permit(:name, :price, :category, :production_quantity,:minimum_order_quantity, photos: [])
   end
 
   def find_product
     @product = Product.find(params[:id])
   end
 end
-
-
-# t.string "name"
-# t.integer "price"
-# t.string "category"
-# t.integer "production_quantity"
-# t.integer "minimum_order_quantity"

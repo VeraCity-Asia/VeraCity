@@ -9,6 +9,7 @@
         <%= f.input :listing_number %>
         <%= f.input :code %>
         <%= f.input :authority %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       </div>
       <div class="form-actions">
         <%= f.button :submit %>

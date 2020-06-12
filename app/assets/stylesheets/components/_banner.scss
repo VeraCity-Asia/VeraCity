@@ -1,13 +1,19 @@
-$dark-blue: #193B68;
-
 .banner {
+    background: url("https://res.cloudinary.com/demyxeys9/image/upload/v1591934487/image_y16362.png");
     background-size: cover;
     background-position: center;
-    padding: 150px 0;
+    padding: 150px 32px;
     margin-bottom: 3em;
     font-size: larger;
     margin-left: 0;
-    // background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("../../images/logo.png");
+    display: flex;
+    align-items: center;
+
+    .banner-container-half {
+      width: 50%;
+      text-align: left;
+    }
+
   }
   
 .banner h1 {
