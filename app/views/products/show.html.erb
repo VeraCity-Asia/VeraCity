@@ -1,16 +1,14 @@
-<main class="container">
-  <div>
-    <%= form_tag products_path, method: :get do %>
+    <div class="search-box">
+      <%= form_tag products_path, class: "d-flex", method: :get do %>
           <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Search by Product name or Certification type" %>
+              params[:query],
+              class: "form-inline form-control",
+              placeholder: "Search by Product name or Certification type" %>
           <%= submit_tag "Search", class: "btn btn-primary" %>
-        <% end %>
+      <% end %>
+    </div>
 
-    <div class="product-show">
-
-      <div class="product-container d-flex bd-highlight align-self-center" >
+      <div class="product-container bg-light my-4 p-3 border d-flex align-self-center" >
 
         <div class="p-2 flex-fill bd-highlight">
           <div id="carouselExampleControls" style="height: 400px; width: 500px; "class="carousel slide" data-ride="carousel">
@@ -41,19 +39,50 @@
           </div>
         </div>
 
-        <div class="product-show p-2 flex-fill bd-highlight">
+        <div class="product-show d-flex flex-column flex-column justify-content-between flex-fill">
           <h1><%= @product.name %></h1>
-          <p>Price: $<%= @product.price %>/unit</p>
-          <p>Category: <%= @product.category %></p>
-          <p>In Stock: <%= @product.production_quantity %></p>
-          <p>Minimum order: <%= @product.minimum_order_quantity %></p>
-          <p>Supplier: <%= @product.supplier.name %></p>
-          <p><%= link_to "Make an offer", new_purchasers_offer_path(product_id: @product.id) %></p>
-          <p><%= link_to "Message to the supplier", new_message_path(product_id: @product.id) %></p>
-          <div><%= link_to "See supplier info", supplier_path(@product.supplier) %></div>
+          <div class="boxes d-flex justify-content-between p-3">
+            <div class="box border">
+              <h6>$<%= @product.price %>/unit</h6>
+              <p><em>Price</em></p>
+            </div>
+
+            <div class="box border">
+              <h6><%= @product.category %></h6>
+              <p><em>Category</em></p>
+            </div>
+            
+            <div class="box border">
+              <h6><%= @product.production_quantity %></h6>
+              <p><em>Available</em></p>
+            </div>
+
+            <div class="box border">
+              <h6><%= @product.minimum_order_quantity %></h6>
+              <p><em>MOQ</em></p>
+            </div>
+
+            <div class="box border">
+              <h6><%= @product.supplier.name %></h6>
+              <p><em>Supplier</em></p>
+            </div>
+          </div>
+
+        <div class="button-group d-flex">
+          <div class="buttons">
+            <%= link_to "Message the supplier", new_message_path(product_id: @product.id), class: "btn btn-supplier" %>
+          </div>
+
+          <div class="buttons">
+            <%= link_to "See supplier info", supplier_path(@product.supplier), class: "btn btn-supplier" %>
+          </div>
+
+          <div class="buttons">
+            <h5><%= link_to "Make an offer", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-success" %></h5>
+          </div>
 
           <% if policy([:suppliers, @product]).edit? %>
-            <div><%= link_to "Edit product", edit_suppliers_product_path(@product) %></div>
+            <div><%= link_to "Edit product", edit_suppliers_product_path(@product), class: "btn btn-supplier" %></div>
           <% end %>
 
           <% if policy([:suppliers, @product]).destroy? %>
@@ -62,8 +91,6 @@
         </div>
       </div>
     </div>
-  </div>
-</main>
 
 <div class="product-show-message p-2 flex-fill bd-highlight">
   <%= render 'shared/message_form' %>
