@@ -8,8 +8,8 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 // Your CSS partials
 @import "components/index";
 @import "components/banner";
@@ -25,28 +25,30 @@
 @import "components/form";
 @import "pages/products/index";
 @import "pages/index";
+@import "pages/registration";
 @import "pages/purchasers/index";
 @import "pages/messages/new";
 @import "pages/messages/message_card";
 @import "pages/messages/index";
 
-
-
 body {
-    text-align: center;
-    margin-bottom: 1em;
-    font-family: 'Noticia Text', serif;
-    background-color: #1f2833;
-    h1, h2, h3, h4 {
-        font-family: 'Open Sans', sans-serif;
-    }
+  text-align: center;
+  margin-bottom: 1em;
+  font-family: "Noticia Text", serif;
+  background-color: #1f2833;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Open Sans", sans-serif;
+  }
 }
 
 .filler-page {
-    margin-top: 2em;
-    margin-bottom: 2em;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .container-fluid {
-    width: 70vw;
+  width: 70vw;
 }
