@@ -23,9 +23,9 @@
     <div class="container-info mx-auto", style="width: 100vw">
     <h1>We make your procurement easier and safer</h1>
         <div class="cards">
-            <%= render 'shared/cards' %>
-            <%= render 'shared/cards' %>
-            <%= render 'shared/cards' %>
+            <%= render partial: 'shared/cards', locals: { step: "Step 1", info: "Search and find a trusted supplier" } %>
+            <%= render partial: 'shared/cards', locals: { step: "Step 2", info: "Message and make an inquiry" } %>
+            <%= render partial: 'shared/cards', locals: { step: "Step 3", info: "Accept and ready for trade" } %>
           </div>
         </div>
     </div>
