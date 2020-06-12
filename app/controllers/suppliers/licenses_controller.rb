@@ -23,6 +23,6 @@ class Suppliers::LicensesController < ApplicationController
   private
 
   def license_params
-    params.require(:license).permit(:authority, :number)
+    params.require(:license).permit(:authority, :number, photos: [])
   end
 end
