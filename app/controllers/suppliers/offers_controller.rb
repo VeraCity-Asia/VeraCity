@@ -20,8 +20,13 @@ class Suppliers::OffersController < ApplicationController
 
   def generateoffer
     authorize([:suppliers, @offer])
+    # policy_class: app/policies/suppliers/offer_policy#show
+    html = render_to_string(:generateoffer => "generateoffer.html.erb",:layout => false)
+    kit = PDFKit.new(html, :page_size => 'Letter')
+    kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/pages/suppliers/offers/_generateoffer.scss"
+    kit.to_pdf
+    send_data(kit.to_pdf, :filename => "mypdf.pdf", :type => "application/pdf")
   end
-
 
 
   private
