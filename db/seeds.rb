@@ -67,9 +67,7 @@ puts "#######################################################################"
 
   rand(1..3).times do
     offer = Offer.create!(
-      amount: rand(100..320),
       destination:Faker::Address.city,
-      price: rand(3..99),
       payment:["Visa", "MasterCard", "Invoice", "Wire Transfer"].sample,
       approved_date: Faker::Date.forward(days: 23),
       approved: nil,

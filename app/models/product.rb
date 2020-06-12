@@ -2,7 +2,9 @@ class Product < ApplicationRecord
   # valdation
   CATEGORY = ["Mask","thermometer","Bandage"]
   belongs_to :supplier
-  has_and_belongs_to_many :offers, dependent: :destroy
+  has_many :productoffers
+  has_many :products, through: :productoffers
+
   has_and_belongs_to_many :certifications, dependent: :destroy
   has_many :messages, dependent: :destroy
   accepts_nested_attributes_for :certifications

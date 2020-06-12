@@ -4,8 +4,10 @@ class Offer < ApplicationRecord
 
   belongs_to :user
   belongs_to :supplier
-  has_and_belongs_to_many :products
-  validates :amount, :destination, :price, :payment, presence: true
+  has_many :productoffers
+  has_many :offers, through: :productoffers
+
+  validates :destination, :payment, presence: true
   validates :payment, inclusion: { in: PAYMENT }
 
   def self.add(user, product)
