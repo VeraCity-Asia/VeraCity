@@ -21,9 +21,11 @@ class MessagesController < ApplicationController
     @message.product_id = @product.id
     @message.sender_id = current_user.id
     @message.receiver_id = @product.supplier.user_id
+    
+    # policy_class: app/policies/message_policy#create 
+    authorize @message
+    
     if @message.save
-      # policy_class: app/policies/message_policy#create 
-      authorize @message
       redirect_to messages_path
     else
       render :new
