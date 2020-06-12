@@ -23,10 +23,11 @@
     height: 90%;
     border-radius: 50%;
   }
-
+  
   .avatar-img {
     width: 54px;
     height: 54px;
+    border: 2px $dark-blue solid;
   }
 }
 

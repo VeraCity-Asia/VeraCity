@@ -7,10 +7,10 @@
 
   <div class="navbar-right">
       <% if user_signed_in? %>
+          <%= link_to "About", aboutus_path, class: "nav-link" %>
           <%= link_to "Products", products_path, class: "nav-link" %>
           <%= link_to "Suppliers", '#', class: "nav-link" %>
-          <%= link_to "Verification", '#', class: "nav-link" %>
-          <%= link_to "About", aboutus_path, class: "nav-link" %>
+          <%= link_to "Contact Us", '#', class: "nav-link" %>
         <%= image_tag "avatar.png", id: "navbarDropdown", class: "avatar-img", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "Dashboard", purchasers_dashboard_path, class: "dropdown-item" %>
@@ -18,10 +18,10 @@
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
       <% else %>
+          <%= link_to "About", aboutus_path, class: "nav-link" %>
           <%= link_to "Products", products_path, class: "nav-link" %>
           <%= link_to "Suppliers", '#', class: "nav-link" %>
-          <%= link_to "Verification", '#', class: "nav-link" %>
-          <%= link_to "About", aboutus_path, class: "nav-link" %>
+          <%= link_to "Contact Us", '#', class: "nav-link" %>
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
       <% end %>

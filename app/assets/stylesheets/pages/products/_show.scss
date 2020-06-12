@@ -1,25 +1,23 @@
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px;
-  display: flex;
 
-  .product-show {
-    background-color: white;
-    outline: black thick solid;
-    width: 1185px;
-    transform: translateX(-5px);
-    border-radius: 6px;
-    margin: 80px 0;
-
-    h1 {
-      font-weight: bolder;
-    }
-  }
+h1 {
+  font-weight: bolder;
 }
 
 
-.card-show {
+
+.product-container {
   background-color: white;
 }
 
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  .box {
+    height: 80px;
+    width: 120px;
+    align-content: center;
+    padding: 8px 16px;
+    flex-basis: 20%;
+    margin-bottom: 1em;
+  }
+}

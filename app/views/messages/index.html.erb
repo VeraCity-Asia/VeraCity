@@ -9,25 +9,26 @@
       <p>Hmm.. Maybe you should message someone</p>
     <% else %>
 
-      <div class="messages row d-flex">
-        <ul>
-          <% @products.each do |product| %>
-            <%= product.name %>
-            <% product.messages.each do |message| %>
-              <%#= link_to '#' do %>
-                <%#= render 'shared/message_card', 
-                                   title: message.title,
-                                   content: message.content,
-                                   product: message.product.name,
-                                   supplier: message.product.supplier.name
-                                    %>
-             <% end %>
-            <% end %>
-          </ul>
-        </div>
-     </div>
-  
-     <div>
-        <button onclick="window.location.href='/purchasers/dashboard'" class="btn btn-primary">View my Dashboard</button>
-      </div>
+    <div class="messages row d-flex">
+      <ul>
+        <% @products.each do |product| %>
+          <% product.messages.each do |message| %>
+            <%= link_to '#' do %>
+              <%= render 'shared/message_card', 
+                                title: message.title,
+                                content: message.content,
+                                product: message.product.name,
+                                supplier: message.product.supplier.name
+                                  %>
+              <% end %>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
+    <% end %>
+  </div>
+  
+  <div>
+    <button onclick="window.location.href='/purchasers/dashboard'" class="btn btn-primary">View my Dashboard</button>
+  </div>
+</div>
