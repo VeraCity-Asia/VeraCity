@@ -18,6 +18,10 @@ class Suppliers::OffersController < ApplicationController
     redirect_to suppliers_offer_path(@offer)
   end
 
+  def generateoffer
+    authorize([:suppliers, @offer])
+  end
+
 
 
   private

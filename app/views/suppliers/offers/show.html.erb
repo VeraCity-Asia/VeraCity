@@ -8,7 +8,7 @@
   <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put %>
   <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put %>
 <% elsif @offer.approved.present? %>
-  <p>Generate your quote here</p>
+  <%= link_to 'generate quote here', generateoffer_suppliers_offer_path(@offer) %>
 <% else  %>
   <p>You have rejected the request</p>
 <% end %>
