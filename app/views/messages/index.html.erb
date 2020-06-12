@@ -9,7 +9,7 @@
     <% if @messages.nil? %>
       <p>Hmm.. Maybe you should message someone</p>
     <% else %>
-    <div class="messages row d-flex"></div>
+    <div class="messages row d-flex flex-wrap"></div>
       <% @messages.each do |message| %>
         <%= link_to '#' do %>
         <%= render 'shared/message_card', title: message.title,

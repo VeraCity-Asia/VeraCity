@@ -1,10 +1,14 @@
-<h1>Buyer#offer#show</h1>
-<div>Product: <%= @offer.products.first.name %> </div>
-<div>Amount: <%= @offer.amount %></div>
-<div>Destination: <%= @offer.destination %></div>
-<div>Price: $<%= @offer.price %>/unit</div>
-<div>Payment: <%= @offer.payment %></div>
-<div>Approved Date: <%= @offer.approved_date %></div>
-<div>Supplier: <%= @offer.supplier.name %></div>
-<div><%= link_to "Cancel request", purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>
-<div><%= link_to "Return to index", purchasers_offers_path %></div>
+<div class="buyer-offer-bg">
+
+    <h1>Offer with <%= @offer.supplier.name %></h1>
+    <div>Product: <%= @offer.products.first.name %> </div>
+    <div>Amount: <%= @offer.amount %></div>
+    <div>Destination: <%= @offer.destination %></div>
+    <div>Price: $<%= @offer.price %>/unit</div>
+    <div>Payment: <%= @offer.payment %></div>
+    <div>Approved Date: <%= @offer.approved_date %></div>
+    <div>Supplier: <%= @offer.supplier.name %></div>
+    <div><%= link_to "Cancel request", purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>
+    <div><%= link_to "Return to index", purchasers_offers_path %></div>
+
+</div>
