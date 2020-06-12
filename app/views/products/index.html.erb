@@ -1,18 +1,18 @@
+<div class="search-box">
+  <%= form_tag products_path, method: :get do %>
+    <%= text_field_tag :query,
+        params[:query],
+        class: "form-inline form-control",
+        placeholder: "Search by Product name or Certification type" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
 <%= render 'shared/dashboard_button' %>
-<%= link_to "Add new product", new_suppliers_product_path %>
-
-
   <div class="row">
     <div class="left-col col-xs-0 col-md-4">
       <h1>Search</h1>
 
-      <%= form_tag products_path, method: :get do %>
-        <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Search by Product name or Certification type" %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
       <div class="product-container d-flex">
         <div class="product-search-filter">
           <%= simple_form_for :filter, url: products_path, method: "GET" do |f| %>
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-md-6">
+    <div class="mid-col col-xs-12 col-md-6">
       <div class="product-container">
         <div class="card-products">
           <% @products.each do |product| %>
@@ -43,8 +43,4 @@
       <%= render 'shared/mv_product_card', size: '100x100'%>
       <%= render 'shared/mv_product_card', size: '100x100'%>
       <%= render 'shared/mv_product_card', size: '100x100'%>
-
     </div>
-  </div>
-
-</div>

@@ -13,17 +13,12 @@ class Suppliers::OfferPolicy < ApplicationPolicy
     return true
   end
 
-  def approved?
+
+
+  def update?
     return true
   end
 
-  def rejected?
-    return true
-  end
-
-  def generate_offer?
-    return true
-  end
 
   def show?
     return true
