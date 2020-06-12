@@ -2,34 +2,34 @@
   <div class="thankyou">
     <%= image_tag 'thankyou .jpg', size: '80x60'%>
   </div>
-  <%# <h1 class="text-primary">Your message has been submited successfully!</h1> %>
-  <h1><strong>Your messages:</strong></h1>
+
+  <h4><strong>Messages</strong></h4>
+
   <div class="message-container">
+    <div class="messages row">
     <% if @messages.nil? %>
       <p>Hmm.. Maybe you should message someone</p>
     <% else %>
-      <div class="messages row d-flex">
-        <ul>
-          <% @products.each do |product| %>
-            <%= product.name %>
-            <% product.messages.each do |message| %>
-              <li><%= message.title %></li>
-              <li> <%= message.content %></li>
-            <% end %>
-          </ul>
+      <% @products.each do |product| %>
+        <div>
+          <%= product.name %>
         </div>
-        <%# @messages.each do |message| %>
-          <%#= link_to '#' do %>
-            <%#= render 'shared/message_card', title: message.title,
-                                   content: message.content,
-                                   product: message.product.name,
-                                   supplier: message.product.supplier.name
-                                    %>
-            <% #end %>
-          <% end %>
+        <% product.messages.each do |message| %>
+        <div class="card">
+          <div>
+            <%= message.title %>
+          </div>
+          <div>
+            <%= message.content %>
+          </div>
         <% end %>
-      </div>
-      <div>
-        <button onclick="window.location.href='/purchasers/dashboard'" class="btn btn-primary">View my Dashboard</button>
+      <% end %>
+    <% end %>
       </div>
     </div>
+  </div>
+</div>
+
+<div>
+  <button onclick="window.location.href='/purchasers/dashboard'" class="btn btn-primary">View my Dashboard</button>
+</div>
