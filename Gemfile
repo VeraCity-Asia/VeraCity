@@ -41,7 +41,7 @@ gem 'devise'
 # gem 'bootstrap', '~> 4.5.0'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
-gem 'dotenv-rails', groups: [:development, :test]
+
 
 
 gem 'simple_form'
@@ -68,8 +68,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  gem 'dotenv-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'cloudinary', '~> 1.12.0'
+gem 'dotenv-rails', groups: [:development, :test]
