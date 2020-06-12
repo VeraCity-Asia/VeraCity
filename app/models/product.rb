@@ -2,8 +2,8 @@ class Product < ApplicationRecord
   # valdation
   CATEGORY = ["Mask","thermometer","Bandage"]
   belongs_to :supplier
-  has_many :productoffers
-  has_many :products, through: :productoffers
+  has_many :product_offers
+  has_many :offers, through: :product_offers
 
   has_and_belongs_to_many :certifications, dependent: :destroy
   has_many :messages, dependent: :destroy

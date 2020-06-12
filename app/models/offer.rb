@@ -4,15 +4,14 @@ class Offer < ApplicationRecord
 
   belongs_to :user
   belongs_to :supplier
-  has_many :productoffers
-  has_many :offers, through: :productoffers
+  has_many :product_offers
+  has_many :products, through: :product_offers
 
   validates :destination, :payment, presence: true
   validates :payment, inclusion: { in: PAYMENT }
 
   def self.add(user, product)
     return if user.user_type == "supplier"
-
     offer = self.find_by(approved: nil, user: user, supplier: product.supplier)
   end
 end
