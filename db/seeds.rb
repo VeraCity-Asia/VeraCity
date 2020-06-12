@@ -1,6 +1,7 @@
 # development wipe
 if Rails.env.development?
   Message.destroy_all
+  ProductOffer.destroy_all
   Product.destroy_all
   Certification.destroy_all
   License.destroy_all
@@ -131,7 +132,7 @@ puts "#######################################################################"
 
 puts "#######################################################################"
 puts "Seeding messages"
-Product.all.each do |p| 
+Product.all.each do |p|
   User.purchaser.each do |u|
     Message.create!(
       product_id: p.id,
