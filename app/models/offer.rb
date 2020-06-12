@@ -4,7 +4,7 @@ class Offer < ApplicationRecord
 
   belongs_to :user
   belongs_to :supplier
-  has_many :product_offers
+  has_many :product_offers, dependent: :destroy
   has_many :products, through: :product_offers
 
   validates :destination, :payment, presence: true
