@@ -2,14 +2,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
-    height: 500px;
-    width: 85vw;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     justify-content: space-around;
     margin-top: 3em;
   }
   
+
   // Smallest device
   @media (min-width: 100px) and (max-width: 575px) {
     .cards {
@@ -50,6 +50,9 @@
     border-radius: 4px;
     align-items: center;
     justify-items: center;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    margin-bottom: 2em;
+    background-color: white;
     
     img {
       background-color: gray;

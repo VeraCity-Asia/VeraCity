@@ -38,9 +38,12 @@ body {
     text-align: center;
     margin-bottom: 1em;
     font-family: 'Noticia Text', serif;
-    background-color: #1f2833;
+    background-color: #FFF8FF;
     h1, h2, h3, h4 {
         font-family: 'Open Sans', sans-serif;
+    }
+    .container {
+        box-sizing: border-box;
     }
 }
 
