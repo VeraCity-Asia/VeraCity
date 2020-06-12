@@ -23,9 +23,11 @@ class Purchasers::OffersController < ApplicationController
     @offer.products << @product
     @offer.user = current_user
     @offer.supplier = @product.supplier
+    
+    # policy_class: app/policies/purchasers/offer_policy#create 
+    authorize([:purchasers, @offer])
+    
     if @offer.save
-      # policy_class: app/policies/purchasers/offer_policy#create 
-      authorize([:purchasers, @offer])
       redirect_to purchasers_offer_path(@offer)
     else
       # policy_class: app/policies/purchasers/offer_policy#create 
