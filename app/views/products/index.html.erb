@@ -1,46 +1,44 @@
+.
 <div class="search-box">
-  <%= form_tag products_path, method: :get do %>
-    <%= text_field_tag :query,
-        params[:query],
-        class: "form-inline form-control",
-        placeholder: "Search by Product name or Certification type" %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <%= form_tag products_path, class: "d-flex", method: :get do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-inline form-control",
+          placeholder: "Search by Product name or Certification type" %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
 </div>
+<div class="products-container">
+  <div class="side-col">
+    <h1>Filter</h1>
 
-<%= render 'shared/dashboard_button' %>
-  <div class="row">
-    <div class="left-col col-xs-0 col-md-4">
-      <h1>Search</h1>
-
-      <div class="product-container d-flex">
-        <div class="product-search-filter">
-          <%= simple_form_for :filter, url: products_path, method: "GET" do |f| %>
-            <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
-            <%= f.input :minimum_order_quantity, label: "minimum order", collection: $minimum_order_quantity, as: :check_boxes %>
-            <%= f.fields_for :certificaions do |s| %>
-              <%= s.input :category, label: "Certification",collection: $certification, as: :check_boxes %>
-            <% end %>
+    <div class="filter-container">
+        <%= simple_form_for :filter, url: products_path, method: "GET" do |f| %>
+          <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
+          <%= f.input :minimum_order_quantity, label: "minimum order", collection: $minimum_order_quantity, as: :check_boxes %>
+          <%= f.fields_for :certificaions do |s| %>
+            <%= s.input :category, label: "Certification",collection: $certification, as: :check_boxes %>
           <% end %>
-        </div>
+        <% end %>
+    </div>
+  </div>
             
+
+  <div class="mid-col">
+    <div class="product-container">
+      <div class="card-products">
+        <% @products.each do |product| %>
+          <%= render :partial => 'shared/product_card', locals: {:product => product } %>
+        <% end %>
       </div>
     </div>
+  </div>
 
-    <div class="mid-col col-xs-12 col-md-6">
-      <div class="product-container">
-        <div class="card-products">
-          <% @products.each do |product| %>
-            <%= render :partial => 'shared/product_card', locals: {:product => product } %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="right-col col-xs-0 col-md-2">
-      <h5><em>Most Viewed</em></h5>
-      <%= render 'shared/mv_product_card', size: '100x100'%>
-      <%= render 'shared/mv_product_card', size: '100x100'%>
-      <%= render 'shared/mv_product_card', size: '100x100'%>
-      <%= render 'shared/mv_product_card', size: '100x100'%>
-    </div>
+  <div class="side-col">
+    <h5><em>Most Viewed</em></h5>
+    <%= render 'shared/mv_product_card', size: '100x100'%>
+    <%= render 'shared/mv_product_card', size: '100x100'%>
+    <%= render 'shared/mv_product_card', size: '100x100'%>
+    <%= render 'shared/mv_product_card', size: '100x100'%>
+  </div>
+</div>
