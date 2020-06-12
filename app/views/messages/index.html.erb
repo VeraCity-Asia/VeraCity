@@ -3,26 +3,22 @@
     <%= image_tag 'thankyou .jpg', size: '80x60'%>
   </div>
 
-  <h4><strong>Messages</strong></h4>
+  <h4>Messages</h4>
 
   <div class="message-container">
     <div class="messages row">
     <% if @messages.nil? %>
       <p>Hmm.. Maybe you should message someone</p>
     <% else %>
-      <% @products.each do |product| %>
+      <% @messages.each do |message| %>
+      <div class="row">
         <div>
-          <%= product.name %>
+          <strong><%= message.product.name %></strong> — 
         </div>
-        <% product.messages.each do |message| %>
-        <div class="card">
-          <div>
-            <%= message.title %>
-          </div>
-          <div>
-            <%= message.content %>
-          </div>
-        <% end %>
+        <div>
+          <%= message.content %> | <%= message.created_at %>
+        </div>
+      </div>
       <% end %>
     <% end %>
       </div>

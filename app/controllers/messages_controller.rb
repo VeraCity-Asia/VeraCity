@@ -1,9 +1,11 @@
 class MessagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
+  skip_after_action :verify_policy_scoped
+  
   def index
-    # @messages = Message.all
-    @messages = policy_scope(Message)
-    @products = @messages.collect {|m| m.product}
+    authorize current_user, policy_class: MessagePolicy
+    @messages = Message.latest_messages_by_product(current_user)
+    # @latest =  messages.first ?
   end
 
   def by_product
