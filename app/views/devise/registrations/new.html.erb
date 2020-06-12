@@ -7,7 +7,6 @@
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
 
-<<<<<<< HEAD
   <div class="form-inputs">
     <%= f.input :name,
                 required: true,
@@ -37,30 +36,6 @@
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
-=======
-          <div class="form-inputs">
-            <%= f.input :name,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "name" }%>
-            <%= f.input :email,
-                        required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "email" }%>
-            <%= f.input :password,
-                        required: true,
-                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                        input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation,
-                        required: true,
-                        input_html: { autocomplete: "new-password" } %>
-          </div>
-
-          <div class="form-actions">
-            <%= f.button :submit, "Sign up" %>
-          </div>
-        <% end %>
->>>>>>> master
 
         <%= render "devise/shared/links" %>
       </div>
