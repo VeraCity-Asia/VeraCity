@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-offset-6">
+    <%# <div class="col-xs-12 col-sm-4 col-offset-6"> %>
       <div class="form">
         <h1>Make new offer</h1>
         <%= simple_form_for [@product, @offer], url: purchasers_offers_path, method: :POST  do |f| %>
@@ -17,6 +17,6 @@
             <%= link_to "Back to offer index", purchasers_offers_path %>
         <% end %>
       </div>
-    </div>
+    <%# </div> %>
   </div>
 </div>
