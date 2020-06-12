@@ -26,7 +26,7 @@ items textarea { width: 80px; height: 50px; }
 items tr.item-row td { border: 0; vertical-align: top; }
 items td.description { width: 300px; }
 items td.item-name { width: 175px; }
-items td.description textarea, #items td.item-name textarea { width: 100%; }
+# items td.description textarea, #items td.item-name textarea { width: 100%; }
 items td.total-line { border-right: 0; text-align: right; }
 items td.total-value { border-left: 0; padding: 10px; }
 items td.total-value textarea { height: 20px; background: none; }

@@ -19,17 +19,17 @@ class Purchasers::OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    @offerproduct = ProductOffer.new(product_offer_params)
+    @product_offer = ProductOffer.new(product_offer_params)
     @product = Product.find(params[:offer][:product_id])
     @offer.products << @product
     @offer.user = current_user
     @offer.supplier = @product.supplier
-    @offerproduct.product_id = @product.id
+    @product_offer.product_id = @product.id
     # policy_class: app/policies/purchasers/offer_policy#create 
     authorize([:purchasers, @offer])
     if @offer.save
-      @offerproduct.offer_id = @offer.id
-      @offerproduct.save
+      @product_offer.offer_id = @offer.id
+      @product_offer.save
       redirect_to purchasers_offer_path(@offer)
     else
       # policy_class: app/policies/purchasers/offer_policy#create 
