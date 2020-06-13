@@ -1,15 +1,49 @@
-<h1>Supplier#offer#show</h1>
-<div>Destination: <%= @offer.destination %></div>
-<div>Payment: <%= @offer.payment %></div>
-<div>Approved Date: <%= @offer.approved_date %></div>
-<div>Purchaser: <%= @offer.user.name %></div>
-<% if @offer.approved.nil? %>
-  <p>Pending...</p>
-  <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put %>
-  <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put %>
-<% elsif @offer.approved.present? %>
-  <%= link_to 'generate quote here', generateoffer_suppliers_offer_path(@offer) %>
-<% else  %>
-  <p>You have rejected the request</p>
-<% end %>
-<%= link_to 'Back to index', suppliers_offers_path %>
+<div class="offer-conatiner my-5">
+  <div class="offer-top-bar row justify-content-between">
+    <div class="product-name my-2 mx-2">
+      <h3>Purchaser</h3>
+      <%= @offer.user.name %>
+    </div>
+    <div class="action-btn d-flex  my-2 mx-2">
+      <% if @offer.approved.nil? %>
+        <div class="btn btn-success">
+          <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put %>
+        </div>
+        <div class="btn btn-danger">
+          <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put %>
+        </div>
+      <% elsif @offer.approved.present? %>
+        <div class="btn btn-info">
+          <%= link_to 'generate quote here', generateoffer_suppliers_offer_path(@offer) %>
+        </div>
+      <% else  %>
+        <p>You have rejected the request</p>
+      <% end %>
+      <div class="btn btn-light mx-3">
+        <%= link_to 'Back to index', suppliers_offers_path %>
+      </div>
+    </div>
+  </div>
+  <div class="offer-info">
+    <div class="offer-product">
+      <% @offer.products.each do |p| %>
+        <%= p.name %>
+        <%= p.price %>
+      <% end %>
+    </div>
+    <div>Destination: <%= @offer.destination %></div>
+    <div>Payment: <%= @offer.payment %></div>
+    <div>Approved Date: <%= @offer.approved_date %></div>
+    <div>Purchaser: <%= @offer.user.name %></div>
+  </div>
+  <% if @offer.approved.nil? %>
+    <p>Pending...</p>
+    <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put %>
+    <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put %>
+  <% elsif @offer.approved.present? %>
+    <%= link_to 'generate quote here', generateoffer_suppliers_offer_path(@offer) %>
+  <% else  %>
+    <p>You have rejected the request</p>
+  <% end %>
+  <%= link_to 'Back to index', suppliers_offers_path %>
+</div>
