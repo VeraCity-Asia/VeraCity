@@ -42,7 +42,7 @@ class Purchasers::OffersController < ApplicationController
     @offer.destroy
     # policy_class: app/policies/offer_policy#destroy
     authorize([:purchasers, @offer])
-    redirect_to purchasers_offers_path
+    redirect_to purchasers_dashboard
   end
 
   private
