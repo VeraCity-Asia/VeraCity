@@ -14,6 +14,7 @@ class Suppliers::OffersController < ApplicationController
   def update
     @offer.update(offer_params)
     # policy_class: app/policies/suppliers/offer_policy#show
+    @offer.update(approved_date: Time.now)
     authorize([:suppliers, @offer])
     redirect_to suppliers_offer_path(@offer)
   end
