@@ -5,29 +5,37 @@
     </div>
     <div class="action-btn d-flex  my-2 mx-2">
       <% if @offer.approved.nil? %>
-        <div class="btn btn-success">
-          <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put %>
-        </div>
-        <div class="btn btn-danger mx-3">
-          <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put %>
-        </div>
+        <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put, :class =>"btn btn-success" %>
+        <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put, :class=>"btn btn-danger mx-3" %>
       <% elsif @offer.approved.present? %>
-        <div class="btn btn-info">
-          <%= link_to 'generate quote here', generateoffer_suppliers_offer_path(@offer) %>
-        </div>
+        <%= link_to 'generate quote here', generateoffer_suppliers_offer_path(@offer), :class => "btn btn-info" %>
       <% else  %>
         <p>You have rejected the request</p>
       <% end %>
-      <div class="btn btn-light mx-3">
-        <%= link_to 'Back to index', suppliers_offers_path %>
-      </div>
+      <%= link_to 'Back to index', suppliers_offers_path, :class => "btn btn-light mx-3" %>
     </div>
   </div>
-  <div class="offer-info">
-    <div>Destination: <%= @offer.destination %></div>
-    <div>Payment: <%= @offer.payment %></div>
-    <div>Approved Date: <%= @offer.approved_date %></div>
-    <div>Purchaser: <%= @offer.user.name %></div>
+  <div class="offer-info row">
+    <div class="col-sm-6">
+      <h6>Destination</h6>
+      <hr>
+      <%= @offer.destination %>
+    </div>
+    <div class="col-sm-6">
+      <h6>Payment</h6>
+      <hr>
+      <%= @offer.payment %>
+    </div>
+    <div class="col-sm-6 my-3">
+      <h6>Approved Date</h6>
+      <hr>
+      <%= @offer.approved_date %>
+    </div>
+    <div class="col-sm-6 my-3">
+      <h6>Purchaser</h6>
+      <hr>
+      <%= @offer.user.name %>
+    </div>
   </div>
   <% @offer.products.each do |p| %>
     <div class="offer-product row">
