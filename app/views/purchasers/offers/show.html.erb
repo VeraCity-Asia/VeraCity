@@ -7,6 +7,12 @@
   <div>Payment: <%= @offer.payment %></div>
   <div>Approved Date: <%= @offer.approved_date %></div>
   <div>Supplier: <%= @offer.supplier.name %></div>
-  <div><%= link_to "Cancel request", purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>
+  <% if @offer.approved.nil? %>
+    <div><%= link_to "Cancel request", purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>
+  <% elsif%>
+    <div>
+      <p>Your offer has been approved</p>
+    </div>
+  <% end %>
   <div><%= link_to "Return to index", purchasers_offers_path %></div>
 </div>

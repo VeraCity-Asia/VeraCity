@@ -9,7 +9,6 @@
     <h4>Pending Offers</h4>
     <!--   approved nil -->
     <% @user.offers.each do |offer| %>
-      <%= offer.approved %>
       <%  if offer.approved.nil?  %>
         <%= link_to purchasers_offer_path(offer) do %>
           <div class="card-offer">
@@ -34,13 +33,13 @@
     <!-- current no product approved -->
     <!-- for the design sake -->
     <% @user.offers.each do |offer| %>
-      <%  if offer.approved = true  %>
+      <%  if offer.approved.present?  %>
         <!-- use present to condition -->
         <%= link_to purchasers_offer_path(offer) do %>
           <div class="card-offer">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
             <div class="card-offer-infos">
-              <p> Approved</p>
+              <p> <%= offer.approved %></p>
               <p> Destination: <%= offer.destination %></p>
               <p> Payment: <%= offer.payment %> </p>
               <hr>
