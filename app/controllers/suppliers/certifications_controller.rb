@@ -5,6 +5,7 @@ class Suppliers::CertificationsController < ApplicationController
 
   def new
     @certification = Certification.new
+    @product = current_user.supplier.products.last
   end
 
   def create

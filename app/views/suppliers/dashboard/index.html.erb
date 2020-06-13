@@ -12,14 +12,18 @@
 </div>
 <div class="row">
   <% @user.supplier.products.each do |p| %>
-    <div class="col-sm-6">
-      <div class="card" style="width: 18rem;">
-        <%= image_tag "mask.jpg", width: 250, height: 200, crop: :fill %>
-        <div class="card-body">
-          <p class="card-text"><%= p.name %></p>
+    <%= link_to product_path(p) do %>
+      <div class="col-sm-4">
+        <div class="card" style="width: 18rem;">
+          <%= image_tag "mask.jpg", width: 280, height: 200, crop: :fill %>
+          <div class="card-body">
+            <p class="card-text"><%= p.name %></p>
+            <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-supplier" %>
+            <%= link_to "Destroy", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-supplier" %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 <div class="purchaser-dashboard d-flex justify-content-between">
