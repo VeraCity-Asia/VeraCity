@@ -42,16 +42,18 @@
       <%= @offer.supplier.name %>
     </div>
   </div>
-  <% @offer.products.each do |p| %>
-    <div class="offer-product row">
-      <div class="card-offer col-sm-6">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
-        <div class="card-offer-infos">
-          <p>Product: <%= p.name %></p>
-          <p>Price: <%= p.price %></p>
+  <div class="row">
+    <% @offer.products.each do |p| %>
+      <div class="offer-product col-sm-12">
+        <div class="card-offer">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+          <div class="card-offer-infos">
+            <p>Product: <%= p.name %></p>
+            <p>Price: <%= p.price %></p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class=”clearfix hidden-xs”></div>
-  <% end %>
+      <div class=”clearfix hidden-xs”></div>
+    <% end %>
+  </div>
 </div>

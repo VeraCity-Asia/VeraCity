@@ -10,13 +10,24 @@
     <div class="btn btn-outline-info mx-2"><%= link_to "Add new certification", new_suppliers_certification_path %></div>
   </div>
 </div>
+<div class="row">
+  <% @user.supplier.products.each do |p| %>
+    <div class="col-sm-6">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag "mask.jpg", width: 250, height: 200, crop: :fill %>
+        <div class="card-body">
+          <p class="card-text"><%= p.name %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <div class="purchaser-dashboard d-flex justify-content-between">
   <div class="purchaser-dashboard-offers mx-3">
     <h4>Pending Offers</h4>
     <!--   approved nil -->
-    <% @user.offers.each do |offer| %>
-      <%  if offer.approved.present?  %>
-        <!-- if offer.approved.nil? -->
+    <% @user.supplier.offers.each do |offer| %>
+      <%  if offer.approved.nil?  %>
         <%= link_to suppliers_offer_path(offer) do %>
           <div class="card-offer">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
@@ -36,12 +47,8 @@
   </div>
   <div class="purchaser-dashboard-products mx-3">
     <h4>Closed Offers</h4>
-    <!--   approved true -->
-    <!-- current no product approved -->
-    <!-- for the design sake -->
     <% @user.offers.each do |offer| %>
       <%  if offer.approved.present?  %>
-        <!-- use present to condition -->
         <%= link_to suppliers_offer_path(offer) do %>
           <div class="card-offer">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
