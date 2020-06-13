@@ -1,20 +1,22 @@
 <div class="about-me">
   <h1>My Profile</h1>
-  <p>Name: <%= @user.name %></p>
+  <p>Company: <%= @user.supplier.name %></p>
+  <p>Location: <%= @user.supplier.location %></p>
   <p>Email: <%= @user.email %></p>
-  <p>Country: <%= @user.country %></p>
-</div>
-<div class="about-me">
-  <%= link_to "Add new product", new_suppliers_product_path %>
-  <%= link_to "Add license", new_suppliers_license_path %>
+  <div class="supplier-btn row justify-content-center">
+    <div class="btn btn-outline-info mx-2"><%= link_to "Add new product", new_suppliers_product_path %></div>
+    <div class="btn btn-outline-info mx-2"><%= link_to "Add license", new_suppliers_license_path %></div>
+    <div class="btn btn-outline-info mx-2"><%= link_to "Add new certification", new_suppliers_certification_path %></div>
+  </div>
 </div>
 <div class="purchaser-dashboard d-flex justify-content-between">
   <div class="purchaser-dashboard-offers mx-3">
     <h4>Pending Offers</h4>
     <!--   approved nil -->
     <% @user.offers.each do |offer| %>
-      <%  if offer.approved.nil?  %>
-        <%= link_to purchasers_offer_path(offer) do %>
+      <%  if offer.approved.present?  %>
+        <!-- if offer.approved.nil? -->
+        <%= link_to suppliers_offer_path(offer) do %>
           <div class="card-offer">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
             <div class="card-offer-infos">
@@ -39,7 +41,7 @@
     <% @user.offers.each do |offer| %>
       <%  if offer.approved.present?  %>
         <!-- use present to condition -->
-        <%= link_to purchasers_offer_path(offer) do %>
+        <%= link_to suppliers_offer_path(offer) do %>
           <div class="card-offer">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
             <div class="card-offer-infos">
