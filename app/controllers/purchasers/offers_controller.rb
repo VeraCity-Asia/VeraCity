@@ -12,7 +12,7 @@ class Purchasers::OffersController < ApplicationController
 
   def new
     @offer = Offer.new
-    # policy_class: app/policies/purchasers/offer_policy#create 
+    # policy_class: app/policies/purchasers/offer_policy#create
     authorize([:purchasers, @offer])
     @product = Product.find(params[:product_id])
   end
@@ -25,14 +25,14 @@ class Purchasers::OffersController < ApplicationController
     @offer.user = current_user
     @offer.supplier = @product.supplier
     @product_offer.product_id = @product.id
-    # policy_class: app/policies/purchasers/offer_policy#create 
+    # policy_class: app/policies/purchasers/offer_policy#create
     authorize([:purchasers, @offer])
     if @offer.save
       @product_offer.offer_id = @offer.id
       @product_offer.save
       redirect_to purchasers_offer_path(@offer)
     else
-      # policy_class: app/policies/purchasers/offer_policy#create 
+      # policy_class: app/policies/purchasers/offer_policy#create
       authorize([:purchasers, @offer])
       render :new
     end
@@ -42,7 +42,7 @@ class Purchasers::OffersController < ApplicationController
     @offer.destroy
     # policy_class: app/policies/offer_policy#destroy
     authorize([:purchasers, @offer])
-    redirect_to purchasers_dashboard
+    redirect_to purchasers_dashboard_path
   end
 
   private
