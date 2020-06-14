@@ -1,24 +1,34 @@
-<h1>About us</h1>
-<div class="container-about">
-    <div class="banner" style="background-image: url('<%= image_path "aboutus.jpg" %>')">
-    </div>
+<nav class="nav navbar-inverse">
+  <div class="container-subnarbar">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">About us</a></li>
+      <li><a data-toggle="tab" href="#FAQ">FAQ</a></li>
+    </ul>
+</div>
+</nav>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <h1><strong>Mission</strong></h1>
     <p>Covid-19, an unexpected pandemic hits the world. It is not one country’s issue , but for we human beings. It is time to work closely with the countries that needs supplier products, to save time to provide effiency verification, to save more life. China as the biggest market to provide those necessaries, we want to make it more accessiable and manageable for western buyers.
 That’s why VeraCity comes.
 That’s our mission</p>
+    <%= image_tag 'aboutus.jpg', size: '500x300'%>
+  </div>
+
+  <div id="FAQ" class="tab-pane fade">
+    <h1><strong>FAQ</strong></h1>
+    <p>Q1:Are the supplier trading company or manufacturer ?</p>
+    <p>A:There  are factories, also trading companies, mainly deal with disposable medical consumable products, like surgical face mask, PP/CPE/PE shoe cover, nonwoven caps, paper caps, surgical gown, lab coat, disposable coverall, PE apron, sleeve covers... with verification by trusted verified companies.</p>
+    <p>Q2:Should I be concerned of the risk of contracting virus from a package or products shipping?</p>
+    <p>"There is no evidence to support the transmission of Covid-19 associated with imported good"Authorities are taking strict measures on this public health event, so we do not need to worry about this.</p>
+    <p>Q3:How can I make sure the suppliers and products are verified and qualify for our country standard</p>
+    <p>A:Our trusted verification company and we are not allow the supplier and products that not up to standard to sign in .</p>
+  </div>
 </div>
 
-<div class="container-faq">
-<h1>FAQ</h1>
-<p>Q:Are the supplier trading company or manufacturer ?</p>
-     <p>A:There  are factories, also trading companies, mainly deal with disposable medical consumable products, like surgical face mask, PP/CPE/PE shoe cover, nonwoven caps, paper caps, surgical gown, lab coat, disposable coverall, PE apron, sleeve covers... with verification by trusted verified companies.</p>
-</div>
 
-<p>Q:Should I be concerned of the risk of contracting virus from a package or products shipping?</p>
-     <p>"There is no evidence to support the transmission of Covid-19 associated with imported good"Authorities are taking strict measures on this public health event, so we do not need to worry about this.</p>
-</div>
 
-<p>Q:How can I make sure the suppliers and products are verified and qualify for our country standard</p>
-     <p>A:Our trusted verification company and we are not allow the supplier and products that not up to standard to sign in .</p>
-</div>
+
 
 
