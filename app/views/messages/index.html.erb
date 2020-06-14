@@ -2,31 +2,34 @@
   <div class="thankyou">
     <%= image_tag 'thankyou .jpg', size: '80x60'%>
   </div>
-  <h1 class="text-primary">Your message has been submited successfully!</h1>
-<h1><strong>Your messages:</strong></h1>
-  <div class="message-container">
-    <% if @messages.nil? %>
-      <p>Hmm.. Maybe you should message someone</p>
-    <% else %>
 
-    <div class="messages row d-flex">
-      <ul>
-        <% @products.each do |product| %>
-          <% product.messages.each do |message| %>
-            <%= link_to '#' do %>
-              <%= render 'shared/message_card', 
-                                title: message.title,
-                                content: message.content,
-                                product: message.product.name,
-                                supplier: message.product.supplier.name
-                                  %>
+  <h1 class="text-primary">Your message has been submited successfully!</h1>
+
+  <h1><strong>Your messages:</strong></h1>
+    <div class="message-container">
+      <% if @messages.nil? %>
+        <p>Hmm.. Maybe you should message someone</p>
+
+      <% else %>
+        <div class="messages row d-flex">
+          <ul>
+            <% @products.each do |product| %>
+              <% product.messages.each do |message| %>
+                <%= link_to '#' do %>
+                  <%= render 'shared/message_card', 
+                                    title: message.title,
+                                    content: message.content,
+                                    product: message.product.name,
+                                    supplier: message.product.supplier.name
+                                      %>
+                  <% end %>
               <% end %>
-          <% end %>
-        <% end %>
-      </ul>
+            <% end %>
+        </ul>
+        </div>
+
+      <% end %>
     </div>
-    <% end %>
-  </div>
   
   <div>
     <button onclick="window.location.href='/purchasers/dashboard'" class="btn btn-primary">View my Dashboard</button>

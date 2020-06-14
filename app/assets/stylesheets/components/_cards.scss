@@ -2,11 +2,20 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
-    width: 100%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 3em;
+    
+    h6 {
+      font-weight: 600;
+      font-size: large;
+    }
+
+    img {
+      margin-top: 1.2em;
+    }
   }
   
 
