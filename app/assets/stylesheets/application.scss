@@ -10,6 +10,7 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 // Your CSS partials
 @import "components/index";
 @import "components/banner";
@@ -17,21 +18,36 @@
 @import "components/jiayou";
 @import "components/footer";
 @import "components/search";
+@import "components/signup_bar";
 @import "components/button";
 @import "components/product_card";
 @import "components/mv_product_card";
 @import "components/dashboard_button";
 @import "components/offer_card.scss";
 @import "components/form";
+
+// Shared
+@import "pages/index";
+@import "pages/aboutus";
+
+// Sort-of Shared
 @import "pages/products/index";
 @import "pages/products/show";
-@import "pages/index";
-@import "pages/purchasers/index";
+
+// Messages
 @import "pages/messages/new";
+
 @import "pages/messages/message_card";
 @import "pages/messages/index";
+
+// Purchasers
+@import "pages/purchasers/dashboard/index";
+
 @import "pages/purchasers/offers/show";
 @import "pages/purchasers/offers/index";
+
+// Suppliers
+@import "pages/suppliers/show";
 @import "pages/suppliers/offers/show";
 
 
@@ -39,10 +55,10 @@
 body {
     text-align: center;
     margin-bottom: 1em;
-    font-family: 'Noticia Text', serif;
-    background-color: #FFF8FF;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F8F8FF;
     h1, h2, h3, h4 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Noticia Text', serif;
     }
     .container {
         box-sizing: border-box;
@@ -56,4 +72,8 @@ body {
 
 .container-fluid {
     width: 70vw;
+}
+
+.container {
+    margin-top: 3em;
 }

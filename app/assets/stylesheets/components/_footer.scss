@@ -1,12 +1,24 @@
 #footer {
+    height: 100px;
+    margin-top: 3em;
+    line-height: 1em;
+    bottom: -1em;
+
+    .icons {
+        width: 16%;
+        justify-content: space-evenly;
+    }
+
     i {
-        color: white;
+        color: $dark-blue;
         font-size: x-large;
     }
+    
     p {
         color: none;
     }
+    
     a {
-        color: white;
+        color: $dark-blue
     }
 }
