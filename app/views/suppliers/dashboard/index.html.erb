@@ -51,7 +51,7 @@
   </div>
   <div class="purchaser-dashboard-products mx-3">
     <h4>Closed Offers</h4>
-    <% @user.offers.each do |offer| %>
+    <% @user.supplier.offers.each do |offer| %>
       <%  if offer.approved.present?  %>
         <%= link_to suppliers_offer_path(offer) do %>
           <div class="card-offer">
