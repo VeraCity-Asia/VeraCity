@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-offset-6">
       <div class="form">
-        <h2>Sign up</h2>
+        <h2>Register as a <%= params[:user_type].titlecase %></h2>
+        
+        <%# raise %>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
@@ -30,14 +32,10 @@
       <%= render "devise/shared/supplier_form", f: f, object: @supplier %>
     <% end %>
   </div>
-
-
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
+    <% end %>
   </div>
-<% end %>
-
-        <%= render "devise/shared/links" %>
       </div>
     </div>
   </div>
