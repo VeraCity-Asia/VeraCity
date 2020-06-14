@@ -1,16 +1,17 @@
 <div class="about-me">
   <h1>My Profile</h1>
   <p>Name: <%= @user.name %></p>
+  <p>Email: <%= @user.email %></p>
   <p>Company: <%= @user.supplier.name %></p>
   <p>Location: <%= @user.supplier.location %></p>
-  <p>Email: <%= @user.email %></p>
   <div class="supplier-btn row justify-content-center">
     <div class="btn btn-outline-info mx-2"><%= link_to "Add new product", new_suppliers_product_path %></div>
     <div class="btn btn-outline-info mx-2"><%= link_to "Add license", new_suppliers_license_path %></div>
     <div class="btn btn-outline-info mx-2"><%= link_to "Add new certification", new_suppliers_certification_path %></div>
   </div>
 </div>
-<div class="row">
+
+<div class="row justify-content-between supplier-products">
   <% @user.supplier.products.each do |p| %>
     <%= link_to product_path(p) do %>
       <div class="col-sm-4">
@@ -26,8 +27,9 @@
     <% end %>
   <% end %>
 </div>
-<div class="purchaser-dashboard d-flex justify-content-between">
-  <div class="purchaser-dashboard-offers mx-3">
+
+<div class="supplier-dashboard d-flex justify-content-between">
+  <div class="supplier-dashboard-offers mx-3">
     <h4>Pending Offers</h4>
     <!--   approved nil -->
     <% @user.supplier.offers.each do |offer| %>
@@ -49,7 +51,8 @@
       <% end %>
     <% end %>
   </div>
-  <div class="purchaser-dashboard-products mx-3">
+  
+  <div class="supplier-dashboard-products mx-3">
     <h4>Closed Offers</h4>
     <% @user.supplier.offers.each do |offer| %>
       <%  if offer.approved.present?  %>

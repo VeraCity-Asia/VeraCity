@@ -4,15 +4,16 @@
     padding: 32px 0;
     margin-bottom: 3em;
     box-shadow: 1px 0px 15px rgba(0, 0, 0, 0.1);
-    width: 1250px;
+    width: 67vw;
     transform: translateX(-75px);
 }
 
 .purchaser-dashboard {
     transform: translateX(-80px);
+
     h4 {
       color: $dark-blue;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
 }
 
@@ -57,4 +58,8 @@
     &:hover {
         text-decoration: none;
     }
+}
+
+p {
+  letter-spacing: 1px;
 }
