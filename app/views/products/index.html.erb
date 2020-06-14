@@ -25,7 +25,7 @@
             
 
   <div class="mid-col">
-    <div class="product-container">
+    <div class="product-cards-container">
       <div class="card-products">
         <% @products.each do |product| %>
           <%= render :partial => 'shared/product_card', locals: {:product => product } %>
