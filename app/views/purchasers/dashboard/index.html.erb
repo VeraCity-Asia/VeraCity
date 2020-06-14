@@ -6,7 +6,7 @@
 </div>
 <div class="purchaser-dashboard d-flex justify-content-between">
   <div class="purchaser-dashboard-offers mx-3">
-    <h4 style="color: black;">Pending Offers</h4>
+    <h4>Pending Offers</h4>
     <hr>
     <% @user.offers.each do |offer| %>
       <%  if offer.approved.nil?  %>
@@ -28,7 +28,7 @@
     <% end %>
   </div>
   <div class="purchaser-dashboard-products mx-3">
-    <h4 style="color: black;">Closed Offers</h4>
+    <h4>Closed Offers</h4>
     <hr>
     <% @user.offers.each do |offer| %>
       <%  if offer.approved.present?  %>
