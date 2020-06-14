@@ -26,22 +26,27 @@
 @import "components/offer_card.scss";
 @import "components/form";
 
+// Shared
 @import "pages/index";
 @import "pages/aboutus";
 
+// Sort-of Shared
 @import "pages/products/index";
 @import "pages/products/show";
 
-@import "pages/purchasers/index";
-
+// Messages
 @import "pages/messages/new";
 
 @import "pages/messages/message_card";
 @import "pages/messages/index";
 
+// Purchasers
+@import "pages/purchasers/index";
+
 @import "pages/purchasers/offers/show";
 @import "pages/purchasers/offers/index";
 
+// Suppliers
 @import "pages/suppliers/show";
 @import "pages/suppliers/offers/show";
 
