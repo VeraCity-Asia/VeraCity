@@ -3,7 +3,7 @@
   <% @offers.each do |offer| %>
     <div class="card">
       <h5>
-        Quantity: <$= offer.amount %>
+        Quantity: <%= offer.amount %>
       </h5>
       <p>
         Destination: $<%= offer.destination %>/unit
