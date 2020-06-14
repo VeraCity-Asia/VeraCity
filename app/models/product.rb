@@ -2,10 +2,13 @@ class Product < ApplicationRecord
   # valdation
   CATEGORY = ["Mask","thermometer","Bandage"]
   belongs_to :supplier
-  has_and_belongs_to_many :offers, dependent: :destroy
+  has_many :product_offers,  dependent: :destroy
+  has_many :offers, through: :product_offers
+
   has_and_belongs_to_many :certifications, dependent: :destroy
   has_many :messages, dependent: :destroy
   accepts_nested_attributes_for :certifications
+  has_many_attached :photos
 
   validates :name, :price, :production_quantity, :minimum_order_quantity, presence: true
   validates :category, inclusion: { in: CATEGORY }
@@ -35,4 +38,7 @@ class Product < ApplicationRecord
   using: {
     tsearch: { prefix: true}
   }
+
+
+
 end

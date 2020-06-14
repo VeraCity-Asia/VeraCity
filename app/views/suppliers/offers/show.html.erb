@@ -1,17 +1,54 @@
-<h1>Supplier#offer#show</h1>
-<div>Amount: <%= @offer.amount %></div>
-<div>Destination: <%= @offer.destination %></div>
-<div>Price: $<%= @offer.price %>/unit</div>
-<div>Payment: <%= @offer.payment %></div>
-<div>Approved Date: <%= @offer.approved_date %></div>
-<div>Purchaser: <%= @offer.user.name %></div>
-<% if @offer.approved.nil? %>
-  <p>Pending...</p>
-  <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put %>
-  <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put %>
-<% elsif @offer.approved.present? %>
-  <p>Generate your quote here</p>
-<% else  %>
-  <p>You have rejected the request</p>
-<% end %>
-<%= link_to 'Back to index', suppliers_offers_path %>
+<div class="offer-conatiner my-5">
+  <div class="offer-top-bar row justify-content-between">
+    <div class="quote-name">
+      <h1>Quote Confirmation</h1>
+    </div>
+    <div class="action-btn d-flex  my-2 mx-2">
+      <% if @offer.approved.nil? %>
+        <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put, :class =>"btn btn-success" %>
+        <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put, :class=>"btn btn-danger mx-3" %>
+      <% elsif @offer.approved.present? %>
+        <%= link_to 'generate quote here', generateoffer_suppliers_offer_path(@offer), :class => "btn btn-info" %>
+      <% else  %>
+        <p>You have rejected the request</p>
+      <% end %>
+      <%= link_to 'Back to index', suppliers_dashboard_path, :class => "btn btn-light mx-3" %>
+    </div>
+  </div>
+  <div class="offer-info row">
+    <div class="col-sm-6">
+      <h6>Destination</h6>
+      <hr>
+      <%= @offer.destination %>
+    </div>
+    <div class="col-sm-6">
+      <h6>Payment</h6>
+      <hr>
+      <%= @offer.payment %>
+    </div>
+    <div class="col-sm-6 my-3">
+      <h6>Approved Date</h6>
+      <hr>
+      <%= @offer.approved_date %>
+    </div>
+    <div class="col-sm-6 my-3">
+      <h6>Purchaser</h6>
+      <hr>
+      <%= @offer.user.name %>
+    </div>
+  </div>
+  <div class="row">
+    <% @offer.products.each do |p| %>
+      <div class="offer-product col-sm-12">
+        <div class="card-offer">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+          <div class="card-offer-infos">
+            <p>Product: <%= p.name %></p>
+            <p>Price: <%= p.price %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=”clearfix hidden-xs”></div>
+  <% end %>
+</div>

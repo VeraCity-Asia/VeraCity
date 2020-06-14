@@ -1,23 +1,19 @@
-<%= render 'shared/dashboard_button' %>
 <div class="about-me">
   <h1>My Profile</h1>
   <p>Name: <%= @user.name %></p>
   <p>Email: <%= @user.email %></p>
   <p>Country: <%= @user.country %></p>
 </div>
-
 <div class="purchaser-dashboard d-flex justify-content-between">
   <div class="purchaser-dashboard-offers mx-3">
     <h4>Pending Offers</h4>
     <!--   approved nil -->
     <% @user.offers.each do |offer| %>
-      <%= offer.approved %>
       <%  if offer.approved.nil?  %>
         <%= link_to purchasers_offer_path(offer) do %>
           <div class="card-offer">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
             <div class="card-offer-infos">
-              <p> Offer Amount: <%= offer.amount %></p>
               <p> Destination: <%= offer.destination %></p>
               <p> Payment: <%= offer.payment %> </p>
               <hr>
@@ -25,7 +21,7 @@
                 <p>Product Name: <%= product.name %></p>
                 <p>Product Category: <%= product.category %></p>
               <% end %>
-              </div>
+            </div>
           </div>
         <% end %>
       <% end %>
@@ -36,22 +32,21 @@
     <!--   approved true -->
     <!-- current no product approved -->
     <!-- for the design sake -->
-      <% @user.offers.each do |offer| %>
-        <%  if offer.approved = true  %>
-          <!-- use present to condition -->
-          <%= link_to purchasers_offer_path(offer) do %>
+    <% @user.offers.each do |offer| %>
+      <%  if offer.approved.present?  %>
+        <!-- use present to condition -->
+        <%= link_to purchasers_offer_path(offer) do %>
           <div class="card-offer">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
             <div class="card-offer-infos">
-                <p> Approved</p>
-                <p> Offer Amount: <%= offer.amount %></p>
-                <p> Destination: <%= offer.destination %></p>
-                <p> Payment: <%= offer.payment %> </p>
-                <hr>
-                <% offer.products.each do | product| %>
-                  <p>Product Name: <%= product.name %></p>
-                  <p>Product Category: <%= product.category %></p>
-                <% end %>
+              <p> <%= offer.approved %></p>
+              <p> Destination: <%= offer.destination %></p>
+              <p> Payment: <%= offer.payment %> </p>
+              <hr>
+              <% offer.products.each do | product| %>
+                <p>Product Name: <%= product.name %></p>
+                <p>Product Category: <%= product.category %></p>
+              <% end %>
             </div>
           </div>
         <% end %>

@@ -5,12 +5,6 @@
       <h5>
         Purchaser: <%= offer.user.name %>
       </h5>
-      <h5>
-        Amount: <%= offer.amount %>
-      </h5>
-      <p>
-        Price: $<%= offer.price %>/unit
-      </p>
       <%= link_to "Details", suppliers_offer_path(offer) %>
     </div>
   <% end %>

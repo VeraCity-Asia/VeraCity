@@ -24,23 +24,30 @@
 @import "components/offer_card.scss";
 @import "components/form";
 @import "pages/products/index";
+@import "pages/products/show";
 @import "pages/index";
 @import "pages/registration";
 @import "pages/purchasers/index";
 @import "pages/messages/new";
 @import "pages/messages/message_card";
 @import "pages/messages/index";
+@import "pages/purchasers/offers/show";
+@import "pages/purchasers/offers/index";
+@import "pages/suppliers/offers/show";
 
 body {
   text-align: center;
   margin-bottom: 1em;
   font-family: "Noticia Text", serif;
-  background-color: #1f2833;
+  background-color: #fff8ff;
   h1,
   h2,
   h3,
   h4 {
     font-family: "Open Sans", sans-serif;
+  }
+  .container {
+    box-sizing: border-box;
   }
 }
 

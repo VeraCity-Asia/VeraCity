@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :offers, dependent: :destroy
   validates :name, presence: true
   has_one :supplier
+
+  scope :purchaser, -> { where(:user_type => "purchaser")}
+  scope :supplier, -> { where(:user_type => "supplier")}
 end

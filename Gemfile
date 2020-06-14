@@ -25,6 +25,11 @@ gem 'redis', '~> 4.0'
 # Pundit authorization
 gem 'pundit'
 
+# add pdfkit for generate pdf
+gem 'pdfkit', '~> 0.8.4.2'
+gem 'wkhtmltopdf-binary', '~> 0.12.3'
+gem 'wkhtmltopdf-heroku'
+
 # Faker gem
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 #pg search gem
@@ -41,7 +46,7 @@ gem 'devise'
 # gem 'bootstrap', '~> 4.5.0'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
-gem 'dotenv-rails', groups: [:development, :test]
+
 
 
 gem 'simple_form'
@@ -72,3 +77,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'cloudinary', '~> 1.12.0'
+gem 'dotenv-rails', groups: [:development, :test]

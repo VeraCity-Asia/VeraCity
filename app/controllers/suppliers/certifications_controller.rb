@@ -5,10 +5,13 @@ class Suppliers::CertificationsController < ApplicationController
 
   def new
     @certification = Certification.new
+    @product = current_user.supplier.products.last
+    authorize([:suppliers, @certification])
   end
-
+  
   def create
     @certification = Certification.new(certification_params)
+    authorize([:suppliers, @certification])
     if @certification.save
       redirect_to products_path
     else
@@ -36,6 +39,6 @@ class Suppliers::CertificationsController < ApplicationController
   end
 
   def certification_params
-    params.require(:certification).permit(:number, :validity, :category, :listing_number, :code, :authority)
+    params.require(:certification).permit(:number, :validity, :category, :listing_number, :code, :authority, photos: [])
   end
 end

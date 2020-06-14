@@ -1,6 +1,7 @@
 # development wipe
 if Rails.env.development?
   Message.destroy_all
+  ProductOffer.destroy_all
   Product.destroy_all
   Certification.destroy_all
   License.destroy_all
@@ -48,7 +49,7 @@ puts "#######################################################################"
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 8),
     country: Faker::Address.country,
-    user_type: Faker::Company.buzzword
+    user_type: ["supplier", "purchaser"].sample
   )
   puts "#{user.name} created…"
 
@@ -67,9 +68,7 @@ puts "#######################################################################"
 
   rand(1..3).times do
     offer = Offer.create!(
-      amount: rand(100..320),
       destination:Faker::Address.city,
-      price: rand(3..99),
       payment:["Visa", "MasterCard", "Invoice", "Wire Transfer"].sample,
       approved_date: Faker::Date.forward(days: 23),
       approved: nil,
@@ -129,4 +128,26 @@ puts "#######################################################################"
 puts "#######################################################################"
 puts "Seeding Product Certifications join table"
 Product.all.each { |p| p.certifications << Certification.all.sample }
+puts "#######################################################################"
+
+puts "#######################################################################"
+puts "Seeding messages"
+Product.all.each do |p|
+  User.purchaser.each do |u|
+    Message.create!(
+      product_id: p.id,
+      sender_id: u.id,
+      receiver_id: p.supplier.user_id,
+      title: "Message about #{p.name}",
+      content: "Hello #{p.supplier.user.name}, I am #{u.name}"
+    )
+    Message.create!(
+      product_id: p.id,
+      sender_id: p.supplier.user_id,
+      receiver_id: u.id,
+      title: "Reply regarding #{p.name}",
+      content: "Thank you for your interest #{u.name}, sincerely—#{p.supplier.user.name}"
+    )
+  end
+end
 puts "#######################################################################"
