@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_073440) do
+ActiveRecord::Schema.define(version: 2020_06_14_073002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 2020_06_12_073440) do
   end
 
   create_table "certifications", force: :cascade do |t|
-    t.integer "number"
+    t.string "number"
     t.date "validity"
     t.string "category"
-    t.integer "listing_number"
+    t.string "listing_number"
     t.string "code"
     t.string "authority"
     t.datetime "created_at", precision: 6, null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_06_12_073440) do
 
   create_table "licenses", force: :cascade do |t|
     t.string "authority"
-    t.integer "number"
+    t.string "number"
     t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
