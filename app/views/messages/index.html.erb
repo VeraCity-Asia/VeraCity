@@ -13,7 +13,7 @@
       <% else %>
         <div class="messages row d-flex">
           <ul>
-            <% @products.each do |product| %>
+            <% @products.each do |product| %> <!-- this @products is a nil class. we need to fix that -->
               <% product.messages.each do |message| %>
                 <%= link_to '#' do %>
                   <%= render 'shared/message_card', 
