@@ -6,8 +6,8 @@
 </div>
 <div class="purchaser-dashboard d-flex justify-content-between">
   <div class="purchaser-dashboard-offers mx-3">
-    <h4>Pending Offers</h4>
-    <!--   approved nil -->
+    <h4 style="color: black;">Pending Offers</h4>
+    <hr>
     <% @user.offers.each do |offer| %>
       <%  if offer.approved.nil?  %>
         <%= link_to purchasers_offer_path(offer) do %>
@@ -28,10 +28,8 @@
     <% end %>
   </div>
   <div class="purchaser-dashboard-products mx-3">
-    <h4>Closed Offers</h4>
-    <!--   approved true -->
-    <!-- current no product approved -->
-    <!-- for the design sake -->
+    <h4 style="color: black;">Closed Offers</h4>
+    <hr>
     <% @user.offers.each do |offer| %>
       <%  if offer.approved.present?  %>
         <!-- use present to condition -->
