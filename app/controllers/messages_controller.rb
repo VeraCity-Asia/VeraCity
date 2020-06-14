@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
-    # policy_class: app/policies/message_policy#create 
+    # policy_class: app/policies/message_policy#create
     authorize @message
     @product = Product.find(params[:product_id])
   end
@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
     @message.sender_id = current_user.id
     @message.receiver_id = @product.supplier.user_id
 
-    # policy_class: app/policies/message_policy#create 
+    # policy_class: app/policies/message_policy#create
     authorize @message
 
     if @message.save
