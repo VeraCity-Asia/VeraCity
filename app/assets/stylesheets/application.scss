@@ -17,6 +17,7 @@
 @import "components/jiayou";
 @import "components/footer";
 @import "components/search";
+@import "components/signup_bar";
 @import "components/button";
 @import "components/product_card";
 @import "components/mv_product_card";
@@ -39,10 +40,10 @@
 body {
     text-align: center;
     margin-bottom: 1em;
-    font-family: 'Noticia Text', serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #F8F8FF;
     h1, h2, h3, h4 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Noticia Text', serif;
     }
     .container {
         box-sizing: border-box;
