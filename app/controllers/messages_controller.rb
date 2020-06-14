@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   skip_after_action :verify_policy_scoped
-  
+
   def index
     authorize current_user, policy_class: MessagePolicy
     @messages = Message.latest_messages_by_product(current_user)
@@ -40,6 +40,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:title, :content)
+    params.require(:message).permit(:title, :content, :product_id)
   end
 end
