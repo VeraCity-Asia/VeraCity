@@ -10,6 +10,7 @@
 @import "font-awesome";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 // Your CSS partials
 @import "components/index";
 @import "components/banner";
@@ -24,15 +25,24 @@
 @import "components/dashboard_button";
 @import "components/offer_card.scss";
 @import "components/form";
+
+@import "pages/index";
+@import "pages/aboutus";
+
 @import "pages/products/index";
 @import "pages/products/show";
-@import "pages/index";
+
 @import "pages/purchasers/index";
+
 @import "pages/messages/new";
+
 @import "pages/messages/message_card";
 @import "pages/messages/index";
+
 @import "pages/purchasers/offers/show";
 @import "pages/purchasers/offers/index";
+
+@import "pages/suppliers/show";
 @import "pages/suppliers/offers/show";
 
 

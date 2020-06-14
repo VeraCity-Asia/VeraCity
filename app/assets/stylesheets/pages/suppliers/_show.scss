@@ -1,0 +1,30 @@
+.supplier-show {
+    background-color: white;
+    padding: 2em 32px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+
+    .about-supplier {
+        text-align: left;
+        line-height: 1.2em;
+        .detailed-info {
+            margin-top: 3em;
+        }
+    }
+    #others {
+        margin-top: 3em;
+    }
+    .other-products-row {
+        margin-top: 1em;
+        .supplier-product-info {
+            margin-top: 0 32px;
+            border: thin gray solid;
+            box-sizing: border-box;
+            padding: 1em 1em;
+            margin: 32px 0;
+            border-radius: 4px;
+            text-align: justify;
+            line-height: 1em;
+        }
+    }
+}
