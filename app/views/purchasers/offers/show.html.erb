@@ -43,17 +43,21 @@
     </div>
   </div>
   <div class="row">
-    <% @offer.products.each do |p| %>
-      <div class="offer-product col-sm-12">
-        <div class="card-offer">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
-          <div class="card-offer-infos">
-            <p>Product: <%= p.name %></p>
-            <p>Price: <%= p.price %></p>
+    <% if @offer.products.empty?  %>
+      <p>Products have been removed from platfrom, please contact <%= @offer.supplier.name %> for more information. </p>
+    <% else %>
+      <% @offer.products.each do |p| %>
+        <div class="offer-product col-sm-12">
+          <div class="card-offer">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+            <div class="card-offer-infos">
+              <p>Product: <%= p.name %></p>
+              <p>Price: <%= p.price %></p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class=”clearfix hidden-xs”></div>
+        <div class=”clearfix hidden-xs”></div>
+      <% end %>
     <% end %>
   </div>
 </div>

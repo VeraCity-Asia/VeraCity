@@ -14,4 +14,6 @@ class Offer < ApplicationRecord
     return if user.user_type == "supplier"
     offer = self.find_by(approved: nil, user: user, supplier: product.supplier)
   end
+
+
 end
