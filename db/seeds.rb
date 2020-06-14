@@ -1,6 +1,7 @@
 # development wipe
 if Rails.env.development?
   Message.destroy_all
+  ProductOffer.destroy_all
   Product.destroy_all
   Certification.destroy_all
   License.destroy_all
@@ -67,9 +68,7 @@ puts "#######################################################################"
 
   rand(1..3).times do
     offer = Offer.create!(
-      amount: rand(100..320),
       destination:Faker::Address.city,
-      price: rand(3..99),
       payment:["Visa", "MasterCard", "Invoice", "Wire Transfer"].sample,
       approved_date: Faker::Date.forward(days: 23),
       approved: nil,
@@ -133,7 +132,7 @@ puts "#######################################################################"
 
 puts "#######################################################################"
 puts "Seeding messages"
-Product.all.each do |p| 
+Product.all.each do |p|
   User.purchaser.each do |u|
     Message.create!(
       product_id: p.id,

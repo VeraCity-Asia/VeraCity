@@ -11,7 +11,7 @@ class Suppliers::ProductsController < ApplicationController
     @product.supplier = supplier
     if @product.save
       authorize([:suppliers, @product])
-      redirect_to @product
+      redirect_to new_suppliers_certification_path
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Suppliers::ProductsController < ApplicationController
   def destroy
     @product.destroy
     authorize([:suppliers, @product])
-    redirect_to products_path
+    redirect_to suppliers_dashboard_path
   end
 
   private

@@ -25,6 +25,11 @@ gem 'redis', '~> 4.0'
 # Pundit authorization
 gem 'pundit'
 
+# add pdfkit for generate pdf
+gem 'pdfkit', '~> 0.8.4.2'
+gem 'wkhtmltopdf-binary', '~> 0.12.3'
+gem 'wkhtmltopdf-heroku'
+
 # Faker gem
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 #pg search gem

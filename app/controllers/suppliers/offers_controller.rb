@@ -14,10 +14,21 @@ class Suppliers::OffersController < ApplicationController
   def update
     @offer.update(offer_params)
     # policy_class: app/policies/suppliers/offer_policy#show
+    @offer.update(approved_date: Time.now)
     authorize([:suppliers, @offer])
     redirect_to suppliers_offer_path(@offer)
   end
 
+  def generateoffer
+    authorize([:suppliers, @offer])
+    @user = current_user
+    # policy_class: app/policies/suppliers/offer_policy#show
+    html = render_to_string(:generateoffer => "generateoffer.html.erb",:layout => false)
+    kit = PDFKit.new(html, :page_size => 'Letter')
+    kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/pages/suppliers/offers/_generateoffer.scss"
+    kit.to_pdf
+    send_data(kit.to_pdf, :filename => "quote_#{@user.name}.pdf", :type => "application/pdf")
+  end
 
 
   private

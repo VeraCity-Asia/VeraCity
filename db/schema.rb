@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_071546) do
+ActiveRecord::Schema.define(version: 2020_06_14_073002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 2020_06_11_071546) do
   end
 
   create_table "certifications", force: :cascade do |t|
-    t.integer "number"
+    t.string "number"
     t.date "validity"
     t.string "category"
-    t.integer "listing_number"
+    t.string "listing_number"
     t.string "code"
     t.string "authority"
     t.datetime "created_at", precision: 6, null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_071546) do
 
   create_table "licenses", force: :cascade do |t|
     t.string "authority"
-    t.integer "number"
+    t.string "number"
     t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 2020_06_11_071546) do
   end
 
   create_table "offers", force: :cascade do |t|
-    t.integer "amount"
     t.string "destination"
     t.integer "price"
     t.string "payment"
@@ -87,13 +86,19 @@ ActiveRecord::Schema.define(version: 2020_06_11_071546) do
     t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "amount"
     t.index ["supplier_id"], name: "index_offers_on_supplier_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
-  create_table "offers_products", id: false, force: :cascade do |t|
+  create_table "product_offers", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "offer_id", null: false
+    t.integer "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_product_offers_on_offer_id"
+    t.index ["product_id"], name: "index_product_offers_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -161,6 +166,8 @@ ActiveRecord::Schema.define(version: 2020_06_11_071546) do
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "offers", "suppliers"
   add_foreign_key "offers", "users"
+  add_foreign_key "product_offers", "offers"
+  add_foreign_key "product_offers", "products"
   add_foreign_key "products", "suppliers"
   add_foreign_key "suppliers", "users"
   add_foreign_key "verifications", "suppliers"

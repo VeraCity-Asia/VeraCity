@@ -19,6 +19,10 @@ class Suppliers::OfferPolicy < ApplicationPolicy
     return true
   end
 
+  def generateoffer?
+    return true
+  end
+
 
   def show?
     return true
