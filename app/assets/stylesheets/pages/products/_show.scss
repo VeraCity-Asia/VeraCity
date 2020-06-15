@@ -1,8 +1,6 @@
-
 h1 {
   font-weight: bolder;
 }
-
 
 
 .product-container {
@@ -19,5 +17,19 @@ h1 {
     padding: 8px 16px;
     flex-basis: 20%;
     margin-bottom: 1em;
+  }
+}
+
+.button-group {
+  margin: 0 32px;
+  display: flex;
+  .btn-supplier {
+    background-color: #DCDCDC;
+    height: 36px;
+    border-radius: 4px;
+  }
+  .btn-success {
+    border-radius: 4px;
+    color: white;
   }
 }

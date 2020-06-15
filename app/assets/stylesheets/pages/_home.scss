@@ -5,8 +5,8 @@ h2 {
 
 .certification-checks-icons {
     padding: 24px 32px;
-    height: 100px;
-    width: 50%;
+    height: 120px;
+    width: 70%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
@@ -19,4 +19,8 @@ h2 {
             height: 100%;
         }
     }
+}
+
+.container-info h1 {
+    margin: 2em 0;
 }
