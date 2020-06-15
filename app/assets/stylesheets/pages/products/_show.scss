@@ -3,7 +3,6 @@ h1 {
 }
 
 
-
 .product-container {
   background-color: white;
 }
@@ -26,6 +25,8 @@ h1 {
   display: flex;
   .btn-supplier {
     background-color: #DCDCDC;
+    height: 36px;
+    border-radius: 4px;
   }
   .btn-success {
     border-radius: 4px;

@@ -7,20 +7,23 @@
 
   <div class="message-container">
     <div class="messages row">
-    <% if @messages.nil? %>
-      <p>Hmm.. Maybe you should message someone</p>
-    <% else %>
-      <% @messages.each do |message| %>
-      <div class="row">
-        <div>
-          <strong><%= message.product.name %></strong> — 
+      <% if @messages.nil? %>
+        <p>Hmm.. Maybe you should message someone</p>
+
+      <% else %>
+        <% @messages.each do |message| %>
+        <div class="row">
+
+          <div>
+            <strong><%= message.product.name %></strong> — 
+          </div>
+
+          <div>
+            <%= message.content %> | <%= message.created_at %>
+          </div>
         </div>
-        <div>
-          <%= message.content %> | <%= message.created_at %>
-        </div>
-      </div>
+        <% end %>
       <% end %>
-    <% end %>
       </div>
     </div>
   </div>
