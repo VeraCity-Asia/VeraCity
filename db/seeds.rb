@@ -1,5 +1,6 @@
 # development wipe
 if Rails.env.development?
+  Cecv.destroy_all
   Message.destroy_all
   ProductOffer.destroy_all
   Product.destroy_all
@@ -9,6 +10,9 @@ if Rails.env.development?
   Supplier.destroy_all
   User.destroy_all
 end
+
+# variables
+file_path = "db/repository/registration.csv"
 
 # users seed
 puts "#######################################################################"
@@ -153,4 +157,10 @@ Product.all.each do |p|
     )
   end
 end
+puts "#######################################################################"
+
+puts "#######################################################################"
+# seed the FDA supplier database
+puts "Seeding FDA Supplier Database"
+Import::FdaRegistration.call(file_path)
 puts "#######################################################################"
