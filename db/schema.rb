@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_122313) do
+ActiveRecord::Schema.define(version: 2020_06_15_132817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,14 +166,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_122313) do
   end
 
   create_table "verifications", force: :cascade do |t|
-    t.boolean "veracity_approved"
-    t.boolean "valid_registration_license"
-    t.boolean "registration_completion"
-    t.boolean "has_factory"
-    t.boolean "has_international_certification"
-    t.boolean "audit_completed"
-    t.string "owner_name"
-    t.boolean "has_production_capacity"
+    t.boolean "veracity_approved", default: false
+    t.boolean "valid_registration_license", default: false
+    t.boolean "registration_completion", default: false
     t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
