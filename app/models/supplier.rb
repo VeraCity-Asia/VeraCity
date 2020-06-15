@@ -9,6 +9,11 @@ class Supplier < ApplicationRecord
   has_many :offers, dependent: :destroy
   has_many :licenses, dependent: :destroy
   has_many :verifications, dependent: :destroy
-  validates :delivery_terms, inclusion: { in: DELIVERYTERM }
-  validates :payment_terms, inclusion: { in: PAYMETTERM }
+  validates :delivery_terms, inclusion: { in: DELIVERYTERM, allow_blank: true }
+  validates :payment_terms, inclusion: { in: PAYMETTERM, allow_blank: true }
+
+  def information_complete?
+    delivery_terms.present? && payment_terms.present?
+  end
+  
 end

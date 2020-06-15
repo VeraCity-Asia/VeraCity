@@ -11,7 +11,7 @@ class Suppliers::LicensesController < ApplicationController
     @license.supplier = supplier
     authorize @license
     if @license.save
-      redirect_to products_path, notice: 'Your license was successfully created.'
+      redirect_to suppliers_dashboard_path, notice: 'Your license was successfully created.'
     else
       render :new
     end
@@ -25,6 +25,6 @@ class Suppliers::LicensesController < ApplicationController
   private
 
   def license_params
-    params.require(:license).permit(:authority, :number, photos: [])
+    params.require(:license).permit(:authority, :number, :start_date, :expired_date, photos: [])
   end
 end
