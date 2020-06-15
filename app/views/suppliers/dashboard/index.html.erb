@@ -1,7 +1,10 @@
-
 <div class="col-sm-12">
+  <% unless @user.supplier.information_complete? %>
+    <%= render 'shared/flashes', alert: "Please complete your supplier profile…" %>
+  <% end  %>
   <div class="about-me">
     <h1>My Profile</h1>
+
     <p>Name: <%= @user.name %></p>
     <p>Company: <%= @user.supplier.name %></p>
     <p>Location: <%= @user.supplier.location %></p>
