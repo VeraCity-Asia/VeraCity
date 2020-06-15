@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   root to: 'pages#home'
-  get 'aboutus', to: 'pages#aboutus'
+  get 'about', to: 'pages#about'
   get 'welcome', to: 'pages#registration', as: :welcome
-  get 'contact_us', to: 'pages#contact_us'
+  get 'contact', to: 'pages#contact'
   resources :products, only: [:index, :show]
-  resources :messages, only: [:index, :new, :create] do
+  resources :messages, only: [:index, :new, :create, :show] do
     collection do
       get 'by_product'
     end
@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     resources :products, only: [:create, :new, :edit, :update, :destroy]
     get 'dashboard', to: 'dashboard#index'
   end
-  resources :suppliers, only: [:show]
+  resources :suppliers, only: [:show, :edit, :update]
   namespace :purchasers do
-    resources :offers, only: [:new, :show, :index, :create, :destroy]
+    resources :offers, only: [:new, :show, :index, :create, :update, :destroy]
     get 'dashboard', to: 'dashboard#index'
   end
 end

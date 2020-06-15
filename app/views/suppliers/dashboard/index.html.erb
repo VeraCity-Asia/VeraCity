@@ -1,87 +1,100 @@
-<div class="col-sm-12">
-  <% unless @user.supplier.information_complete? %>
-    <%= render 'shared/flashes', alert: "Please complete your supplier profile…" %>
-  <% end  %>
-  <div class="about-me">
-    <h1>My Profile</h1>
-
-    <p>Name: <%= @user.name %></p>
-    <p>Company: <%= @user.supplier.name %></p>
-    <p>Location: <%= @user.supplier.location %></p>
-    <p>Email: <%= @user.email %></p>
-    <div class="supplier-btn row justify-content-center">
-      <%= link_to "Add new product", new_suppliers_product_path, :class => "btn btn-outline-info mx-2" %>
-      <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info mx-2" %>
-      <%= link_to "Add new certification", new_suppliers_certification_path, :class => "btn btn-outline-info mx-2" %>
-    </div>
+<div class="about-me">
+  <h1>My Profile</h1>
+  <p>Name: <%= @user.name %></p>
+  <p>Company: <%= @user.supplier.name %></p>
+  <p>Location: <%= @user.supplier.location %></p>
+  <p>Email: <%= @user.email %></p>
+  <div class="supplier-btn row justify-content-center">
+    <%= link_to "Add new product", new_suppliers_product_path, :class => "btn btn-outline-info mx-2" %>
+    <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info mx-2" %>
+    <%= link_to "Add new certification", new_suppliers_certification_path, :class => "btn btn-outline-info mx-2" %>
   </div>
-  <div class="purchaser-dashboard d-flex justify-content-between">
-    <div class="purchaser-dashboard-offers mx-3">
-      <h4>Pending Offers</h4>
-      <hr>
-      <!--   approved nil -->
-      <% @user.supplier.offers.each do |offer| %>
-        <%  if offer.approved.nil?  %>
-          <%= link_to suppliers_offer_path(offer) do %>
-            <div class="card-offer">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
-              <div class="card-offer-infos">
-                <p> Destination: <%= offer.destination %></p>
-                <p> Payment: <%= offer.payment %> </p>
-                <hr>
-                <% offer.products.each do | product| %>
-                  <p>Product Name: <%= product.name %></p>
-                  <p>Product Category: <%= product.category %></p>
-                <% end %>
-              </div>
-
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="purchaser-dashboard-products mx-3">
-      <h4>Closed Offers</h4>
-      <hr>
-      <% @user.supplier.offers.each do |offer| %>
-        <%  if offer.approved.present?  %>
-          <%= link_to suppliers_offer_path(offer) do %>
-            <div class="card-offer">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
-              <div class="card-offer-infos">
-                <p> <%= offer.approved %></p>
-                <p> Destination: <%= offer.destination %></p>
-                <p> Payment: <%= offer.payment %> </p>
-                <hr>
-                <% offer.products.each do | product| %>
-                  <p>Product Name: <%= product.name %></p>
-                  <p>Product Category: <%= product.category %></p>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
+</div>
+<div class="row justify-content-center">
+  <div>
+    License
+    <% @user.supplier.licenses.each do |license| %>
+      <p>Authority: <%= license.authority %></p>
+      <p>Number: <%= license.number %></p>
+      <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}  %>
+    <% end %>
   </div>
-
-  <h4>Listed Products</h4>
-  <hr>
-  <div class="row justify-content-center">
+  <div>
+    Certification
     <% @user.supplier.products.each do |p| %>
-      <%= link_to product_path(p) do %>
-        <div class="col-sm-4">
-          <div class="card my-3" style="width: 15rem;">
-            <%= image_tag "mask.jpg", {:style => "width:100%; height:80%;"} %>
-            <div class="card-body">
-              <p class="card-text"><%= p.name %></p>
-              <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-supplier" %>
-              <%= link_to "Destroy", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-supplier" %>
-
-            </div>
-          </div>
-        </div>
+      <% p.certifications.each do |c|  %>
+        <p>Category: <%= c.category %></p>
+        <p>Number:<%= c.listing_number  %></p>
+        <p>Code: <%= c.code %></p>
+        <%= link_to "Edit", edit_suppliers_certification_path(c) %>
       <% end %>
     <% end %>
   </div>
+</div>
+<div class="purchaser-dashboard d-flex justify-content-between">
+  <div class="purchaser-dashboard-offers mx-3">
+    <h4>Pending Offers</h4>
+    <hr>
+    <!--   approved nil -->
+    <% @user.supplier.offers.each do |offer| %>
+      <%  if offer.confirmed.present?  %>
+        <%= link_to suppliers_offer_path(offer) do %>
+          <div class="card-offer">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+            <div class="card-offer-infos">
+              <p> Destination: <%= offer.destination %></p>
+              <p> Payment: <%= offer.payment %> </p>
+              <hr>
+              <% offer.products.each do | product| %>
+                <p>Product Name: <%= product.name %></p>
+                <p>Product Category: <%= product.category %></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="purchaser-dashboard-products mx-3">
+    <h4>Closed Offers</h4>
+    <hr>
+    <% @user.supplier.offers.each do |offer| %>
+      <%  if offer.approved.present?  %>
+        <%= link_to suppliers_offer_path(offer) do %>
+          <div class="card-offer">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+            <div class="card-offer-infos">
+              <p> <%= offer.approved %></p>
+              <p> Destination: <%= offer.destination %></p>
+              <p> Payment: <%= offer.payment %> </p>
+              <hr>
+              <% offer.products.each do | product| %>
+                <p>Product Name: <%= product.name %></p>
+                <p>Product Category: <%= product.category %></p>
+              <% end %>
+              >>>>>>> master
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<h4>Listed Products</h4>
+<hr>
+<div class="row justify-content-center">
+  <% @user.supplier.products.each do |p| %>
+    <%= link_to product_path(p) do %>
+      <div class="col-sm-4">
+        <div class="card my-3" style="width: 15rem;">
+          <%= image_tag "mask.jpg", {:style => "width:100%; height:80%;"} %>
+          <div class="card-body">
+            <p class="card-text"><%= p.name %></p>
+            <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-supplier" %>
+            <%= link_to "Destroy", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-supplier" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
