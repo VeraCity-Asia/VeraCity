@@ -6,13 +6,14 @@
     line-height: 2.5em;
     margin-left: auto;
     margin-right: auto;
-    line-height: 70px;
     box-sizing: border-box;
+    width: 100%;
     
     h1, h2, h3, h4, h5, h6 {
         font-weight: bolder;
         font-size: xx-large;
     }
+    
     a {
         line-height: normal;
 
@@ -30,6 +31,7 @@
         color: white;
         font-weight: bolder;
     }
+    
     .form-check-input {
         transform: translateY(25px);
     }

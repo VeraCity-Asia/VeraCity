@@ -1,18 +1,24 @@
 .search-box {
   margin: 32px 0;
+  
+
   .btn {
     margin-left: 2em;
     height: 100%;
   }
 }
-.filter-container {
-  padding: 16px;
-}
+
+
 .filter {
   text-align: left;
 }
+
 .products-container {
   display: flex;
+
+  .filter-container {
+    padding: 16px;
+  }
 }
 
 .row {
@@ -33,7 +39,8 @@
   padding: 1em 0.5em;
   border-radius: 6px;
   height: fit-content;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+
   .img-product {
     height: 120px;
     margin-bottom: 32px;

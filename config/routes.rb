@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'aboutus', to: 'pages#aboutus'
   get 'welcome', to: 'pages#registration', as: :welcome
+  get 'contact_us', to: 'pages#contact_us'
   resources :products, only: [:index, :show]
   resources :messages, only: [:index, :new, :create] do
     collection do
