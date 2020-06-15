@@ -8,8 +8,8 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 // Your CSS partials
 @import "components/index";
@@ -34,6 +34,8 @@
 // Sort-of Shared
 @import "pages/products/index";
 @import "pages/products/show";
+@import "pages/index";
+@import "pages/registration";
 
 // Messages
 @import "pages/messages/new";
@@ -54,27 +56,26 @@
 @import "pages/suppliers/dashboards/index";
 
 body {
-    text-align: center;
-    margin-bottom: 1em;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #F8F8FF;
-    h1, h2, h3, h4 {
-        font-family: 'Noticia Text', serif;
-    }
-    .container {
-        box-sizing: border-box;
-    }
+  text-align: center;
+  margin-bottom: 1em;
+  font-family: "Open Sans", sans-serif;
+  background-color: #f8f8ff;
+
+  h1, h2, h3, h4 {
+    font-family: "Noticia Text", serif;
+  }
+
+  .container {
+    box-sizing: border-box;
+    margin-top: 3em;
 }
 
 .filler-page {
-    margin-top: 2em;
-    margin-bottom: 2em;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .container-fluid {
-    width: 70vw;
+  width: 70vw;
 }
-
-.container {
-    margin-top: 3em;
 }
