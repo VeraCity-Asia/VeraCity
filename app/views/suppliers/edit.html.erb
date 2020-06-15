@@ -1,0 +1,22 @@
+<div class="form">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 offset-sm-2 my-2">
+      <h1>Add information</h1>
+      <%= simple_form_for @supplier do |f| %>
+        <div class="form-inputs">
+          <%= f.input :name, label:"Company name" %>
+          <%= f.input :location %>
+          <%= f.input :industry %>
+          <%= f.input :delivery_terms, collection: Supplier::DELIVERYTERM, prompt: :translate %>
+          <%= f.input :payment_terms, collection: Supplier::PAYMETTERM, prompt: :translate %>
+          <%= f.input :nearest_port %>
+          <%= f.input :established %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, value: "Save" %>
+          <%= link_to "Back", suppliers_dashboard_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
