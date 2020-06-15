@@ -18,12 +18,10 @@ class Purchasers::OffersController < ApplicationController
   end
 
   def create
-    @offer = Offer.new(offer_params)
-    @product_offer = ProductOffer.new(product_offer_params)
     @product = Product.find(params[:offer][:product_id])
+    @offer = Offer.find_or_initialize_by(user: current_user, supplier: @product.supplier, confirmed: false)
+    @product_offer = ProductOffer.new(product_offer_params)
     @offer.products << @product
-    @offer.user = current_user
-    @offer.supplier = @product.supplier
     @product_offer.product_id = @product.id
     # policy_class: app/policies/purchasers/offer_policy#create
     authorize([:purchasers, @offer])

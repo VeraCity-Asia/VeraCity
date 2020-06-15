@@ -11,8 +11,8 @@ class Offer < ApplicationRecord
   validates :payment, inclusion: { in: PAYMENT }
 
   def self.add(user, product)
-    return if user.user_type == "supplier"
-    offer = self.find_by(approved: nil, user: user, supplier: product.supplier)
+    return if user.supplier?
+    offer = self.find_or_initialize_by(confirmed: false, user: user, supplier: product.supplier)
   end
 
 
