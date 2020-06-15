@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :products, only: [:create, :new, :edit, :update, :destroy]
     get 'dashboard', to: 'dashboard#index'
   end
-  resources :suppliers, only: [:show]
+  resources :suppliers, only: [:show, :edit, :update]
   namespace :purchasers do
     resources :offers, only: [:new, :show, :index, :create, :destroy]
     get 'dashboard', to: 'dashboard#index'
