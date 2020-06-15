@@ -2,7 +2,7 @@
     overflow: hidden;
     height: 160px;
     background: white;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
     display: flex;
     text-align: left;
     margin-bottom: 32px;
@@ -12,7 +12,7 @@
   
   .card-product img {
     height: 100%;
-    width: 120px;
+    width: 160px;
     object-fit: cover;
   }
   

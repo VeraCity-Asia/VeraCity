@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_073002) do
+ActiveRecord::Schema.define(version: 2020_06_15_031718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,13 +38,14 @@ ActiveRecord::Schema.define(version: 2020_06_14_073002) do
 
   create_table "certifications", force: :cascade do |t|
     t.string "number"
-    t.date "validity"
     t.string "category"
     t.string "listing_number"
     t.string "code"
     t.string "authority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "start_date"
+    t.date "expired_date"
   end
 
   create_table "certifications_products", id: false, force: :cascade do |t|
@@ -59,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_06_14_073002) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "kind"
+    t.date "start_date"
+    t.date "expired_date"
     t.index ["supplier_id"], name: "index_licenses_on_supplier_id"
   end
 

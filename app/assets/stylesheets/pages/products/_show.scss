@@ -1,4 +1,3 @@
-
 h1 {
   font-weight: bolder;
 }
@@ -19,5 +18,17 @@ h1 {
     padding: 8px 16px;
     flex-basis: 20%;
     margin-bottom: 1em;
+  }
+}
+
+.button-group {
+  margin: 0 32px;
+  display: flex;
+  .btn-supplier {
+    background-color: #DCDCDC;
+  }
+  .btn-success {
+    border-radius: 4px;
+    color: white;
   }
 }

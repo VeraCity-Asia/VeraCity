@@ -85,6 +85,8 @@ Supplier.all.each { |s| License.create!(
 
     authority: "#{Faker::Space.galaxy} #{Faker::ElectricalComponents.active} Agency",
     number: Faker::Alphanumeric.alphanumeric(number: 10),
+    start_date:Faker::Date.forward(days: 170),
+    expired_date: Date.today,
     supplier: s
 )}
 
@@ -111,11 +113,12 @@ puts "Creating certifications"
 4.times do
   certification = Certification.create!(
     number: rand(23..5746),
-    validity: Faker::Date.forward(days: 170),
     category:["CE", "FDA", "ISO"].sample,
     listing_number: Faker::Number.leading_zero_number(digits: 10),
     code: Faker::Alphanumeric.alphanumeric(number: 5),
-    authority: Faker::IndustrySegments.sub_sector
+    authority: Faker::IndustrySegments.sub_sector,
+    start_date:Faker::Date.forward(days: 170),
+    expired_date: Date.today
   )
 end
 puts "#{Certification.count} Certifications created…"
@@ -133,7 +136,7 @@ puts "#######################################################################"
 puts "#######################################################################"
 puts "Seeding messages"
 Product.all.each do |p|
-  User.purchaser.each do |u|
+  User.where(user_type: :purchaser).each do |u|
     Message.create!(
       product_id: p.id,
       sender_id: u.id,
