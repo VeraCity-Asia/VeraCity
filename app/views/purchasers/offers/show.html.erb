@@ -1,39 +1,37 @@
 <div class="offer-container my-5">
   <div class="offer-top-bar row justify-content-between">
-
     <div class="quote-name">
       <h1>Quote Confirmation</h1>
     </div>
-
     <div class="action-btn d-flex  my-2 mx-2">
       <% if @offer.approved.nil? %>
         <%= link_to 'Browse more products', products_path, :class => "btn btn-light mx-3", :id => "btn-browse" %>
       <% end %>
-
       <% if @offer.approved.nil? %>
-        <%= link_to 'Cancel request', purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger" %>
+        <% if @offer.confirmed.blank? %>
+          <%= link_to 'Confirmed', purchasers_offer_path(@offer, confirmed: true), method: :put, :class =>"btn btn-success" %>
+          <%= link_to 'Cancel request', purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger" %>
+        <% else %>
+          <div class="btn btn-light mx-3" id="btn-browse">You have confirmed the offer</div>
+        <% end %>
       <% elsif @offer.approved.present? %>
         <h6>Your offer has been approved</h6>
       <% else %>
         <p>Your request has been rejected</p>
       <% end %>
     </div>
-  
   </div>
-
   <div class="offer-info row">
     <div class="some-info col-sm-6">
       <h6>Destination</h6>
       <hr>
       <%= @offer.destination %>
     </div>
-  
     <div class="some-info col-sm-6">
       <h6>Payment</h6>
       <hr>
       <%= @offer.payment %>
     </div>
-  
     <div class="some-info col-sm-6 my-3">
       <h6>Approved Date</h6>
       <hr>
@@ -43,20 +41,26 @@
         <%= @offer.approved_date %>
       <% end %>
     </div>
-  
     <div class="some-info col-sm-6 my-3">
       <h6>Supplier</h6>
       <hr>
       <%= @offer.supplier.name %>
     </div>
+    <div class="some-info col-sm-6 my-3">
+      <h6>Total amount</h6>
+      <hr>
+      <%= @offer.product_offers.sum(:amount) %>
+    </div>
+    <div class="some-info col-sm-6 my-3">
+      <h6>Totol price</h6>
+      <hr>
+      <%= @offer.price %>
+    </div>
   </div>
-
   <div class="row justify-content-center">
-
     <% if @offer.products.empty?  %>
       <div>Products have been removed from platfrom, please contact <%= @offer.supplier.name %> for more information. </div>
     <% else %>
-    
       <% @offer.products.each do |p| %>
         <%= link_to product_path(p) do %>
           <div class="col-sm-6">
@@ -72,7 +76,6 @@
           </div>
         <% end %>
       <% end %>
-
     <% end %>
   </div>
 </div>

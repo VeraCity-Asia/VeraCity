@@ -1,5 +1,5 @@
 class Purchasers::OffersController < ApplicationController
-  before_action :find_offer, only: [:show, :destroy]
+  before_action :find_offer, only: [:show, :destroy, :update]
 
   def index
     @offers = policy_scope([:purchasers, Offer])
@@ -29,7 +29,12 @@ class Purchasers::OffersController < ApplicationController
   end
 
   def update
-    create
+    @offer.update(offer_confirmed_params)
+    # policy_class: app/policies/suppliers/offer_policy#show
+    authorize([:purchasers, @offer])
+    redirect_to purchasers_offer_path(@offer)
+    # create
+
   end
 
   def destroy
@@ -47,6 +52,10 @@ class Purchasers::OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:destination, :payment)
+  end
+
+  def offer_confirmed_params
+    params.permit(:confirmed)
   end
 
   def product_offer_params
