@@ -13,7 +13,18 @@ class Supplier < ApplicationRecord
   validates :payment_terms, inclusion: { in: PAYMETTERM, allow_blank: true }
 
   def information_complete?
-    delivery_terms.present? && payment_terms.present?
-  end  
+    delivery_terms.present? && payment_terms.present? && fei_number.present?
+  end
+
+  def name_match?
+    return Cecv.find_by(name: self.name).name == self.name
+  end
+  
+
+  def fda_profile_match?
+    name = Cecv.find_by(name: self.name)
+    return name.fei_number == self.fei_number
+  end
+  
 
 end

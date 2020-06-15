@@ -13,7 +13,11 @@ class SuppliersController < ApplicationController
   def update
     authorize @supplier
     if @supplier.update(supplier_params)
-      redirect_to suppliers_dashboard_path
+      if @supplier.name_match? && @supplier.fda_profile_match?
+        redirect_to suppliers_dashboard_path
+      else
+        render :edit
+      end
     else
       render :edit
     end
