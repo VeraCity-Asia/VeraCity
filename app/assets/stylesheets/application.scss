@@ -36,7 +36,6 @@
 @import "pages/products/show";
 @import "pages/index";
 @import "pages/registration";
-@import "pages/purchasers/index";
 
 // Messages
 @import "pages/messages/new";
@@ -61,15 +60,14 @@ body {
   margin-bottom: 1em;
   font-family: "Open Sans", sans-serif;
   background-color: #f8f8ff;
-  h1,
-  h2,
-  h3,
-  h4 {
+
+  h1, h2, h3, h4 {
     font-family: "Noticia Text", serif;
   }
+
   .container {
     box-sizing: border-box;
-  }
+    margin-top: 3em;
 }
 
 .filler-page {
@@ -80,7 +78,4 @@ body {
 .container-fluid {
   width: 70vw;
 }
-
-.container {
-  margin-top: 3em;
 }
