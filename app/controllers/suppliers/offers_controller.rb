@@ -16,7 +16,20 @@ class Suppliers::OffersController < ApplicationController
     # policy_class: app/policies/suppliers/offer_policy#show
     @offer.update(approved_date: Time.now)
     authorize([:suppliers, @offer])
-    redirect_to suppliers_offer_path(@offer)
+    redirect_to generateoffer_suppliers_offer_path(@offer)
+  end
+  
+  def rejected
+    # policy_class: app/policies/suppliers/offer_policy#show
+    authorize([:suppliers, @offer])
+    @offer.rejected
+    @offer.update
+  end
+  
+  def generate_offer
+    # policy_class: app/policies/suppliers/offer_policy#show
+    authorize([:suppliers, @offer])
+    #get offer id from approve form
   end
 
   def generateoffer
