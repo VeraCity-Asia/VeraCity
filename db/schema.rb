@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_064428) do
+ActiveRecord::Schema.define(version: 2020_06_15_122313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_064428) do
     t.string "nearest_port"
     t.boolean "whitelisted"
     t.date "established"
+    t.integer "fei_number"
     t.index ["user_id"], name: "index_suppliers_on_user_id"
   end
 
