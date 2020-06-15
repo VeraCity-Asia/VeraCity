@@ -8,6 +8,7 @@
     <%= link_to "Add new product", new_suppliers_product_path, :class => "btn btn-outline-info mx-2" %>
     <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info mx-2" %>
     <%= link_to "Add new certification", new_suppliers_certification_path, :class => "btn btn-outline-info mx-2" %>
+    <%= link_to "Edit profile", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info mx-2" %>
   </div>
 </div>
 <div class="row justify-content-center">
@@ -37,7 +38,7 @@
     <hr>
     <!--   approved nil -->
     <% @user.supplier.offers.each do |offer| %>
-      <%  if offer.confirmed.present?  %>
+      <%  if offer.confirmed.present? && offer.approved.nil?  %>
         <%= link_to suppliers_offer_path(offer) do %>
           <div class="card-offer">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
