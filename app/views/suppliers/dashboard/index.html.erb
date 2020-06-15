@@ -37,7 +37,7 @@
     <hr>
     <!--   approved nil -->
     <% @user.supplier.offers.each do |offer| %>
-      <%  if offer.approved.nil?  %>
+      <%  if offer.confirmed.present?  %>
         <%= link_to suppliers_offer_path(offer) do %>
           <div class="card-offer">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
