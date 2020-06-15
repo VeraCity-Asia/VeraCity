@@ -8,12 +8,12 @@ class Suppliers::CertificationsController < ApplicationController
     @product = current_user.supplier.products.last
     authorize([:suppliers, @certification])
   end
-  
+
   def create
     @certification = Certification.new(certification_params)
     authorize([:suppliers, @certification])
     if @certification.save
-      redirect_to products_path
+      redirect_to suppliers_dashboard
     else
       render :new
     end
