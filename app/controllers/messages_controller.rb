@@ -10,6 +10,12 @@ class MessagesController < ApplicationController
 
   def by_product
 
+
+  end
+
+  def show
+    @message = Message.find(params[:id])
+    authorize @message
   end
 
   def new

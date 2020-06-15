@@ -1,0 +1,9 @@
+<h6><%= @message.product.name %></h6>
+<% @message.product.messages.each do |message| %>
+  <ul>
+    <li><%= message.id %></li>
+    <li><%= message.title %></li>
+    <li> <%= message.content %></li>
+  </ul>
+<% end %>
+<%= link_to "Back to inbox",  messages_path %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'welcome', to: 'pages#registration', as: :welcome
   get 'contact', to: 'pages#contact'
   resources :products, only: [:index, :show]
-  resources :messages, only: [:index, :new, :create] do
+  resources :messages, only: [:index, :new, :create, :show] do
     collection do
       get 'by_product'
     end
