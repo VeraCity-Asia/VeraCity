@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_031718) do
+ActiveRecord::Schema.define(version: 2020_06_15_064428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,24 @@ ActiveRecord::Schema.define(version: 2020_06_15_031718) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "cecvs", force: :cascade do |t|
+    t.string "reg_key"
+    t.string "registration_number"
+    t.string "fei_number"
+    t.string "reg_status_id"
+    t.string "initial_importer_flag"
+    t.string "reg_expiry_date_year"
+    t.string "address_type_id"
+    t.string "name"
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "city"
+    t.string "state_id"
+    t.string "iso_country_code"
+    t.string "zip_code"
+    t.string "postal_code"
   end
 
   create_table "certifications", force: :cascade do |t|

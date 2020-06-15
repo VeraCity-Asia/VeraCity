@@ -1,6 +1,6 @@
 class Supplier < ApplicationRecord
   #validation
-
+  
   DELIVERYTERM = ["FOB", "EXW", "FAS", "FCA", "CFR", "CPT", "CIF", "CIP", "DES", "DAF", "DEQ", "DDP", "DDU"]
   PAYMETTERM = ["T/T", "L/C", "D/P", "Western Union", "Moneygram"]
 
@@ -14,6 +14,6 @@ class Supplier < ApplicationRecord
 
   def information_complete?
     delivery_terms.present? && payment_terms.present?
-  end
-  
+  end  
+
 end

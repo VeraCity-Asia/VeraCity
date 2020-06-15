@@ -37,6 +37,9 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 #pg search gem
 gem 'pg_search', '~> 2.3.0'
 
+# Enable models to use the PostgreSQL COPY command to import/export data in CSV format
+gem 'postgres-copy'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
