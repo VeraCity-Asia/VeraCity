@@ -22,8 +22,8 @@ class Supplier < ApplicationRecord
   
 
   def fda_profile_match?
-    name = Cecv.find_by(name: self.name)
-    return name.fei_number == self.fei_number
+    result = Cecv.find_by(name: self.name)
+    return result.fei_number == self.fei_number
   end
   
 

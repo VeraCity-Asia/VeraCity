@@ -13,10 +13,20 @@ class SuppliersController < ApplicationController
   def update
     authorize @supplier
     if @supplier.update(supplier_params)
+      puts @supplier.name_match?
+      puts @supplier.fda_profile_match?
       if @supplier.name_match? && @supplier.fda_profile_match?
+        Verification.create!(
+          supplier: @supplier,
+          registration_completion: true
+        )
+        puts "#" * 60
+        puts Verification.last
+        puts "#" * 60
         redirect_to suppliers_dashboard_path
       else
-        render :edit
+        raise
+        # render :edit
       end
     else
       render :edit
