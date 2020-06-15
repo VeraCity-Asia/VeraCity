@@ -1,12 +1,30 @@
 #footer {
+    height: 100px;
+    margin-top: 32px;
+    // line-height: 1em;
+    bottom: -0.2em;
+    background-color: #e5e5ec;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(25%);
+    // padding: 8px 0;
+
+    .icons {
+        
+        width: 16%;
+        justify-content: space-evenly;
+    }
+
     i {
-        color: white;
+        color: $dark-blue;
         font-size: x-large;
     }
+
     p {
-        color: none;
+        font-size: 8px;
     }
+    
     a {
-        color: white;
+        color: $dark-blue
     }
 }

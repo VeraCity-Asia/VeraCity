@@ -68,17 +68,17 @@
             </div>
           </div>
 
-        <div class="button-group d-flex">
+        <div class="button-group d-flex justify-content-between">
           <div class="buttons">
-            <%= link_to "Message the supplier", new_message_path(product_id: @product.id), class: "btn btn-supplier" %>
+            <%= link_to "Message supplier", new_message_path(product_id: @product.id), class: "btn btn-supplier" %>
           </div>
 
           <div class="buttons">
-            <%= link_to "See supplier info", supplier_path(@product.supplier), class: "btn btn-supplier" %>
+            <%= link_to "Supplier info", supplier_path(@product.supplier), class: "btn btn-supplier" %>
           </div>
 
           <div class="buttons">
-            <h5><%= link_to "Make an offer", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-success" %></h5>
+            <h5><%= link_to "Request quote", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-success" %></h5>
           </div>
 
           <% if policy([:suppliers, @product]).edit? %>
@@ -86,7 +86,7 @@
           <% end %>
 
           <% if policy([:suppliers, @product]).destroy? %>
-            <div><%= link_to "Destroy product", suppliers_product_path(@product.id), method: :delete, data: {confirm: 'Are you sure?'} %></div>
+            <div><%= link_to "Destroy product", suppliers_product_path(@product.id), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} %></div>
           <% end %>
         </div>
       </div>

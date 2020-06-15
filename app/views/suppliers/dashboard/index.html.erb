@@ -1,3 +1,4 @@
+
 <div class="col-sm-12">
   <div class="about-me">
     <h1>My Profile</h1>
@@ -30,6 +31,7 @@
                   <p>Product Category: <%= product.category %></p>
                 <% end %>
               </div>
+
             </div>
           <% end %>
         <% end %>
@@ -59,6 +61,7 @@
       <% end %>
     </div>
   </div>
+
   <h4>Listed Products</h4>
   <hr>
   <div class="row justify-content-center">
@@ -71,6 +74,7 @@
               <p class="card-text"><%= p.name %></p>
               <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-supplier" %>
               <%= link_to "Destroy", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-supplier" %>
+
             </div>
           </div>
         </div>

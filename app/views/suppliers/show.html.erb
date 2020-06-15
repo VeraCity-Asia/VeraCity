@@ -1,20 +1,36 @@
-<div class="container">
-  <div class="row">
-    <div>
-      <h1>Supplier Information</h1>
-      <p>Name: <%= @supplier.name %></p>
-      <p>Location: <%= @supplier.location %></p>
-      <p>Industry: <%= @supplier.industry %></p>
+<div class="supplier-show">
+  <div class="column">
+
+    <div class="about-supplier supplier-info">
+      <h1><%= @supplier.name %></h1>
+      <div class="detailed-info">
+        <p>Location: <%= @supplier.location %></p>
+        <p>Industry: <%= @supplier.industry %></p>
+        <div class="supplier-profile-img">
+          <!-- put supplier profile img here -->
+        </div>
+      </div>
     </div>
-    <div>
-      <h1>Other Products</h1>
-      <% @supplier.products.each do |product|  %>
-        <p>Product name: <%= product.name %></p>
-        <p>Price: $<%= product.price %>/unit</p>
-        <p>Category: <%= product.category %></p>
-        <p>In Stock: <%= product.production_quantity %></p>
-        <p>Minimum order: <%= product.minimum_order_quantity %></p>
-      <% end %>
+
+    <div class="supplier-info">
+      <h1 id="others">Other Products</h1>
+      <div class="other-products-row d-flex row">
+        <% @supplier.products.each do |product|  %>
+          <%= link_to product_path(product) do %>
+            <div class="supplier-product-info">
+            <!--put product image here -->
+              <h5><strong> <%= product.name %></strong></h5>
+              <div class="detailed-product-info">
+                <p>Price: $<%= product.price %>/unit</p>
+                <%# <p>Category: <%= product.category</p> %>
+                <%# <p>In Stock: <%= product.production_quantity</p> %>
+                <%# <p>Minimum order: <%= product.minimum_order_quantity</p> %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
+
   </div>
 </div>
