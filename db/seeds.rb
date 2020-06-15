@@ -66,16 +66,16 @@ puts "#######################################################################"
     user: user
   )
 
-  rand(1..3).times do
-    offer = Offer.create!(
-      destination:Faker::Address.city,
-      payment:["Visa", "MasterCard", "Invoice", "Wire Transfer"].sample,
-      approved_date: Faker::Date.forward(days: 23),
-      approved: nil,
-      supplier: Supplier.all.sample,
-      user: User.all.sample
-    )
-  end
+  # rand(1..3).times do
+  #   offer = Offer.create!(
+  #     destination:Faker::Address.city,
+  #     payment:["Visa", "MasterCard", "Invoice", "Wire Transfer"].sample,
+  #     approved_date: Faker::Date.forward(days: 23),
+  #     approved: nil,
+  #     supplier: Supplier.all.sample,
+  #     user: User.all.sample
+  #   )
+  # end
 end
 
 puts "#######################################################################"
@@ -125,7 +125,7 @@ puts "#{Certification.count} Certifications created…"
 
 puts "#######################################################################"
 puts "Seeding Product Offers join table"
-Product.all.each { |p| p.offers << Offer.all.sample }
+# Product.all.each { |p| p.offers << Offer.all.sample }
 puts "#######################################################################"
 
 puts "#######################################################################"

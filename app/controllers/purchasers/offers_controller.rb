@@ -11,29 +11,25 @@ class Purchasers::OffersController < ApplicationController
   end
 
   def new
-    @offer = Offer.new
+    @product = Product.find(params[:product_id])
+    @offer = Offer.offer_for_product(current_user, @product)
     # policy_class: app/policies/purchasers/offer_policy#create
     authorize([:purchasers, @offer])
-    @product = Product.find(params[:product_id])
   end
 
   def create
     @product = Product.find(params[:offer][:product_id])
-    @offer = Offer.find_or_initialize_by(user: current_user, supplier: @product.supplier, confirmed: false)
-    @product_offer = ProductOffer.new(product_offer_params)
-    @offer.products << @product
-    @product_offer.product_id = @product.id
-    # policy_class: app/policies/purchasers/offer_policy#create
+    @offer = Offer.add_product(current_user, @product, product_offer_params[:amount], offer_params)
     authorize([:purchasers, @offer])
-    if @offer.save
-      @product_offer.offer_id = @offer.id
-      @product_offer.save
+    if @offer.id
       redirect_to purchasers_offer_path(@offer)
     else
-      # policy_class: app/policies/purchasers/offer_policy#create
-      authorize([:purchasers, @offer])
       render :new
     end
+  end
+
+  def update
+    create
   end
 
   def destroy
@@ -54,6 +50,6 @@ class Purchasers::OffersController < ApplicationController
   end
 
   def product_offer_params
-    params.require(:offer).permit(:amount)
+    params.require(:offer).require(:product_offer).permit(:amount)
   end
 end

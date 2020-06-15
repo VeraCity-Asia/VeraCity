@@ -3,11 +3,13 @@
     <%# <div class="col-xs-12 col-sm-4 col-offset-6"> %>
     <div class="form">
       <h1>Make new offer</h1>
-      <%= simple_form_for [@product, @offer], url: purchasers_offers_path, method: :POST  do |f| %>
+      <%= simple_form_for @offer, url: purchasers_offers_path, method: :POST  do |f| %>
         <div class="form-inputs">
-          <%= f.input :destination %>
-          <%= f.input :payment , collection: Offer::PAYMENT, prompt: :translate %>
-          <%= f.input :amount, label: "Quantity"%>
+          <%= f.input :destination, disabled: @offer.id.present? %>
+          <%= f.input :payment , collection: Offer::PAYMENT, prompt: :translate, disabled: @offer.id.present? %>\
+          <%= f.simple_fields_for :product_offer do |ff|  %>
+            <%= ff.input :amount , label: 'Quanity:'%>
+          <% end %>
           <%= f.hidden_field :product_id, :value => @product.id %>
         </div>
         <div class="form-actions">
