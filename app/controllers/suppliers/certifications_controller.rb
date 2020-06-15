@@ -39,6 +39,6 @@ class Suppliers::CertificationsController < ApplicationController
   end
 
   def certification_params
-    params.require(:certification).permit(:number, :validity, :category, :listing_number, :code, :authority, photos: [])
+    params.require(:certification).permit(:number, :category, :listing_number, :code, :start_date, :expired_date, :authority, photos: [])
   end
 end
