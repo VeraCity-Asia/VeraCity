@@ -1,54 +1,92 @@
-<div class="about-me">
-  <h1>My Profile</h1>
-  <p>Name: <%= @user.name %></p>
-  <p>Email: <%= @user.email %></p>
-  <p>Country: <%= @user.country %></p>
-</div>
-<div class="purchaser-dashboard d-flex justify-content-between">
-  <div class="purchaser-dashboard-offers mx-3">
-    <h4>Pending Offers</h4>
-    <hr>
-    <% @user.offers.each do |offer| %>
-      <%  if offer.approved.nil?  %>
-        <%= link_to purchasers_offer_path(offer) do %>
-          <div class="card-offer">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
-            <div class="card-offer-infos">
-              <p> Destination: <%= offer.destination %></p>
-              <p> Payment: <%= offer.payment %> </p>
-              <hr>
-              <% offer.products.each do | product| %>
-                <p>Product Name: <%= product.name %></p>
-                <p>Product Category: <%= product.category %></p>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
+<div class="dashboard d-flex" style="min-height: 100vh; max-width: 100%;">
+
+  <div class="left-col col-xs-12 col-md-3">
+    <div class="profile-img ">
+      <%= cl_image_tag 'https://res.cloudinary.com/demyxeys9/image/upload/v1592292947/veracity/avatar-png-1_wblzc1.png', size: '240x240' %>
+    </div>
+
+    <div class="left-info">
+      <div class="company-info">
+        <h5>My Info</h5>
+        <hr>
+        <p>Name: my company name</p>
+        <p>Country: <%= @user.country %></p>
+        <p>Email: <%= @user.email %></p>
+      </div>
+    </div>
   </div>
-  <div class="purchaser-dashboard-products mx-3">
-    <h4>Closed Offers</h4>
-    <hr>
-    <% @user.offers.each do |offer| %>
-      <%  if offer.approved.present?  %>
-        <!-- use present to condition -->
-        <%= link_to purchasers_offer_path(offer) do %>
-          <div class="card-offer">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
-            <div class="card-offer-infos">
-              <p> <%= offer.approved %></p>
-              <p> Destination: <%= offer.destination %></p>
-              <p> Payment: <%= offer.payment %> </p>
-              <hr>
-              <% offer.products.each do | product| %>
-                <p>Product Name: <%= product.name %></p>
-                <p>Product Category: <%= product.category %></p>
+
+  <div class="right-col col-xs-12 col-md-9">
+  
+    <div class="header-name">
+      <h1><%= @user.name%></h1>
+      <p>Purchaser</p>
+    </div>
+
+    <div class="nav-pills-dashboard">
+
+      <!-- tabs -->
+      <ul class="nav nav-tabs nav-justified">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="pills-pending-tab" data-toggle="pill" href="#pending" role="tab" aria-controls="pills-pending" aria-selected="true">Pending Offers</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-closed-tab" data-toggle="pill" href="#closed" role="tab" aria-controls="pills-profile" aria-selected="false">Closed Offers</a>
+        </li>
+      </ul>
+
+      <!-- tab contents -->
+      <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+          <% @user.offers.each do |offer| %>
+            <%  if offer.approved.nil?  %>
+              <%= link_to purchasers_offer_path(offer) do %>
+                <div class="card-offer">
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+                  <div class="card-offer-infos">
+                    <p> Destination: <%= offer.destination %></p>
+                    <p> Payment: <%= offer.payment %> </p>
+                    <hr>
+                      <% offer.products.each do | product| %>
+                        <p>Product Name: <%= product.name %></p>
+                        <p>Product Category: <%= product.category %></p>
+                      <% end %>
+                  </div>
+                </div>
               <% end %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="tab-pane fade show" id="closed" role="tabpanel" aria-labelledby="closed-tab">
+          <% @user.offers.each do |offer| %>
+            <%  if offer.approved.present?  %>
+              <!-- use present to condition -->
+              <%= link_to purchasers_offer_path(offer) do %>
+                <div class="card-offer">
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+                  <div class="card-offer-infos">
+                    <p> <%= offer.approved %></p>
+                    <p> Destination: <%= offer.destination %></p>
+                    <p> Payment: <%= offer.payment %> </p>
+                    <hr>
+                    <% offer.products.each do | product| %>
+                      <p>Product Name: <%= product.name %></p>
+                      <p>Product Category: <%= product.category %></p>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+      </div>
+
+    </div> <!-- pills dashboard-->
+
+  </div> <!-- right col -->
+
+</div> <!-- full dashboard-->
+
+
+
