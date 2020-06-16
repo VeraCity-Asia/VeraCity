@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
     if @query.present?
       @products = @products.search_by_name_certification(@query)
     end
+
   end
 
   def show
@@ -14,4 +15,11 @@ class ProductsController < ApplicationController
     @message = Message.new
     authorize @product
   end
+
+  private
+
+  def filter_params
+    params.require(:filter).permit(:category => [], :minimum_order_quantity => [], :certifications => {})
+  end
+
 end
