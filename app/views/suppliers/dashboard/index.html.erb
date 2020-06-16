@@ -10,15 +10,20 @@
         <p>Name: <%= @user.supplier.name %></p>
         <p>Country: <%= @user.supplier.location %></p>
         <p>Email: <%= @user.email %></p>
+        <%= link_to "Edit profile", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info" %>
       </div>
       <div class="licenses-info">
         <h5>Licenses</h5>
         <hr>
-        <% @user.supplier.licenses.each do |license| %>
-          <p>Authority: <%= license.authority %></p>
-          <p>Number: <%= license.number %></p>
+        <% if @user.supplier.licenses.exists? %>
+          <% @user.supplier.licenses.each do |license| %>
+            <p>Authority: <%= license.authority %></p>
+            <p>Number: <%= license.number %></p>
+            <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info" %>
+            <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}  %>
+          <% end %>
+        <% else %>
           <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info" %>
-          <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}  %>
         <% end %>
       </div>
     </div>
