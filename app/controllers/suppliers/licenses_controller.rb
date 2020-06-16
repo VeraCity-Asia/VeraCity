@@ -7,10 +7,14 @@ class Suppliers::LicensesController < ApplicationController
 
   def create
     @license = License.new(license_params)
-    supplier = Supplier.find_by(user: current_user)
-    @license.supplier = supplier
+    @supplier = Supplier.find_by(user: current_user)
+    @license.supplier = @supplier
     authorize @license
-    if @license.save
+
+    if @license.save && @supplier.verifications.first.valid_registration_license
+      redirect_to suppliers_dashboard_path, notice: 'Your license was successfully created.'
+    elsif @license.save
+      @supplier.license_check
       redirect_to suppliers_dashboard_path, notice: 'Your license was successfully created.'
     else
       render :new

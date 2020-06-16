@@ -8,5 +8,6 @@ class LicensePolicy < ApplicationPolicy
   def create?
     true
   end
-  
+
+
 end
