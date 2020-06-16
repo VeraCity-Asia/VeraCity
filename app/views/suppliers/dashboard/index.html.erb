@@ -15,16 +15,12 @@
       <div class="licenses-info">
         <h5>Licenses</h5>
         <hr>
-        <% if @user.supplier.licenses.exists? %>
-          <% @user.supplier.licenses.each do |license| %>
-            <p>Authority: <%= license.authority %></p>
-            <p>Number: <%= license.number %></p>
-            <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info" %>
-            <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}  %>
-          <% end %>
-        <% else %>
-          <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info" %>
+        <% @user.supplier.licenses.each do |license| %>
+          <p>Authority: <%= license.authority %></p>
+          <p>Number: <%= license.number %></p>
+          <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}  %>
         <% end %>
+        <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info" %>
       </div>
     </div>
   </div>
