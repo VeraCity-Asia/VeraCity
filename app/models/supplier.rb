@@ -1,6 +1,6 @@
 class Supplier < ApplicationRecord
   #validation
-
+  
   DELIVERYTERM = ["FOB", "EXW", "FAS", "FCA", "CFR", "CPT", "CIF", "CIP", "DES", "DAF", "DEQ", "DDP", "DDU"]
   PAYMETTERM = ["T/T", "L/C", "D/P", "Western Union", "Moneygram"]
 
@@ -13,7 +13,21 @@ class Supplier < ApplicationRecord
   validates :payment_terms, inclusion: { in: PAYMETTERM, allow_blank: true }
 
   def information_complete?
-    delivery_terms.present? && payment_terms.present?
+    delivery_terms.present? && payment_terms.present? && fei_number.present?
+  end
+
+  def name_and_profile_match?
+    return true if Cecv.find_by(name: name)&.fei_number == self.fei_number
+
+    self.errors.add(:base, "Something went wrong")
+    false
   end
   
+  def create_verification
+    Verification.create!(
+      supplier: self,
+      registration_completion: true
+    )
+  end
+
 end

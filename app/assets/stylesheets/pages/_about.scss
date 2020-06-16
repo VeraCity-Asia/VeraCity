@@ -1,13 +1,61 @@
-.about-us {
-    background-color: white;
-    border-radius: 8px;
-    padding: 3em;
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-    h1 {
-        margin: 32px 0;
-        letter-spacing: 2px;
-    }
-    p {
-        letter-spacing: 1px;
-    }
+.container-about {
+  margin: 32px 0px;
 }
+
+.banner-small {
+  padding: 56px 0;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+.banner-a {
+  background-image: url('aboutus.jpg');
+}
+
+.banner-b {
+  background-image: url('https://res.cloudinary.com/demyxeys9/image/upload/v1592281621/faq_atpfy1.jpg');
+}
+.tab-content {
+  h1 {
+    margin: 32px 0;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 6px rgba(0,0,0,0.4);
+    font-weight: 600;
+  }
+  
+  p {
+    text-align: left;
+  }
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+#about{
+  color:$dark-blue;
+
+}
+
+#faq{
+  color: $dark-blue;
+  
+  .card {
+    background: none;
+    text-align: left;
+    margin: 32px 0;
+    border: none;
+    .card-header {
+      background: inherit;
+    }
+  }
+}
+
+.card-header{
+  background-color: white;
+}
+

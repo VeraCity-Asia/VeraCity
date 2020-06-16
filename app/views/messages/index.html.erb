@@ -1,26 +1,38 @@
-<div class="messages-bg">
-  <div class="thankyou">
-    <%= image_tag 'thankyou .jpg', size: '80x60'%>
+<div class="messages-container">
+  <div class="flash flash-primary alert alert-dismissible fade show" role="alert">
+    <span><strong>Yay!</strong> 🎉 your message has been submitted successfully!</span>
+    <a data-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </a>
   </div>
-  <h4>Messages</h4>
-  <div class="message-container">
-    <div class="messages row">
-      <% if @messages.nil? %>
-        <p>Hmm.. Maybe you should message someone</p>
-      <% else %>
+  <div>
+  </div>
+  <div class="messages row">
+    <% if @messages.nil? %>
+      <p>Hmm.. Maybe you should message someone</p>
+    <% else %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Time</th>
+            <th scope="col">Title</th>
+            <th scope="col">Product name</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
         <% @messages.each do |message| %>
-          <div class="row">
-            <div>
-              <strong><%= message.product.name %></strong> —
-            </div>
-            <div>
-              <%= message.content %> | <%= message.created_at %> | <%= link_to "More", message_path(message) %>
-            </div>
-          </div>
-        <% end %>
+          <tbody>
+            <tr>
+              <td><%= message.created_at %></td>
+              <td><%= message.title %> </td>
+              <td><strong><%= message.product.name %></strong> </td>
+              <td><%= link_to "More", by_product_messages_path(product_id: message.product_id) %></td>
+            </tr>
+          </tbody>
+        </div>
       <% end %>
-    </div>
-  </div>
+    </table>
+  <% end %>
 </div>
 </div>
 <div>

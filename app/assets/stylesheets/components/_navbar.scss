@@ -43,6 +43,9 @@
 
 .nav-link {
   margin: 0 16px;
+  &:active {
+    border-bottom: ;
+  }
 }
 
 .navbar-left {

@@ -11,19 +11,26 @@
   </head>
 
   <body>
-
-    <% if current_page?(root_path) %>
-
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
+
+    <% if current_page?(root_path) %>
       <%= render 'shared/banner' %>
       <%= yield %>
     
+    <% elsif current_page?(about_path) %>
+      <div class="container" style="min-height:100vh"> <!-- maybe make this full-width -->
+        <%= yield %>
+      </div>
+
+    <% elsif current_page?(suppliers_dashboard_path) %>
+        <%= yield %>
+
+    <% elsif current_page?(purchasers_dashboard_path) %>
+        <%= yield %>
+
     <% else %>
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/flashes' %>
-      
-      <div class="container" style="min-height: 100vh;">
+          <div class="container" style="min-height: 100vh;">
           <%= yield %>
       </div>
 

@@ -7,6 +7,9 @@
           <li><%= message.id %></li>
           <li><%= message.title %></li>
           <li> <%= message.content %></li>
+          <% if receiver_id = current_user %>
+            <%= link_to "reply message", new_message_path(:product => @message.product) %>
+          <% end %>
         </ul>
       <% end %>
     </div>

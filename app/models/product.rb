@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   # valdation
-  CATEGORY = ["Mask","thermometer","Bandage"]
+  CATEGORY = ["Mask","Thermometer","Bandage"]
   belongs_to :supplier
   has_many :product_offers,  dependent: :destroy
   has_many :offers, through: :product_offers
@@ -29,16 +29,5 @@ class Product < ApplicationRecord
   using: {
     tsearch: { prefix: true}
   }
-
-  pg_search_scope :filter_search,
-    against: [:category, :minimum_order_quantity],
-    associated_against: {
-    certifications: [:category]
-  },
-  using: {
-    tsearch: { any_word: true}
-  }
-
-
 
 end
