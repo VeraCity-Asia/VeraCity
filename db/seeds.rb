@@ -49,7 +49,7 @@ Supplier.create!(
 )
 
 puts "#######################################################################"
-3.times do
+2.times do
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -95,10 +95,26 @@ bandages = ["Maximum Hold Waterproof Bandages", "Medical Gauze Stretch Bandage R
 category = ["Mask","Thermometer","Bandage"]
 
 Supplier.all.each do |s| 
-  p = Product.create!(
+  m = Product.create!(
       name: masks.sample,
       price: Faker::Commerce.price(range: 2..48.0, as_string: false),
       category: category[0],
+      production_quantity: Faker::Number.number(digits: 6),
+      minimum_order_quantity: [100,200,300].sample,
+      supplier: s
+    )
+  t = Product.create!(
+      name: thermometers.sample,
+      price: Faker::Commerce.price(range: 2..48.0, as_string: false),
+      category: category[1],
+      production_quantity: Faker::Number.number(digits: 6),
+      minimum_order_quantity: [100,200,300].sample,
+      supplier: s
+    )
+  b = Product.create!(
+      name: bandages.sample,
+      price: Faker::Commerce.price(range: 2..48.0, as_string: false),
+      category: category[2],
       production_quantity: Faker::Number.number(digits: 6),
       minimum_order_quantity: [100,200,300].sample,
       supplier: s
