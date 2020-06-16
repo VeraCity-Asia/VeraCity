@@ -1,3 +1,6 @@
+<% @supplier.errors.full_messages.each do |message| %>
+  <%= render 'shared/flashes', alert: message %>
+<% end %>
 <div class="form">
   <div class="row">
     <div class="col-xs-12 col-sm-8 offset-sm-2 my-2">
