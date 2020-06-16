@@ -25,15 +25,27 @@
     // position: absolute;
     text-align: left;
     }
-}
 
-.nav-pills-dashboard {
-  margin: 12em 0;
-  .card-offer {
-    align-items: left;
+  .status-check {
+    margin-top: 1.5em;
   }
 }
 
-// .purchaser-dashboard h4 {
-//   color: $gray;
-// }
+.nav-pills-dashboard {
+  margin: 6em 0;
+  .tab-pane {
+    margin: 32px auto;
+    a {
+      color: $dark-blue;
+      &:hover {
+        text-decoration: none;
+        color: silver;
+      }
+    }
+    .btn-danger {
+      border-radius: 4px;
+      color: white;
+    }
+  }
+}
+
