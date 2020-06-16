@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :verifications, only: [:edit, :update]
     resources :certifications, only: [:new, :create, :edit, :update]
     resources :licenses, only: [:new, :create, :destroy]
-    resources :offers, only: [:index, :show, :update] do
+    resources :offers, only: [:show, :update] do
       member do
         get 'generateoffer', to: 'offers#generateoffer'
       end
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
   resources :suppliers, only: [:show, :edit, :update]
   namespace :purchasers do
-    resources :offers, only: [:new, :show, :index, :create, :update, :destroy]
+    resources :offers, only: [:new, :show, :create, :update, :destroy]
     get 'dashboard', to: 'dashboard#index'
   end
 end
