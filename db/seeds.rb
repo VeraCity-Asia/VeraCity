@@ -36,7 +36,7 @@ User.create!(
   user_type: "supplier"
 )
 puts "Test SUPPLIER account email: #{User.last.email}"
-Supplier.create!(
+Supplier.first.update!(
   name: Faker::Company.name,
   location: cities.sample,
   industry: "Medical Supplies",
