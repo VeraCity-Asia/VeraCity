@@ -13,11 +13,11 @@
     <h1>Filter</h1>
 
     <div class="filter-container">
-        <%= simple_form_for :filter, url: products_path, method: "GET" do |f| %>
+        <%= simple_form_for :filter, url: products_path, method: "GET", remote: true, html: { id: "filter-form" } do |f| %>
           <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
           <%= f.input :minimum_order_quantity, label: "minimum order", collection: $minimum_order_quantity, as: :check_boxes %>
-          <%= f.fields_for :certificaions do |s| %>
-            <%= s.input :category, label: "Certification",collection: $certification, as: :check_boxes %>
+          <%= f.fields_for :certifications do |s| %>
+            <%= s.input :category, label: "Certification", collection: $certification, as: :check_boxes %>
           <% end %>
         <% end %>
     </div>
@@ -26,7 +26,8 @@
 
   <div class="mid-col">
     <div class="product-cards-container">
-      <div class="card-products">
+      <div class="card-products" id="products">
+
         <% @products.each do |product| %>
           <%= render :partial => 'shared/product_card', locals: {:product => product } %>
         <% end %>

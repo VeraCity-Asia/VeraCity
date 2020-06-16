@@ -1,0 +1,10 @@
+const replaceProducts = (innerHTML) => {
+    const products = document.getElementById('products');
+    products.innerHTML = innerHTML;
+}
+
+if ('<%= @filter %>' === "[]") {
+    replaceProducts("<%= j render 'shared/product_card', products: Product.all %>")
+} else {
+    replaceProducts("<%= j render 'shared/product_card', products: @products %>")
+}
