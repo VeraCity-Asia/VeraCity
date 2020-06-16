@@ -1,10 +1,6 @@
 class Purchasers::OffersController < ApplicationController
   before_action :find_offer, only: [:show, :destroy, :update]
 
-  def index
-    @offers = policy_scope([:purchasers, Offer])
-  end
-
   def show
     # policy_class: app/policies/purchasers/offer_policy#show
     authorize([:purchasers, @offer])
