@@ -31,7 +31,6 @@ class Offer < ApplicationRecord
     )
   end
 
-
   def calculate_price
     prices = product_offers.map { |po| po.product.price * po.amount }
     self.update(price: prices.sum)
