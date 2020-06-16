@@ -1,3 +1,39 @@
-.purchaser-dashboard h4 {
-  color: $gray;
+.dashboard {
+  position: relative;
+  margin: 5em;
+
+  .profile-img {
+    // position: absolute;
+    justify-content: left;
+    margin-bottom: 32px;
+  }
+
+  .company-info {
+    text-align: left;
+    p {
+      font-size: small;
+    }
+  }
+  .licenses-info {
+    text-align: left;
+    p {
+      font-size: small;
+    }
+  }
+
+  .header-name {
+    // position: absolute;
+    text-align: left;
+    }
 }
+
+.nav-pills-dashboard {
+  margin: 12em 0;
+  .card-offer {
+    align-items: left;
+  }
+}
+
+// .purchaser-dashboard h4 {
+//   color: $gray;
+// }
