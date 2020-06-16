@@ -1,9 +1,11 @@
 .container-about {
   margin: 32px 0px;
 }
+
 .tab-content {
   h1 {
     margin: 32px 0;
+    letter-spacing: 2px;
   }
   
   img {
@@ -13,14 +15,25 @@
 }
 
 #about{
-  color:#193b68;
+  color:$dark-blue;
 
 }
 
 #faq{
-  color:#193b68;
+  color: $dark-blue;
+  
+  .card {
+    background: none;
+    text-align: left;
+    margin: 32px 0;
+    border: none;
+    .card-header {
+      background: inherit;
+    }
+  }
 }
 
 .card-header{
   background-color: white;
 }
+
