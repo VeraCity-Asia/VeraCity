@@ -1,39 +1,58 @@
 <div class="dashboard d-flex" style="min-height: 100vh; max-width: 100%;">
   <div class="left-col col-xs-12 col-md-3">
+
     <div class="profile-img ">
       <%= cl_image_tag("https://res.cloudinary.com/demyxeys9/image/upload/v1592292947/veracity/avatar-png-1_wblzc1.png", :width => 240, :height => 240) %>
     </div>
+
     <div class="left-info">
       <div class="company-info">
+      <div class="company-header d-flex justify-content-between">
         <h5>My Company</h5>
+        <%= link_to "Edit", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info mx-2" %>
+      </div>
         <hr>
         <p>Name: <%= @user.supplier.name %></p>
         <p>Country: <%= @user.supplier.location %></p>
         <p>Email: <%= @user.email %></p>
         <%= link_to "Edit profile", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info" %>
       </div>
+
       <div class="licenses-info">
-        <h5>Licenses</h5>
+        <div class="license-header d-flex justify-content-between">
+            <h5>Licenses</h5>
+            <%= link_to "Add", new_suppliers_license_path, :class => "btn btn-outline-info" %>
+        </div>
         <hr>
         <% @user.supplier.licenses.each do |license| %>
-          <p>Authority: <%= license.authority %></p>
-          <p>Number: <%= license.number %></p>
-          <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}  %>
+          <div class="license">
+            <p>Authority: <%= license.authority %></p>
+            <p>Number: <%= license.number %></p>
+            <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}  %>
+          </div>
         <% end %>
         <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info" %>
       </div>
+
     </div>
   </div>
+
   <div class="right-col col-xs-12 col-md-9">
-    <div class="header-name">
-      <% if @user.supplier.verifications.exists? && @user.supplier.verifications.first.registration_completion && @user.supplier.verifications.first.valid_registration_license  %>
-        <h1><%= @user.name%> <%= icon('far', 'check-circle') %></h1>
-      <% else %>
-        <h1><%= @user.name%> <%= icon('far', 'times-circle') %></h1>
-      <% end %>
-      <p></p>
-      <p>Supplier</p>
+    <div class="top-info d-flex row">
+      <div class="header-name">
+        <% if @user.supplier.verifications.exists? && @user.supplier.verifications.first.registration_completion && @user.supplier.verifications.first.valid_registration_license  %>
+          <h1><%= @user.name%> <%= icon('far', 'check-circle') %></h1>
+        <% else %>
+          <h1><%= @user.name%> <%= icon('far', 'times-circle') %></h1>
+        <% end %>
+        <p></p>
+        <p>Supplier</p>
+      </div>
+      <div class="header-name">
+          <%= link_to "Add product", new_suppliers_product_path, :class => "btn btn-info mx-2" %>
+      </div>
     </div>
+
     <!-- verfication status check -->
     <div class="status-check">
       <% if @user.supplier.verifications.exists? && @user.supplier.verifications.first.registration_completion && @user.supplier.verifications.first.valid_registration_license  %>
@@ -42,18 +61,23 @@
           <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
         </div>
       <% elsif @user.supplier.verifications.exists? && @user.supplier.verifications.first.registration_completion  %>
-        <p>Next step - Add licenses</p>
+        <%= link_to new_suppliers_license_path do%>
+          <p>Next step - Add licenses</p>
+        <% end %>
         <div class="progress">
           <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75% | Completed profile</div>
         </div>
       <% else %>
-        <p>Next step -  Complete company profile</p>
+        <%= link_to edit_supplier_path(@user.supplier) do%>
+          <p>Next step - Complete company profile</p>
+        <% end %>
         <div class="progress">
           <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
         </div>
       <% end %>
     </div>
     <div class="nav-pills-dashboard">
+
       <!-- tabs -->
       <ul class="nav nav-tabs nav-justified">
         <li class="nav-item" role="presentation">
@@ -66,7 +90,9 @@
           <a class="nav-link" id="pills-closed-tab" data-toggle="pill" href="#closed" role="tab" aria-controls="pills-closed" aria-selected="false">Closed Offers</a>
         </li>
       </ul>
-      <!-- tab contents -->
+    
+    <!-- tab contents -->
+
       <!-- My Products-->
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active d-flex flex-wrap flex-fill justify-content-between" id="products" role="tabpanel" aria-labelledby="products-tab">
@@ -78,17 +104,18 @@
                   <div class="card-body">
                     <p class="card-text"><%= p.name %></p>
                     <% p.certifications.each do |c|  %>
-                      <p>Category: <%= c.category %></p>
+                      <p>Certifictions: <%= c.category %></p>
                     <% end %>
+                    <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-supplier" %>
                     <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-supplier" %>
                     <%= link_to "Destroy", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
-                    <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-supplier" %>
                   </div>
                 </div>
               </div>
             <% end %>
           <% end %>
         </div>
+
         <!-- Pending Offers -->
         <div class="tab-pane fade show" id="pending" role="tabpanel" aria-labelledby="pending-tab">
           <% @user.offers.each do |offer| %>
