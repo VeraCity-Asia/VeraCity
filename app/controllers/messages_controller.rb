@@ -9,8 +9,9 @@ class MessagesController < ApplicationController
   end
 
   def by_product
-
-
+    @product = Product.find(params[:product_id])
+    @messages = Message.conversation([current_user.id, @product.supplier.user_id], @product)
+    authorize @messages
   end
 
   def show

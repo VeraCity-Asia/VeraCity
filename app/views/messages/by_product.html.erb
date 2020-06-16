@@ -1,0 +1,16 @@
+<h6><%= @product.name %></h6>
+<div class="messages-bg">
+  <div class="message-container">
+    <div class="messages row">
+      <% @messages.each do |message| %>
+        <ul>
+          <li><%= message.id %></li>
+          <li><%= message.title %></li>
+          <li> <%= message.content %></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to "reply message", new_message_path(product_id: @product) %>
+<%= link_to "Back to inbox",  messages_path %>
