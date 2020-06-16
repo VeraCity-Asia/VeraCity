@@ -32,11 +32,11 @@ class Product < ApplicationRecord
 
   pg_search_scope :filter_search,
     against: [:category, :minimum_order_quantity],
-  associated_against: {
+    associated_against: {
     certifications: [:category]
   },
   using: {
-    tsearch: { prefix: true}
+    tsearch: { any_word: true}
   }
 
 
