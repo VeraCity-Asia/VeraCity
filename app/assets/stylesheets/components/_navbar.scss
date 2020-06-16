@@ -39,11 +39,15 @@
   flex-grow: 1;
   height: 100%;
   align-items: center;
+  .nav-link {
+    margin: 0 16px;
+    &:active {
+      border-bottom: inset;
+      color: silver;
+    }
+  }
 }
 
-.nav-link {
-  margin: 0 16px;
-}
 
 .navbar-left {
   height: 100%;

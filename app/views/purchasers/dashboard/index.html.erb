@@ -7,7 +7,10 @@
 
     <div class="left-info">
       <div class="company-info">
-        <h5>My Info</h5>
+        <div class="company-header d-flex justify-content-between">
+          <h5>My Info</h5>
+          <%= link_to "Edit profile", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info mx-2" %>
+        </div>
         <hr>
         <p>Name: my company name</p>
         <p>Country: <%= @user.country %></p>
