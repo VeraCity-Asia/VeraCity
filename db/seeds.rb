@@ -26,6 +26,8 @@ User.create!(
 )
 puts "Test PURChASER account email: #{User.first.email}"
 
+cities = ["Beijing", "Chongqing", "Shanghai", "Tianjin", "Anqing", "Bengbu", "Bozhou"]
+
 User.create!(
   name: Faker::Name.name,
   email: "test2@gmail.com",
@@ -36,32 +38,32 @@ User.create!(
 puts "Test SUPPLIER account email: #{User.last.email}"
 Supplier.create!(
   name: Faker::Company.name,
-  location: Faker::Address.city,
-  industry: Faker::IndustrySegments.sector,
+  location: cities.sample,
+  industry: "Medical Supplies",
   delivery_terms: ["FOB", "EXW", "FAS", "FCA", "CFR", "CPT", "CIF", "CIP", "DES", "DAF", "DEQ", "DDP", "DDU"].sample,
   payment_terms: ["T/T", "L/C", "D/P", "Western Union", "Moneygram"].sample,
-  nearest_port: "#{Faker::Address.city} Puerta",
+  nearest_port: "Shanghai Port",
   whitelisted: nil,
   established: Date.today - rand(200..10000),
   user: User.last
 )
 
 puts "#######################################################################"
-4.times do
+3.times do
   user = User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
-    password: Faker::Internet.password(min_length: 8),
-    country: Faker::Address.country,
-    user_type: ["supplier", "purchaser"].sample
+    password: Faker::Internet.password(min_length: 6),
+    country: "China",
+    user_type: :supplier
   )
   puts "#{user.name} created…"
 
   # Supplier generation
   supplier = Supplier.create!(
     name: Faker::Company.name,
-    location: Faker::Address.city,
-    industry: Faker::IndustrySegments.sector,
+    location: cities.sample,
+    industry: "Medical Supplies",
     delivery_terms: ["FOB", "EXW", "FAS", "FCA", "CFR", "CPT", "CIF", "CIP", "DES", "DAF", "DEQ", "DDP", "DDU"].sample,
     payment_terms: ["T/T", "L/C", "D/P", "Western Union", "Moneygram"].sample,
     nearest_port: "#{Faker::Address.city} Puerta",
@@ -69,17 +71,6 @@ puts "#######################################################################"
     established: Date.today - rand(200..10000),
     user: user
   )
-
-  rand(1..3).times do
-    offer = Offer.create!(
-      destination:Faker::Address.city,
-      payment:["Visa", "MasterCard", "Invoice", "Wire Transfer"].sample,
-      approved_date: Faker::Date.forward(days: 23),
-      approved: nil,
-      supplier: Supplier.all.sample,
-      user: User.all.sample
-    )
-  end
 end
 
 puts "#######################################################################"
@@ -87,10 +78,10 @@ puts "Generating licenses…"
 
 Supplier.all.each { |s| License.create!(
 
-    authority: "#{Faker::Space.galaxy} #{Faker::ElectricalComponents.active} Agency",
+    authority: "China Official Government Licensing Agency (COGLA)",
     number: Faker::Alphanumeric.alphanumeric(number: 10),
-    start_date:Faker::Date.forward(days: 170),
-    expired_date: Date.today,
+    start_date: Date.today - 400,
+    expired_date: Faker::Date.forward(days: 170),
     supplier: s
 )}
 
@@ -98,39 +89,41 @@ puts "#{Supplier.all.count} Suppliers generated."
 puts "#######################################################################"
 puts "Creating products"
 
-Supplier.all.each { |s| rand(1..4).times do Product.create!(
-      name: Faker::Commerce.product_name,
-      price: Faker::Commerce.price(range: 2..848.0, as_string: false),
-      category: ["Mask","thermometer","Bandage"].sample,
+masks = ["Reusable Cotton Face Mask", "Reusable Face Covering", "Disposable 3 Layer Face Mask with Comfortable Earloop"]
+thermometers = ["Thermometer for Adults and Kids, Fast and Accurate, C/F Switchable", "Non-Contact Infrared Thermometer", "Non-Contact Digital Laser Infrared Thermometer Temperature Gun"]
+bandages = ["Maximum Hold Waterproof Bandages", "Medical Gauze Stretch Bandage Roll", "Premium Brand Adhesive Bandage Pads"]
+category = ["Mask","Thermometer","Bandage"]
+
+Supplier.all.each do |s| 
+  p = Product.create!(
+      name: masks.sample,
+      price: Faker::Commerce.price(range: 2..48.0, as_string: false),
+      category: category[0],
       production_quantity: Faker::Number.number(digits: 6),
       minimum_order_quantity: [100,200,300].sample,
       supplier: s
     )
-  end
-}
-puts "#{Product.all.count} Products generated."
+    # p.photos.attach(Faker::LoremPixel.image(size: "50x60", is_gray: false, category: 'sports', number: nil, text: 'Dummy-text'))
+    # p.save!
+end
 
+puts "#{Product.all.count} Products generated."
 
 puts "#######################################################################"
 puts "Creating certifications"
 
-4.times do
+2.times do
   certification = Certification.create!(
     number: rand(23..5746),
-    category:["CE", "FDA", "ISO"].sample,
+    category: "FDA",
     listing_number: Faker::Number.leading_zero_number(digits: 10),
     code: Faker::Alphanumeric.alphanumeric(number: 5),
-    authority: Faker::IndustrySegments.sub_sector,
-    start_date:Faker::Date.forward(days: 170),
-    expired_date: Date.today
+    authority: "FDA",
+    start_date: Date.today - 200,
+    expired_date: Faker::Date.forward(days: 170)
   )
 end
 puts "#{Certification.count} Certifications created…"
-
-puts "#######################################################################"
-puts "Seeding Product Offers join table"
-Product.all.each { |p| p.offers << Offer.all.sample }
-puts "#######################################################################"
 
 puts "#######################################################################"
 puts "Seeding Product Certifications join table"
