@@ -14,11 +14,6 @@ class MessagesController < ApplicationController
     authorize @messages
   end
 
-  def show
-    @message = Message.find(params[:id])
-    authorize @message
-  end
-
   def new
     @message = Message.new
     # policy_class: app/policies/message_policy#create
