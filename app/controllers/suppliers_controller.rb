@@ -12,22 +12,13 @@ class SuppliersController < ApplicationController
 
   def update
     authorize @supplier
-    if @supplier.update(supplier_params)
-      puts @supplier.name_match?
-      puts @supplier.fda_profile_match?
-      if @supplier.name_match? && @supplier.fda_profile_match?
-        Verification.create!(
-          supplier: @supplier,
-          registration_completion: true
-        )
-        puts "#" * 60
-        puts Verification.last
-        puts "#" * 60
-        redirect_to suppliers_dashboard_path
-      else
-        raise
-        # render :edit
-      end
+    @supplier.update(supplier_params)
+
+    if  @supplier.name_and_profile_match? && @supplier.verifications.exists? # already exists
+      redirect_to suppliers_dashboard_path
+    elsif @supplier.name_and_profile_match? && @supplier.verifications.empty? # new user
+      @supplier.create_verification
+      redirect_to suppliers_dashboard_path
     else
       render :edit
     end
@@ -37,7 +28,9 @@ class SuppliersController < ApplicationController
   private
 
   def supplier_params
-    params.require(:supplier).permit(:name, :location, :industry, :delivery_terms, :payment_terms, :fei_number, :nearest_port, :established)
+    params.require(:supplier).permit(:name, :location, :industry,
+       :delivery_terms, :payment_terms, :fei_number, 
+       :nearest_port, :established)
   end
 
   def find_supplier

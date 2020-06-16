@@ -16,15 +16,18 @@ class Supplier < ApplicationRecord
     delivery_terms.present? && payment_terms.present? && fei_number.present?
   end
 
-  def name_match?
-    return Cecv.find_by(name: self.name).name == self.name
-  end
-  
+  def name_and_profile_match?
+    return true if Cecv.find_by(name: name)&.fei_number == self.fei_number
 
-  def fda_profile_match?
-    result = Cecv.find_by(name: self.name)
-    return result.fei_number == self.fei_number
+    self.errors.add(:base, "Something went wrong")
+    false
   end
   
+  def create_verification
+    Verification.create!(
+      supplier: self,
+      registration_completion: true
+    )
+  end
 
 end
