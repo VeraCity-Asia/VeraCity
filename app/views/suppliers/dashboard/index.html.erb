@@ -11,6 +11,24 @@
     <%= link_to "Edit profile", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info mx-2" %>
   </div>
 </div>
+<div class="status check">
+  <% if @user.supplier.verifications.exists? && @user.supplier.verifications.first.registration_completion && @user.supplier.verifications.first.valid_registration_license  %>
+    <p>Congrats! You are part of our community now:)</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+    </div>
+  <% elsif @user.supplier.verifications.exists? && @user.supplier.verifications.first.registration_completion  %>
+    <p>Next step - Add license</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75% | Completed profile</div>
+    </div>
+  <% else %>
+    <p>Next step - completed company profile</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+    </div>
+  <% end %>
+</div>
 <div class="row justify-content-center">
   <div>
     License
