@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
+  
   def index
     @products = policy_scope(Product)
     @query = params[:query]
@@ -14,6 +15,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @message = Message.new
     authorize @product
+    # raise
   end
 
   private
