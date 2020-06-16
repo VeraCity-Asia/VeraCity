@@ -37,6 +37,9 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 #pg search gem
 gem 'pg_search', '~> 2.3.0'
 
+# Enable models to use the PostgreSQL COPY command to import/export data in CSV format
+gem 'postgres-copy'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -52,7 +55,8 @@ gem 'font-awesome-sass'
 
 
 gem 'simple_form'
-group :development, :test do  gem 'pry-byebug'
+group :development, :test do  
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 
@@ -80,4 +84,3 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'cloudinary', '~> 1.12.0'
-gem 'dotenv-rails', groups: [:development, :test]
