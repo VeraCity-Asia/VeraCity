@@ -136,7 +136,7 @@ puts "#######################################################################"
 puts "#######################################################################"
 puts "Seeding messages"
 Product.all.each do |p|
-  User.purchaser.each do |u|
+  User.where(user_type: :purchaser).each do |u|
     Message.create!(
       product_id: p.id,
       sender_id: u.id,

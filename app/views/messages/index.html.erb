@@ -2,30 +2,27 @@
   <div class="thankyou">
     <%= image_tag 'thankyou .jpg', size: '80x60'%>
   </div>
-
   <h4>Messages</h4>
-
   <div class="message-container">
     <div class="messages row">
-    <% if @messages.nil? %>
-      <p>Hmm.. Maybe you should message someone</p>
-    <% else %>
-      <% @messages.each do |message| %>
-      <div class="row">
-        <div>
-          <strong><%= message.product.name %></strong> — 
-        </div>
-        <div>
-          <%= message.content %> | <%= message.created_at %>
-        </div>
-      </div>
+      <% if @messages.nil? %>
+        <p>Hmm.. Maybe you should message someone</p>
+      <% else %>
+        <% @messages.each do |message| %>
+          <div class="row">
+            <div>
+              <strong><%= message.product.name %></strong> —
+            </div>
+            <div>
+              <%= message.content %> | <%= message.created_at %> | <%= link_to "More", message_path(message) %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-      </div>
     </div>
   </div>
 </div>
-
+</div>
 <div>
   <button onclick="window.location.href='/purchasers/dashboard'" class="btn btn-primary">View my Dashboard</button>
 </div>
