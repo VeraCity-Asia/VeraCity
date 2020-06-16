@@ -36,6 +36,16 @@
       <hr>
       <%= @offer.user.name %>
     </div>
+    <div class="some-info col-sm-6 my-3">
+      <h6>Total amount</h6>
+      <hr>
+      <%= @offer.product_offers.sum(:amount) %>
+    </div>
+    <div class="some-info col-sm-6 my-3">
+      <h6>Totol price</h6>
+      <hr>
+      <%= @offer.price %>
+    </div>
   </div>
   <div class="row justify-content-center">
     <% @offer.products.each do |p| %>
