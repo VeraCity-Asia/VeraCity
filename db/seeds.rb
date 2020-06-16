@@ -26,6 +26,14 @@ User.create!(
 )
 puts "Test PURChASER account email: #{User.first.email}"
 
+User.create!(
+  name: Faker::Name.name,
+  email: "faker@gmail.com",
+  password: "123456",
+  country: Faker::Address.country,
+  user_type: "purchaser"
+)
+
 cities = ["Beijing", "Chongqing", "Shanghai", "Tianjin", "Anqing", "Bengbu", "Bozhou"]
 
 User.create!(
@@ -94,33 +102,33 @@ thermometers = ["Thermometer for Adults and Kids, Fast and Accurate, C/F Switcha
 bandages = ["Maximum Hold Waterproof Bandages", "Medical Gauze Stretch Bandage Roll", "Premium Brand Adhesive Bandage Pads"]
 category = ["Mask","Thermometer","Bandage"]
 
-Supplier.all.each do |s| 
+Supplier.all.each do |s|
   m = Product.create!(
-      name: masks.sample,
-      price: Faker::Commerce.price(range: 2..48.0, as_string: false),
-      category: category[0],
-      production_quantity: Faker::Number.number(digits: 6),
-      minimum_order_quantity: [100,200,300].sample,
-      supplier: s
-    )
+    name: masks.sample,
+    price: Faker::Commerce.price(range: 2..48.0, as_string: false),
+    category: category[0],
+    production_quantity: Faker::Number.number(digits: 6),
+    minimum_order_quantity: [100,200,300].sample,
+    supplier: s
+  )
   t = Product.create!(
-      name: thermometers.sample,
-      price: Faker::Commerce.price(range: 2..48.0, as_string: false),
-      category: category[1],
-      production_quantity: Faker::Number.number(digits: 6),
-      minimum_order_quantity: [100,200,300].sample,
-      supplier: s
-    )
+    name: thermometers.sample,
+    price: Faker::Commerce.price(range: 2..48.0, as_string: false),
+    category: category[1],
+    production_quantity: Faker::Number.number(digits: 6),
+    minimum_order_quantity: [100,200,300].sample,
+    supplier: s
+  )
   b = Product.create!(
-      name: bandages.sample,
-      price: Faker::Commerce.price(range: 2..48.0, as_string: false),
-      category: category[2],
-      production_quantity: Faker::Number.number(digits: 6),
-      minimum_order_quantity: [100,200,300].sample,
-      supplier: s
-    )
-    # p.photos.attach(Faker::LoremPixel.image(size: "50x60", is_gray: false, category: 'sports', number: nil, text: 'Dummy-text'))
-    # p.save!
+    name: bandages.sample,
+    price: Faker::Commerce.price(range: 2..48.0, as_string: false),
+    category: category[2],
+    production_quantity: Faker::Number.number(digits: 6),
+    minimum_order_quantity: [100,200,300].sample,
+    supplier: s
+  )
+  # p.photos.attach(Faker::LoremPixel.image(size: "50x60", is_gray: false, category: 'sports', number: nil, text: 'Dummy-text'))
+  # p.save!
 end
 
 puts "#{Product.all.count} Products generated."

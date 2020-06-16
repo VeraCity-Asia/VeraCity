@@ -1,0 +1,18 @@
+<h6><%= @product.name %></h6>
+<div class="messages-bg">
+  <div class="message-container">
+    <div class="messages row">
+      <% @messages.each do |message| %>
+        <ul>
+          <li><%= message.id %></li>
+          <li><%= message.title %></li>
+          <li> <%= message.content %></li>
+          <% if receiver_id = current_user %>
+            <%= link_to "reply message", new_message_path(:product => message.product) %>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to "Back to inbox",  messages_path %>
