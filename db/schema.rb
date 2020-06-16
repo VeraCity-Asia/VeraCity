@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_031718) do
+ActiveRecord::Schema.define(version: 2020_06_15_132817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,24 @@ ActiveRecord::Schema.define(version: 2020_06_15_031718) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "cecvs", force: :cascade do |t|
+    t.string "reg_key"
+    t.string "registration_number"
+    t.string "fei_number"
+    t.string "reg_status_id"
+    t.string "initial_importer_flag"
+    t.string "reg_expiry_date_year"
+    t.string "address_type_id"
+    t.string "name"
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "city"
+    t.string "state_id"
+    t.string "iso_country_code"
+    t.string "zip_code"
+    t.string "postal_code"
   end
 
   create_table "certifications", force: :cascade do |t|
@@ -82,14 +100,13 @@ ActiveRecord::Schema.define(version: 2020_06_15_031718) do
     t.string "destination"
     t.integer "price"
     t.string "payment"
-    t.date "date"
     t.boolean "approved"
     t.date "approved_date"
     t.bigint "user_id", null: false
     t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "amount"
+    t.boolean "confirmed", default: false
     t.index ["supplier_id"], name: "index_offers_on_supplier_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
@@ -128,6 +145,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_031718) do
     t.string "nearest_port"
     t.boolean "whitelisted"
     t.date "established"
+    t.integer "fei_number"
     t.index ["user_id"], name: "index_suppliers_on_user_id"
   end
 
@@ -148,14 +166,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_031718) do
   end
 
   create_table "verifications", force: :cascade do |t|
-    t.boolean "veracity_approved"
-    t.boolean "valid_registration_license"
-    t.boolean "registration_completion"
-    t.boolean "has_factory"
-    t.boolean "has_international_certification"
-    t.boolean "audit_completed"
-    t.string "owner_name"
-    t.boolean "has_production_capacity"
+    t.boolean "veracity_approved", default: false
+    t.boolean "valid_registration_license", default: false
+    t.boolean "registration_completion", default: false
     t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

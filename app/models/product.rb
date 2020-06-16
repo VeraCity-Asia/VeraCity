@@ -30,15 +30,4 @@ class Product < ApplicationRecord
     tsearch: { prefix: true}
   }
 
-  pg_search_scope :filter_search,
-    against: [:category, :minimum_order_quantity],
-    associated_against: {
-    certifications: [:category]
-  },
-  using: {
-    tsearch: { any_word: true}
-  }
-
-
-
 end

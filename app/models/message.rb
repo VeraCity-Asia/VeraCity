@@ -12,7 +12,7 @@ class Message < ApplicationRecord
       user.id, user.id, product.id
     ]).order(created_at: :asc)
   }
-  scope :of_user, -> (user) { 
+  scope :of_user, -> (user) {
     where(["sender_id = ? or receiver_id = ?",
       user.id, user.id
     ]).order(created_at: :asc)
