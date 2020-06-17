@@ -1,6 +1,12 @@
 <%= link_to product_path(product) do %>
   <div class="card-product">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+    <% if product.photos.attached?  %>
+      <% product.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    <% else %>
+      <%= image_tag "mask.jpg" %>
+    <% end %>
     <div class="card-product-infos">
       <h2><%= product.name %></h2>
       <p>Cost: $<%= product.price %>/unit</p>
