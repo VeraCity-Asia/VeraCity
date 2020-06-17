@@ -6,12 +6,21 @@
     </a>
   </div>
   <div>
+    <h1>Inbox</h1>
   </div>
   <div class="messages row">
     <% if @messages.empty? %>
       <h3>Hmm.. Maybe you should message someone</h3>
     <% else %>
       <table class="table table-hover">
+        <tr>
+        <th>Time</th>
+        <th>Direction</th>
+        <th>Contact</th>
+        <th>Title</th>
+        <th>Product</th>
+        <th>Details</th>
+        </tr>
         <% @messages.each do |message| %>
           <tbody>
             <tr>
@@ -27,7 +36,7 @@
                 <td><%= message.sender.name %></td>
                 <td><%= message.title %> </td>
               <% end %>
-              <td>About: <strong><%= message.product.name %></strong> </td>
+              <td><strong><%= message.product.name %></strong> </td>
               <td><%= link_to "More", by_product_messages_path(product_id: message.product_id, interlocutors: [message.sender_id, message.receiver_id]) %></td>
             </tr>
           </tbody>
