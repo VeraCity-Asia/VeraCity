@@ -118,6 +118,7 @@ bandage1 = 'https://images-na.ssl-images-amazon.com/images/I/91FeE5s13QL._AC_SX4
 bandage2 = 'https://www.csd.com.tw/archive/product/item/%E8%8B%B1%E6%96%87%E7%94%A2%E5%93%81/ELASTIC-BANDAGE.jpg'
 thermometer1 = 'https://www.heartsmart.com/assets/images/AMPTMPTH1.jpg'
 thermometer2 = 'https://www.thevetstore.net/wp-content/uploads/2013/05/Thermometer-New.jpg'
+thermometer3 = 'https://www.braunhealthcare.com/media/wysiwyg/therms_1_2_1_1_14_2.jpg'
 Supplier.all.each do |s|
   m = Product.create!(
     name: masks.sample,
@@ -137,7 +138,7 @@ Supplier.all.each do |s|
     minimum_order_quantity: [100,200,300].sample,
     supplier: s
   )
-  t.photos.attach(io: URI.open([thermometer1, thermometer2].sample) , filename: 'mask.png', content_type: 'image/png')
+  t.photos.attach(io: URI.open([thermometer1, thermometer2, thermometer3].sample) , filename: 'mask.png', content_type: 'image/png')
   t.save!
 
   b = Product.create!(
