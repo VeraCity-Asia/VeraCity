@@ -8,8 +8,8 @@
   <div>
   </div>
   <div class="messages row">
-    <% if @messages.nil? %>
-      <p>Hmm.. Maybe you should message someone</p>
+    <% if @messages.empty? %>
+      <h3>Hmm.. Maybe you should message someone</h3>
     <% else %>
       <table class="table table-hover">
         <% @messages.each do |message| %>
@@ -36,7 +36,4 @@
     </table>
   <% end %>
 </div>
-</div>
-<div>
-  <button onclick="window.location.href='/purchasers/dashboard'" class="btn btn-primary">View my Dashboard</button>
 </div>
