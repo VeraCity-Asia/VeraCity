@@ -3,6 +3,7 @@
     <div class="profile-img ">
       <%= cl_image_tag("https://res.cloudinary.com/demyxeys9/image/upload/v1592292947/veracity/avatar-png-1_wblzc1.png", :width => 240, :height => 240) %>
     </div>
+    
     <div class="left-info">
       <div class="company-info">
         <div class="company-header d-flex justify-content-between">
@@ -15,13 +16,17 @@
         <p>Email: <%= @user.email %></p>
       </div>
     </div>
+  
   </div>
+  
   <div class="right-col col-xs-12 col-md-9">
     <div class="header-name">
       <h1><%= @user.name%></h1>
       <p>Purchaser</p>
     </div>
+    
     <div class="nav-pills-dashboard">
+      
       <!-- tabs -->
       <ul class="nav nav-tabs nav-justified">
         <li class="nav-item" role="presentation">
@@ -34,6 +39,7 @@
           <a class="nav-link" id="pills-closed-tab" data-toggle="pill" href="#rejected" role="tab" aria-controls="pills-profile" aria-selected="false">Rejected Offers</a>
         </li>
       </ul>
+      
       <!-- tab contents -->
 
       <%# Pending tab %>
