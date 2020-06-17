@@ -119,7 +119,6 @@
         <!-- Pending Offers -->
         <div class="tab-pane" id="pending" role="tabpanel" aria-labelledby="pending-tab">
           <% @user.supplier.offers.each do |offer| %>
-          <%= offer %>
             <%  if offer.approved.nil?  %>
               <%= link_to suppliers_offer_path(offer) do %>
                 <div class="card-offer">
