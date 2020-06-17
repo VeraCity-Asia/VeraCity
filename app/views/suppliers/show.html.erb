@@ -8,13 +8,20 @@
         <p>Delivery term: <%= @supplier.delivery_terms %></p>
         <p>Payment term: <%= @supplier.payment_terms %></p>
         <p>Nearest port: <%= @supplier.nearest_port %></p>
-        <p>More information for license</p>
         <% if @supplier.photo.attached?  %>
           <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
         <% else %>
           <%= cl_image_tag("https://res.cloudinary.com/demyxeys9/image/upload/v1592292947/veracity/avatar-png-1_wblzc1.png", :width => 240, :height => 240) %>
         <% end %>
+        <p>More information for license</p>
         <% @supplier.licenses.each do |license| %>
+          <% if license.photos.attached?  %>
+            <% license.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+            <% end %>
+          <% else %>
+            <%= image_tag "sample_license.jpg", height: 150, width: 200, crop: :fill %>
+          <% end %>
           <p>1. Authority: <%= license.authority %></p>
           <p>2. Number: <%= license.number %></p>
         <% end %>
