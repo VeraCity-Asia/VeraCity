@@ -29,7 +29,7 @@
       <div class="card-products" id="products">
 
         <% @products.each do |product| %>
-          <%= render :partial => 'shared/product_card', locals: {:product => product } %>
+          <%= render :partial => 'shared/cards/product_card', locals: {:product => product } %>
         <% end %>
       </div>
     </div>
