@@ -2,6 +2,7 @@ class Suppliers::LicensesController < ApplicationController
 
   def new
     @license = License.new
+    @supplier = current_user.supplier
     authorize @license
   end
 
