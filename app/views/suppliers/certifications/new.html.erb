@@ -11,6 +11,7 @@
           <%= f.input :authority %>
           <%= f.input :start_date, label: "Start Date", as: :date, html5: true %>
           <%= f.input :expired_date, label: "Expired Date", as: :date, html5: true %>
+          <%= f.hidden_field :product_id, :value => @product.id %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         </div>
         <div class="form-actions">

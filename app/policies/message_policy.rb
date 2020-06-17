@@ -7,9 +7,6 @@ class MessagePolicy < ApplicationPolicy
     true
   end
 
-  def show?
-    true
-  end
 
   def by_product?
     true

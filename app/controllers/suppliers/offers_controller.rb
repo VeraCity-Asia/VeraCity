@@ -1,8 +1,5 @@
 class Suppliers::OffersController < ApplicationController
   before_action :find_offer, only: [:show,:update,:generateoffer]
-  def index
-    @offers = policy_scope([:suppliers, Offer])
-  end
 
   def show
     # policy_class: app/policies/suppliers/offer_policy#show

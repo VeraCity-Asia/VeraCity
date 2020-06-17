@@ -57,6 +57,15 @@ Supplier.first.update!(
 )
 
 puts "#######################################################################"
+Verification.create!(
+  veracity_approved: true,
+  valid_registration_license: true,
+  registration_completion: true,
+  supplier: Supplier.first
+)
+
+
+puts "#######################################################################"
 2.times do
   user = User.create!(
     name: Faker::Name.name,
