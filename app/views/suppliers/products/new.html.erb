@@ -4,8 +4,9 @@
       <h1>Add a product</h1>
       <%= simple_form_for @product, url: suppliers_products_path  do |f| %>
         <div class="form-inputs">
-          <%= f.input :name %>
-          <%= f.input :price %>
+          <%= f.input :name, label: "Product name" %>
+          <small class="form-text text-muted">Please be specific! For example: Reusable Face Covering</small>
+          <%= f.input :price, label: "Price per unit (USD)" %>
           <%= f.input :category, collection: Product::CATEGORY, prompt: :translate %>
           <%= f.input :production_quantity, label: "Daily production capacity" %>
           <%= f.input :minimum_order_quantity %>
