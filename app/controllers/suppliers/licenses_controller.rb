@@ -11,7 +11,7 @@ class Suppliers::LicensesController < ApplicationController
     @license.supplier = @supplier
     authorize @license
 
-    if @license.save && @supplier.verifications.first.valid_registration_license
+    if @license.save && @supplier.verifications.first&.valid_registration_license
       redirect_to suppliers_dashboard_path, notice: 'Your license was successfully created.'
     elsif @license.save
       @supplier.license_check
@@ -23,7 +23,9 @@ class Suppliers::LicensesController < ApplicationController
 
   def destroy
     @license = License.find(params[:id])
+    authorize @license
     @license.destroy
+    redirect_to suppliers_dashboard_path
   end
 
   private

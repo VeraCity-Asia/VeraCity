@@ -33,7 +33,7 @@ class Supplier < ApplicationRecord
   end
 
   def license_check
-    self.verifications.first.update(valid_registration_license: true)
+    self.verifications.first&.update(valid_registration_license: true)
   end
 
 end
