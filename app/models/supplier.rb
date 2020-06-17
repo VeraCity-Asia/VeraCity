@@ -19,7 +19,7 @@ class Supplier < ApplicationRecord
   def name_and_profile_match?
     return true if Cecv.find_by(name: name)&.fei_number == self.fei_number
 
-    self.errors.add(:base, "Something went wrong")
+    self.errors.add(:base, "No matching CECV database entry found.")
     false
   end
 

@@ -11,7 +11,7 @@ class Suppliers::ProductsController < ApplicationController
     @product.supplier = supplier
     if @product.save
       authorize([:suppliers, @product])
-      redirect_to new_suppliers_certification_path
+      redirect_to new_suppliers_certification_path(product_id: @product.id)
     else
       render :new
     end

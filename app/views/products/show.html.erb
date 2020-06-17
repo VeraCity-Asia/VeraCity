@@ -67,10 +67,12 @@
   <!-- action buttons -->
   <div class="button-group d-flex">
     <div class="buttons">
-      <button type="button" class="btn btn-supplier" data-toggle="modal" data-target="#exampleModal">
-        Message
-        <%# <%= icon('far', 'envelope') %>
-      </button>
+      <% if current_user.purchaser? %>
+        <button type="button" class="btn btn-supplier" data-toggle="modal" data-target="#exampleModal">
+          Message
+          <%# <%= icon('far', 'envelope') %>
+        </button>
+      <% end %>
       <!-- Modal -->
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -97,9 +99,11 @@
     <div type="button" class="btn btn-supplier">
       <%= link_to "Supplier", supplier_path(@product.supplier), target: "_blank", rel: "noopener noreffer" %>
     </div>
-    <div class="buttons">
-      <h5><%= link_to "Request quote", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-quote", target: "_blank", rel: "noopener noreferrer" %></h5>
-    </div>
+    <% if current_user.purchaser? %>
+      <div class="buttons">
+        <h5><%= link_to "Request quote", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-quote", target: "_blank", rel: "noopener noreferrer" %></h5>
+      </div>
+    <% end %>
     <% if policy([:suppliers, @product]).edit? %>
       <div><%= link_to "Edit product", edit_suppliers_product_path(@product), class: "btn btn-supplier" %></div>
     <% end %>
