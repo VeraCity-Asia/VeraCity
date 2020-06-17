@@ -6,21 +6,9 @@
           <%# <div class="row">
             <div class="col-xs-12 col-sm-8 offset-sm-2 my-2 form-new-message"> %>
           <h1>Write your message</h1>
-          <%= simple_form_for @message do |f| %>
-            <div class="form-inputs">
-              <%= f.input :title %>
-              <%= f.input :content %>
-              <%= f.hidden_field :product_id, :value => @product.id %>
-            </div>
-            <div class="form-actions">
-              <%= f.button :submit %>
-            </div>
-          <% end %>
+          <%= render 'shared/message_form' %>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-a
 </div>
