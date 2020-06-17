@@ -7,10 +7,12 @@
       <div class="company-info">
         <div class="company-header d-flex justify-content-between">
           <h5>My Info</h5>
+          <%= link_to "Edit", edit_user_registration_path, :class => "btn btn-outline-secondary" %>
         </div>
         <hr>
+        <%# <p>Company: company I represent</p> %>
+        <%# <p>Country: Country I am representing/at/will get it shipped to</p> %>
         <p>Email: <%= @user.email %></p>
-        <%= link_to "Edit", edit_user_registration_path, :class => "btn btn-outline-secondary" %>
       </div>
     </div>
   </div>
