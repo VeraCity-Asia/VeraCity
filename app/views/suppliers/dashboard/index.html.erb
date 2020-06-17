@@ -28,6 +28,13 @@
           <div class="license">
             <p>Authority: <%= license.authority %></p>
             <p>Number: <%= license.number %></p>
+            <% if license.photos.attached?  %>
+              <% license.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+              <% end %>
+            <% else %>
+              <%= image_tag "sample_license.jpg", height: 150, width: 200, crop: :fill %>
+            <% end %>
             <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-outline-warning mx-2"  %>
           </div>
         <% end %>
