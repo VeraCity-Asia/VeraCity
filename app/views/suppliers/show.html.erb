@@ -9,6 +9,11 @@
         <p>Payment term: <%= @supplier.payment_terms %></p>
         <p>Nearest port: <%= @supplier.nearest_port %></p>
         <p>More information for license</p>
+        <% if @supplier.photo.attached?  %>
+          <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+        <% else %>
+          <%= cl_image_tag("https://res.cloudinary.com/demyxeys9/image/upload/v1592292947/veracity/avatar-png-1_wblzc1.png", :width => 240, :height => 240) %>
+        <% end %>
         <% @supplier.licenses.each do |license| %>
           <p>1. Authority: <%= license.authority %></p>
           <p>2. Number: <%= license.number %></p>
@@ -25,6 +30,13 @@
           <%= link_to product_path(product) do %>
             <div class="supplier-product-info">
               <!--put product image here -->
+              <% if product.photos.attached?  %>
+                <% product.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+                <% end %>
+              <% else %>
+                <%= image_tag "mask.jpg", height: 150, width: 200, crop: :fill %>
+              <% end %>
               <h5><strong> <%= product.name %></strong></h5>
               <div class="detailed-product-info">
                 <p>Price: $<%= product.price %>/unit</p>

@@ -9,6 +9,7 @@ class Supplier < ApplicationRecord
   has_many :offers, dependent: :destroy
   has_many :licenses, dependent: :destroy
   has_many :verifications, dependent: :destroy
+  has_one_attached :photo
   validates :delivery_terms, inclusion: { in: DELIVERYTERM, allow_blank: true }
   validates :payment_terms, inclusion: { in: PAYMETTERM, allow_blank: true }
 

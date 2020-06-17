@@ -29,8 +29,8 @@ class SuppliersController < ApplicationController
 
   def supplier_params
     params.require(:supplier).permit(:name, :location, :industry,
-       :delivery_terms, :payment_terms, :fei_number, 
-       :nearest_port, :established)
+                                     :delivery_terms, :payment_terms, :fei_number,
+                                     :nearest_port, :established, :photo)
   end
 
   def find_supplier
