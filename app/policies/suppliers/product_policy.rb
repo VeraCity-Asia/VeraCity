@@ -10,7 +10,8 @@ class Suppliers::ProductPolicy < ApplicationPolicy
   end  
   
   def create?
-    return record.supplier&.information_complete?
+    # return record.supplier&.information_complete?
+    true
   end
 
   def destroy?
