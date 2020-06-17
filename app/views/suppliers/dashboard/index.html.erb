@@ -1,26 +1,27 @@
 <div class="dashboard d-flex" style="min-height: 100vh; max-width: 100%;">
   <div class="left-col col-xs-12 col-md-3">
-
     <div class="profile-img ">
-      <%= cl_image_tag("https://res.cloudinary.com/demyxeys9/image/upload/v1592292947/veracity/avatar-png-1_wblzc1.png", :width => 240, :height => 240) %>
+      <% if @user.supplier.photo.attached?  %>
+        <%= cl_image_tag @user.supplier.photo.key, height: 150, width: 200, crop: :fill %>
+      <% else %>
+        <%= cl_image_tag("https://res.cloudinary.com/demyxeys9/image/upload/v1592292947/veracity/avatar-png-1_wblzc1.png", :width => 240, :height => 240) %>
+      <% end %>
     </div>
-
     <div class="left-info">
       <div class="company-info">
-      <div class="company-header d-flex justify-content-between">
-        <h5>My Company</h5>
-        <%= link_to "Edit", edit_supplier_path(@user.supplier), :class => "btn btn-outline-secondary mx-2" %>
-      </div>
+        <div class="company-header d-flex justify-content-between">
+          <h5>My Company</h5>
+          <%= link_to "Edit", edit_supplier_path(@user.supplier), :class => "btn btn-outline-secondary mx-2" %>
+        </div>
         <hr>
         <p>Name: <%= @user.supplier.name %></p>
         <p>Country: <%= @user.supplier.location %></p>
         <p>Email: <%= @user.email %></p>
       </div>
-
       <div class="licenses-info">
         <div class="license-header d-flex justify-content-between">
-            <h5>Licenses</h5>
-            <%= link_to "Add", new_suppliers_license_path, :class => "btn btn-outline-secondary" %>
+          <h5>Licenses</h5>
+          <%= link_to "Add", new_suppliers_license_path, :class => "btn btn-outline-secondary" %>
         </div>
         <hr>
         <% @user.supplier.licenses.each do |license| %>
@@ -31,10 +32,8 @@
           </div>
         <% end %>
       </div>
-
     </div>
   </div>
-
   <div class="right-col col-xs-12 col-md-9">
     <div class="top-info d-flex row">
       <div class="header-name">
@@ -47,10 +46,9 @@
         <p>Supplier</p>
       </div>
       <div class="header-name">
-          <%= link_to "Add product", new_suppliers_product_path, :class => "btn btn-info mx-2" %>
+        <%= link_to "Add product", new_suppliers_product_path, :class => "btn btn-info mx-2" %>
       </div>
     </div>
-
     <!-- verfication status check -->
     <div class="status-check">
       <% if @user.supplier.verifications.exists? && @user.supplier.verifications.first.registration_completion && @user.supplier.verifications.first.valid_registration_license  %>
@@ -74,7 +72,6 @@
         </div>
       <% end %>
     </div>
-
     <div class="nav-pills-dashboard">
       <!-- tabs -->
       <ul class="nav nav-tabs nav-justified">
@@ -88,11 +85,9 @@
           <a class="nav-link" id="pills-closed-tab" data-toggle="tab" href="#closed" role="tab" aria-controls="pills-closed" aria-selected="false">Closed Offers</a>
         </li>
       </ul>
-    
-    <!-- tab contents -->
+      <!-- tab contents -->
       <div class="tab-content" id="myTabContent">
-
-      <!-- My Products-->
+        <!-- My Products-->
         <div class="tab-pane show active" id="products" role="tabpanel" aria-labelledby="products-tab">
           <div class="d-flex flex-wrap flex-fill justify-content-between">
             <% @user.supplier.products.each do |p| %>
@@ -115,7 +110,6 @@
             <% end %>
           </div>
         </div>
-
         <!-- Pending Offers -->
         <div class="tab-pane" id="pending" role="tabpanel" aria-labelledby="pending-tab">
           <% @user.supplier.offers.each do |offer| %>
