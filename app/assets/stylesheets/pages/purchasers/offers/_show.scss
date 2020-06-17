@@ -1,45 +1,75 @@
-.offer-container {
-    background-color: white;
-    padding: 3em;
-    border-radius: 8px;
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+
+
+  .offer-container {
+    color:#193b68;
+    margin-bottom:2em;
+    h1{
+      margin-inline-end: 2px;
+    }
+  }
+
 
     .offer-top-bar {
         box-sizing: border-box;
     }
-    .action-btn {
-        height: fit-content;
-        transition: 0.3s;
 
-        .btn {
-            border-radius: 4px;
-            align-items: center;
-            height: 100%;
-        }
-
-        .btn-danger:hover {
-            background-color: #ff5329;
-        }
-
-        #btn-browse {
-            background-color:#DCDCDC;
-
-            &:hover {
-            background-color:#e7e7e7;
-            }
-        }
+    .quote-name.h1{
+      text-align: center;
     }
 
-    .offer-info {
-        border-radius: 4px;
-        width: 98%;
-        
-        .some-info {
-            margin: 32px 0;
-        }
-        h6 {
-            font-weight: bolder;
-        }
-
-    }
+    .card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  text-align: left;
 }
+
+
+
+  .card-product-infos{
+    text-align: left;
+  }
+
+
+
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 5px;
+}
+
+.action-btn{
+  margin-right: 200px;
+  a{
+    color:white;
+  }
+}
+
+.btn-confirmed{
+  width: 140px;
+  height: 36px;
+  margin-right:32px;
+  background: #193B68;
+  color: white;
+}
+
+.btn-cancel{
+width: 140px;
+height: 36px;
+background: rgba(25, 55, 104, 0.1);
+a{
+    color:#193B68;
+  }
+
+}
+
