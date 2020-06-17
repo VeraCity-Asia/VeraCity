@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    @receiver = User.find(params[:receiver_id])
     # policy_class: app/policies/message_policy#create
     authorize @message
     @product = Product.find(params[:product_id])
@@ -26,7 +27,6 @@ class MessagesController < ApplicationController
     @product = Product.find(params[:message][:product_id])
     @message.product_id = @product.id
     @message.sender_id = current_user.id
-    @message.receiver_id = @product.supplier.user_id
 
     # policy_class: app/policies/message_policy#create
     authorize @message
@@ -34,6 +34,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to messages_path
     else
+      # TODO: add alert describing error message
       render :new
     end
   end
@@ -42,6 +43,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:title, :content, :product_id)
+    params.require(:message).permit(:title, :content, :product_id, :receiver_id)
   end
 end

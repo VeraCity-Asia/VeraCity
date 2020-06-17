@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @message = Message.new
+    @receiver = @product.supplier.user
     authorize @product
     # raise
   end
