@@ -30,6 +30,13 @@
           <%= link_to product_path(product) do %>
             <div class="supplier-product-info">
               <!--put product image here -->
+              <% if product.photos.attached?  %>
+                <% product.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
+                <% end %>
+              <% else %>
+                <%= image_tag "mask.jpg", height: 150, width: 200, crop: :fill %>
+              <% end %>
               <h5><strong> <%= product.name %></strong></h5>
               <div class="detailed-product-info">
                 <p>Price: $<%= product.price %>/unit</p>
