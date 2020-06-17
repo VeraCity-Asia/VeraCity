@@ -26,10 +26,15 @@
           <a class="nav-link active" id="pills-pending-tab" data-toggle="pill" href="#pending" role="tab" aria-controls="pills-pending" aria-selected="true">Pending Offers</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="pills-closed-tab" data-toggle="pill" href="#closed" role="tab" aria-controls="pills-profile" aria-selected="false">Closed Offers</a>
+          <a class="nav-link" id="pills-closed-tab" data-toggle="pill" href="#closed" role="tab" aria-controls="pills-profile" aria-selected="false">Approved Offers</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-closed-tab" data-toggle="pill" href="#rejected" role="tab" aria-controls="pills-profile" aria-selected="false">Rejected Offers</a>
         </li>
       </ul>
       <!-- tab contents -->
+
+      <%# Pending tab %>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
           <% @user.offers.each do |offer| %>
@@ -51,6 +56,8 @@
             <% end %>
           <% end %>
         </div>
+
+        <%# TODO: closed tab should be `Approved` %>
         <div class="tab-pane fade show" id="closed" role="tabpanel" aria-labelledby="closed-tab">
           <% @user.offers.each do |offer| %>
             <%  if offer.approved.present?  %>
@@ -59,7 +66,31 @@
                 <div class="card-offer">
                   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
                   <div class="card-offer-infos">
-                    <p> <%= offer.approved %></p>
+                    <p> <%= offer.approved ? "Approved" : "Rejected" %></p>
+                    <p> Destination: <%= offer.destination %></p>
+                    <p> Payment: <%= offer.payment %> </p>
+                    <hr>
+                    <% offer.products.each do | product| %>
+                      <p>Product Name: <%= product.name %></p>
+                      <p>Product Category: <%= product.category %></p>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <%# Rejected Tab %>
+        <div class="tab-pane fade show" id="rejected" role="tabpanel" aria-labelledby="rejected-tab">
+          <% @user.offers.each do |offer| %>
+            <%  if offer.approved == false  %>
+              <!-- use present to condition -->
+              <%= link_to purchasers_offer_path(offer) do %>
+                <div class="card-offer">
+                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+                  <div class="card-offer-infos">
+                    <p> <%= offer.approved ? "Approved" : "Rejected" %></p>
                     <p> Destination: <%= offer.destination %></p>
                     <p> Payment: <%= offer.payment %> </p>
                     <hr>

@@ -6,6 +6,6 @@ class Purchasers::DashboardPolicy < ApplicationPolicy
   end
 
   def index?
-    record.present? 
+    user.purchaser?
   end
 end

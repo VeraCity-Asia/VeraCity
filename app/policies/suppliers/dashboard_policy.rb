@@ -6,7 +6,7 @@ class Suppliers::DashboardPolicy < ApplicationPolicy
   end
 
   def index?
-    record.present? 
+    user.supplier?
   end
   
 
