@@ -30,12 +30,17 @@ class Message < ApplicationRecord
         product: message.product_id
       }
     end
-    latest_messages.map do |rank, message_group|
+
+    latest_messages = latest_messages.map do |rank, message_group|
       message_group.sort_by(&:created_at).last
     end
     puts "=" * 50
     p latest_messages
     puts "=" * 50
-    latest_messages.values.flatten.sort_by(&:created_at).reverse
+    latest_messages.sort_by(&:created_at).reverse
+  end
+
+  def outgoing?(user)
+    sender_id == user.id
   end
 end

@@ -4,9 +4,10 @@
     <div class="messages row">
       <% @messages.each do |message| %>
         <ul>
-          <li><%= message.id %></li>
+          <li><%= message.created_at.strftime("%m-%e-%y %H:%M") %></li>
+          <li><%= message.sender.name %> to <%= message.outgoing?(current_user) ? message.receiver.name : "Me"  %> </li>
           <li><%= message.title %></li>
-          <li> <%= message.content %></li>
+          <li><%= message.content %></li>
         </ul>
       <% end %>
     </div>

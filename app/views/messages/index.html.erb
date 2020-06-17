@@ -12,21 +12,19 @@
       <p>Hmm.. Maybe you should message someone</p>
     <% else %>
       <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Time</th>
-            <th scope="col">Title</th>
-            <th scope="col">Product name</th>
-            <th scope="col">Details</th>
-          </tr>
-        </thead>
         <% @messages.each do |message| %>
           <tbody>
             <tr>
-              <td><%= message.created_at %></td>
-              <td><%= message.title %> </td>
-              <td><strong><%= message.product.name %></strong> </td>
-              <td><%= link_to "More", by_product_messages_path(product_id: message.product_id) %></td>
+              <td><%= message.created_at.strftime("%m-%e-%y %H:%M") %></td>
+              <% if message.outgoing?(current_user) %>
+                <td><%= message.receiver.name %></td>
+                <td>⏎<%= message.title %> </td>
+              <% else %>
+                <td><%= message.sender.name %></td>
+                <td><%= message.title %> </td>
+              <% end %>
+              <td>About: <strong><%= message.product.name %></strong> </td>
+              <td><%= link_to "More", by_product_messages_path(product_id: message.product_id, interlocutors: [message.sender_id, message.receiver_id]) %></td>
             </tr>
           </tbody>
         </div>
