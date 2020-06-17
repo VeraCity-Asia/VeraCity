@@ -5,6 +5,8 @@
     <p>We know choosing a vendor is hard. We're here to help.</p>
     <% unless user_signed_in? %>
       <a href="/welcome" class="btn btn-dark" style="border-radius:4px;">Become a member</a>
+    <% else %>
+      <a href="/products" class="btn btn-dark" style="border-radius:4px;">Browse products</a>
     <% end %>
     <%# <%= render 'shared/signup_bar' %>
     <%# <a class="btn btn-primary" href="/users/sign_in">Begin your search</a> %>
