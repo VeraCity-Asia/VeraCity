@@ -106,7 +106,7 @@
                       <p class="card-text"><%= p.name %></p>
                       <% p.certifications.each do |c|  %>
                         <% if c.photos.attached?  %>
-                          <% product.photos.each do |photo| %>
+                          <% c.photos.each do |photo| %>
                             <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
                           <% end %>
                         <% else %>
