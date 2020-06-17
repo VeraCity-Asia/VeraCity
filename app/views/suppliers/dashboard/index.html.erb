@@ -9,29 +9,27 @@
       <div class="company-info">
       <div class="company-header d-flex justify-content-between">
         <h5>My Company</h5>
-        <%= link_to "Edit", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info mx-2" %>
+        <%= link_to "Edit", edit_supplier_path(@user.supplier), :class => "btn btn-outline-secondary mx-2" %>
       </div>
         <hr>
         <p>Name: <%= @user.supplier.name %></p>
         <p>Country: <%= @user.supplier.location %></p>
         <p>Email: <%= @user.email %></p>
-        <%= link_to "Edit profile", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info" %>
       </div>
 
       <div class="licenses-info">
         <div class="license-header d-flex justify-content-between">
             <h5>Licenses</h5>
-            <%= link_to "Add", new_suppliers_license_path, :class => "btn btn-outline-info" %>
+            <%= link_to "Add", new_suppliers_license_path, :class => "btn btn-outline-secondary" %>
         </div>
         <hr>
         <% @user.supplier.licenses.each do |license| %>
           <div class="license">
             <p>Authority: <%= license.authority %></p>
             <p>Number: <%= license.number %></p>
-            <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}  %>
+            <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-outline-warning mx-2"  %>
           </div>
         <% end %>
-        <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info" %>
       </div>
 
     </div>
@@ -108,7 +106,7 @@
                     <% end %>
                     <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-supplier" %>
                     <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-supplier" %>
-                    <%= link_to "Destroy", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+                    <%= link_to "Delete", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
                   </div>
                 </div>
               </div>
@@ -119,6 +117,7 @@
         <!-- Pending Offers -->
         <div class="tab-pane fade show" id="pending" role="tabpanel" aria-labelledby="pending-tab">
           <% @user.offers.each do |offer| %>
+          <%= offer %>
             <%  if offer.approved.nil?  %>
               <%= link_to purchasers_offer_path(offer) do %>
                 <div class="card-offer">
