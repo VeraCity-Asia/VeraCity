@@ -24,7 +24,7 @@ class Suppliers::ProductsController < ApplicationController
   def update
     if @product.update(product_params)
       authorize([:suppliers, @product])
-      redirect_to @product
+      redirect_to suppliers_dashboard_path
     else
       render :new
     end

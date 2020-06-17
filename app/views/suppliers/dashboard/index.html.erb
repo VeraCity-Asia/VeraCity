@@ -9,29 +9,27 @@
       <div class="company-info">
       <div class="company-header d-flex justify-content-between">
         <h5>My Company</h5>
-        <%= link_to "Edit", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info mx-2" %>
+        <%= link_to "Edit", edit_supplier_path(@user.supplier), :class => "btn btn-outline-secondary mx-2" %>
       </div>
         <hr>
         <p>Name: <%= @user.supplier.name %></p>
         <p>Country: <%= @user.supplier.location %></p>
         <p>Email: <%= @user.email %></p>
-        <%= link_to "Edit profile", edit_supplier_path(@user.supplier), :class => "btn btn-outline-info" %>
       </div>
 
       <div class="licenses-info">
         <div class="license-header d-flex justify-content-between">
             <h5>Licenses</h5>
-            <%= link_to "Add", new_suppliers_license_path, :class => "btn btn-outline-info" %>
+            <%= link_to "Add", new_suppliers_license_path, :class => "btn btn-outline-secondary" %>
         </div>
         <hr>
         <% @user.supplier.licenses.each do |license| %>
           <div class="license">
             <p>Authority: <%= license.authority %></p>
             <p>Number: <%= license.number %></p>
-            <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}  %>
+            <%= link_to "Delete", suppliers_license_path(license), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-outline-warning mx-2"  %>
           </div>
         <% end %>
-        <%= link_to "Add license", new_suppliers_license_path, :class => "btn btn-outline-info" %>
       </div>
 
     </div>
@@ -76,51 +74,53 @@
         </div>
       <% end %>
     </div>
-    <div class="nav-pills-dashboard">
 
+    <div class="nav-pills-dashboard">
       <!-- tabs -->
       <ul class="nav nav-tabs nav-justified">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="pills-products-tab" data-toggle="pill" href="#products" role="tab" aria-controls="pills-products" aria-selected="true">My Products</a>
+          <a class="nav-link active" id="pills-products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="pills-products" aria-selected="true">My Products</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="pills-pending-tab" data-toggle="pill" href="#pending" role="tab" aria-controls="pills-pending" aria-selected="false">Pending Offers</a>
+          <a class="nav-link" id="pills-pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pills-pending" aria-selected="false">Pending Offers</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="pills-closed-tab" data-toggle="pill" href="#closed" role="tab" aria-controls="pills-closed" aria-selected="false">Closed Offers</a>
+          <a class="nav-link" id="pills-closed-tab" data-toggle="tab" href="#closed" role="tab" aria-controls="pills-closed" aria-selected="false">Closed Offers</a>
         </li>
       </ul>
     
     <!-- tab contents -->
+      <div class="tab-content" id="myTabContent">
 
       <!-- My Products-->
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active d-flex flex-wrap flex-fill justify-content-between" id="products" role="tabpanel" aria-labelledby="products-tab">
-          <% @user.supplier.products.each do |p| %>
-            <%= link_to product_path(p) do %>
-              <div class="col-sm-12 col-md-6 col-lg-3">
-                <div class="card" style="width: 15rem;">
-                  <%= image_tag "mask.jpg", {:style => "width:100%; height:75%;"} %>
-                  <div class="card-body">
-                    <p class="card-text"><%= p.name %></p>
-                    <% p.certifications.each do |c|  %>
-                      <p>Certifictions: <%= c.category %></p>
-                    <% end %>
-                    <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-supplier" %>
-                    <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-supplier" %>
-                    <%= link_to "Destroy", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+        <div class="tab-pane show active" id="products" role="tabpanel" aria-labelledby="products-tab">
+          <div class="d-flex flex-wrap flex-fill justify-content-between">
+            <% @user.supplier.products.each do |p| %>
+              <%= link_to product_path(p) do %>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                  <div class="card" style="width: 15rem;">
+                    <%= image_tag "mask.jpg", {:style => "width:100%; height:75%;"} %>
+                    <div class="card-body">
+                      <p class="card-text"><%= p.name %></p>
+                      <% p.certifications.each do |c|  %>
+                        <p>Certifictions: <%= c.category %></p>
+                      <% end %>
+                      <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-supplier" %>
+                      <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-supplier" %>
+                      <%= link_to "Delete", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
 
         <!-- Pending Offers -->
-        <div class="tab-pane fade show" id="pending" role="tabpanel" aria-labelledby="pending-tab">
-          <% @user.offers.each do |offer| %>
+        <div class="tab-pane" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+          <% @user.supplier.offers.each do |offer| %>
             <%  if offer.approved.nil?  %>
-              <%= link_to purchasers_offer_path(offer) do %>
+              <%= link_to suppliers_offer_path(offer) do %>
                 <div class="card-offer">
                   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
                   <div class="card-offer-infos">
@@ -138,11 +138,11 @@
           <% end %>
         </div>
         <!-- Closed Offers -->
-        <div class="tab-pane fade show" id="closed" role="tabpanel" aria-labelledby="closed-tab">
-          <% @user.offers.each do |offer| %>
+        <div class="tab-pane" id="closed" role="tabpanel" aria-labelledby="closed-tab">
+          <% @user.supplier.offers.each do |offer| %>
             <%  if offer.approved.present?  %>
               <!-- use present to condition -->
-              <%= link_to purchasers_offer_path(offer) do %>
+              <%= link_to suppliers_offer_path(offer) do %>
                 <div class="card-offer">
                   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
                   <div class="card-offer-infos">
