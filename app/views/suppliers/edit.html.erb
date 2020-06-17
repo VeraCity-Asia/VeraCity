@@ -10,8 +10,8 @@
           <%= f.input :name, label:"Company name" %>
           <%= f.input :location %>
           <%= f.input :industry %>
-          <%= f.input :delivery_terms, collection: Supplier::DELIVERYTERM, prompt: :translate %>
-          <%= f.input :payment_terms, collection: Supplier::PAYMETTERM, prompt: :translate %>
+          <%= f.input :delivery_terms, as: :check_boxes, collection: Supplier::DELIVERYTERM, wrapper: :vertical_collection_inline %>
+          <%= f.input :payment_terms, collection: Supplier::PAYMETTERM, wrapper: :vertical_collection_inline, as: :check_boxes %>
           <%= f.input :fei_number, label: "FEI Number" %>
           <%= f.input :nearest_port %>
           <%= f.input :established %>
