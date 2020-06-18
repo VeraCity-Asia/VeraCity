@@ -35,7 +35,6 @@
         </li>
       </ul>
       <!-- tab contents -->
-
       <%# Pending tab %>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
@@ -43,100 +42,112 @@
             <thead>
               <tr>
                 <th scope="col">Destination</th>
-                <th scope="col">Product</th>
+                <th scope="col">Products</th>
                 <th scope="col">Payment</th>
-                <th scope="col">Price/unit</th>
+                <th scope="col">Total price of offer</th>
+                <th scope="col">Detail</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
-
-          <% @user.offers.each do |offer| %>
-            <% if offer.approved.nil?  %>
-              <%= link_to purchasers_offer_path(offer) do %>
-                <tr>
-                  <td><%= offer.destination %></td>
-                  <% offer.products.each do |p| %>
-                    <td><%= p.name %></td>
-                    <td><%= offer.payment %></td>
-                    <td>$<%= p.price %></td>
-                  <td>
-                    <%= link_to "Delete", purchasers_offer_path(offer), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+              <% @user.offers.each do |offer| %>
+                <% if offer.approved.nil?  %>
+                  <%= link_to purchasers_offer_path(offer) do %>
+                    <tr>
+                      <td><%= offer.destination %></td>
+                      <td>
+                        <% offer.products.each do |p| %>
+                          <p> <%= p.name %>
+                            $<%= p.price %> </p>
+                        <% end %>
+                      </td>
+                      <td><%= offer.payment %></td>
+                      <td><%= offer.price %></td>
+                      <td><%= link_to "Detail", purchasers_offer_path(offer), class: "btn btn-info" %></td>
+                      <td>
+                        <%= link_to "Delete", purchasers_offer_path(offer), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+                      </td>
+                    </tr>
                   <% end %>
-                  </td>
-                </tr>
+                <% end %>
               <% end %>
-            <% end %>
-          <% end %>
             </tbody>
           </table>
         </div>
-
         <div class="tab-pane fade show" id="closed" role="tabpanel" aria-labelledby="closed-tab">
           <table class="table table-hover table-dark">
             <thead>
               <tr>
                 <th scope="col">Status</th>
-                <th scope="col">Product</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Products</th>
                 <th scope="col">Payment</th>
-                <th scope="col">Price/unit</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Total price of offer</th>
+                <th scope="col">Detail</th>
               </tr>
             </thead>
             <tbody>
-
-          <% @user.offers.each do |offer| %>
-            <%  if offer.approved.present?  %>
-              <!-- use present to condition -->
-              <%= link_to purchasers_offer_path(offer) do %>
-              <tr>
-                <td><%= offer.destination %></td>
-                <td><%= offer.payment %></td>
-                  <% offer.products.each do |p| %>
-                    <td><%= p.name %></td>
-                    <td>$<%= p.price %></td>
-                    <td><%= offer.approved ? "Approved" : "Rejected" %></td>
+              <% @user.offers.each do |offer| %>
+                <%  if offer.approved.present?  %>
+                  <!-- use present to condition -->
+                  <%= link_to purchasers_offer_path(offer) do %>
+                    <tr>
+                      <td>
+                        <%= offer.approved ? "Approved" : "Rejected" %>
+                      </td>
+                      <td><%= offer.destination %></td>
+                      <td>
+                        <% offer.products.each do |p| %>
+                          <p> <%= p.name %>
+                            $<%= p.price %> </p>
+                        <% end %>
+                      </td>
+                      <td><%= offer.payment %></td>
+                      <td><%= offer.price %></td>
+                      <td><%= link_to "Detail", purchasers_offer_path(offer), class: "btn btn-info" %></td>
+                    </tr>
                   <% end %>
-                  </div>
-                </div>
+                <% end %>
               <% end %>
-            <% end %>
-          <% end %>
             </tbody>
           </table>
         </div>
-
         <%# Rejected Tab %>
         <div class="tab-pane fade show" id="rejected" role="tabpanel" aria-labelledby="rejected-tab">
           <table class="table table-hover table-dark">
             <thead>
               <tr>
                 <th scope="col">Status</th>
-                <th scope="col">Product</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Products</th>
                 <th scope="col">Payment</th>
-                <th scope="col">Price/unit</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Total price of offer</th>
+                <th scope="col">Detail</th>
               </tr>
             </thead>
             <tbody>
-
-          <% @user.offers.each do |offer| %>
-            <% if offer.approved == false  %>
-              <!-- use present to condition -->
-              <%= link_to purchasers_offer_path(offer) do %>
-              <tr>
-                <td><%= offer.destination %></td>
-                <td><%= offer.payment %></td>
-                  <% offer.products.each do |p| %>
-                    <td><%= p.name %></td>
-                    <td>$<%= p.price %></td>
-                    <td><%= offer.approved ? "Approved" : "Rejected" %></td>
+              <% @user.offers.each do |offer| %>
+                <% if offer.approved == false  %>
+                  <!-- use present to condition -->
+                  <%= link_to purchasers_offer_path(offer) do %>
+                    <tr>
+                      <td>
+                        <%= offer.approved ? "Approved" : "Rejected" %>
+                      </td>
+                      <td><%= offer.destination %></td>
+                      <td>
+                        <% offer.products.each do |p| %>
+                          <p> <%= p.name %>
+                            $<%= p.price %> </p>
+                        <% end %>
+                      </td>
+                      <td><%= offer.payment %></td>
+                      <td><%= offer.price %></td>
+                      <td><%= link_to "Detail", purchasers_offer_path(offer), class: "btn btn-info" %></td>
+                    </tr>
                   <% end %>
-                  </div>
-                </div>
+                <% end %>
               <% end %>
-            <% end %>
-          <% end %>
             </tbody>
           </table>
         </div>
