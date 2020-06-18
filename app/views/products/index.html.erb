@@ -29,10 +29,15 @@
   </div>
   <div class="side-col">
     <h5><em>Most Viewed</em></h5>
-    <%= render 'shared/mv_product_card', size: '100x100'%>
-    <%= render 'shared/mv_product_card', size: '100x100'%>
-    <%= render 'shared/mv_product_card', size: '100x100'%>
-    <%= render 'shared/mv_product_card', size: '100x100'%>
+    <% @products[2..7].reverse_each do |p| %>
+      <div class="img-product">
+        <%= link_to product_path(p) do %>
+          <% p.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 </div>
