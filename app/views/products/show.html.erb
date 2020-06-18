@@ -4,7 +4,7 @@
     <h1 class="display-4"><%= @product.name %></h1>
   </div>
 
-  <div class="product-container bg-light border d-flex align-self-center my-5" >
+  <div class="product-container bg-light d-flex align-self-center my-5" >
     <div class="bd-highlight">
       <div id="arouselExampleControls" style="height: 400px; width: 400px; "class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -58,64 +58,63 @@
         <% unless @product.supplier_id == current_user.supplier&.id %>
           <dt class="col-sm-3 text-truncate">Supplier</dt>
           <dd class="col-sm-9">
-            <div type="button" class="btn btn-outline-primary">
+            <div type="button" class="btn btn-sm btn-outline-primary">
               <%= link_to "View #{@product.supplier.name} >", supplier_path(@product.supplier) %>
             </div>
           </dd>
           
         <% end %>
       </dl>
-    </div>
-  </div>
 
-  <!-- action buttons -->
-  <div class="row my-6">
-    <div class="button-group d-flex">
-      <div class="buttons ml-auto">
-        <% if current_user.purchaser? %>
-          <button type="button" class="btn btn-supplier" data-toggle="modal" data-target="#exampleModal">
-            Message
-            <%# <%= icon('far', 'envelope') %>
-          </button>
-        <% end %>
-        <!-- Modal -->
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Write</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <%= render 'shared/message_form' %>
-                </div>
-                <div class="modal-footer">
-                  <%# <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send</button> %>
+      <div class="row action-buttons">
+        <div class="button-group d-flex">
+          <div class="buttons align-items-end">
+            <% if current_user.purchaser? %>
+              <button type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
+                Send Message
+                <%# <%= icon('far', 'envelope') %>
+              </button>
+            <% end %>
+            <!-- Modal -->
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">To: <%= @product.supplier.name %></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <%= render 'shared/message_form' %>
+                    </div>
+                    <div class="modal-footer">
+                      <%# <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send</button> %>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
       <% if current_user.purchaser? %>
-        <div class="buttons">
-          <h5><%= link_to "Request quote", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-quote", target: "_blank", rel: "noopener noreferrer" %></h5>
+        <div>
+          <%= link_to "Make an Offer", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-lg btn-primary" %>
         </div>
       <% end %>
 
       <% if policy([:suppliers, @product]).edit? %>
-        <div><%= link_to "Edit product", edit_suppliers_product_path(@product), class: "btn btn-supplier" %></div>
+        <div><%= link_to "Edit product", edit_suppliers_product_path(@product), class: "btn btn-primary" %></div>
       <% end %>
 
       <% if policy([:suppliers, @product]).destroy? %>
         <div><%= link_to "Destroy product", suppliers_product_path(@product.id), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} %></div>
       <% end %>
-      
+      </div>
+
     </div>
+  </div>
   </div>
 </div>

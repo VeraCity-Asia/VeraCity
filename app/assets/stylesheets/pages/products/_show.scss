@@ -1,12 +1,10 @@
-hr {
-  width: 75%;
-}
-
 .product-container {
   background-color: white;
   margin: auto;
   .product-show {
     text-align: left;
+    margin-left: 2rem;
+    border: 2px solid darkgray;
     .product-header {
       margin-left: 1rem;
       margin-top: 1em;
@@ -18,8 +16,15 @@ hr {
 }
 
 .description-list {
-  position: relative;
   top: -5rem;
+}
+
+.action-buttons {
+  width: 100%;
+}
+
+.buttons {
+  margin: 0 2rem;
 }
 
 .boxes {
@@ -39,23 +44,9 @@ hr {
 }
 
 .button-group {
-  margin: 0px auto;
-  width: 58.5%;
-  justify-content: center;
   display: flex;
-  .btn-supplier {
-    background-color: #dcdcdc;
-    height: 36px;
-    border-radius: 4px;
-    margin-right: 32px;
-  }
-  .btn-quote {
-    border-radius: 4px;
-    color: white;
-    background-color: $dark-blue;
-  }
-  a,
-  i {
-    color: $dark-blue;
-  }
+  // flex-direction: column;
+  margin: 2rem;
+  width: 100%;
+  justify-content: center;
 }
