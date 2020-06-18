@@ -44,39 +44,48 @@
       </div> <!-- business-licenses -->
     </div> <!-- about-supplier supplier-info -->
 
-    <div class="supplier-info">
+    <div class="supplier-more-products">
       <h2 id="others">Other Products</h2>
-      <div class="other-products-row d-flex row">
+      <div class="other-products-row d-flex">
 
-      <div class="slider">
-        <div class="slider-row">
-          <% @supplier.products.each do |product|  %>
+        <% @supplier.products.each do |product|  %>
+          <div class="other-product d-flex row col-4">
             <%= link_to product_path(product) do %>
-              <div class="supplier-product-info">
-                <!--put product image here -->
-                <% if product.photos.attached?  %>
-                  <% product.photos.each do |photo| %>
-                    <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
-                  <% end %>
-                <% else %>
-                  <%= image_tag "mask.jpg", height: 150, width: 200, crop: :fill %>
+          
+            <!-- product image here -->
+            <div class="product-section mb-4 d-flex justify-content-center">
+              <% if product.photos.attached?  %>
+                <% product.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
                 <% end %>
-                <h5><strong> <%= product.name %></strong></h5>
-                <div class="detailed-product-info">
-                  <p>Price: $<%= product.price %>/unit</p>
-                  <% product.certifications.each do |certification| %>
-                    <p>Certification: <%= certification.category %></p>
-                  <% end %>
-                  <%# <p>Category: <%= product.category</p> %>
-                  <%# <p>In Stock: <%= product.production_quantity</p> %>
-                  <%# <p>Minimum order: <%= product.minimum_order_quantity</p> %>
+              <% else %>
+                <%= image_tag "mask.jpg", height: 150, width: 200, crop: :fill %>
+              <% end %>
+            </div>
+
+            <div class="product-section row">
+              <h5><strong> <%= product.name %></strong></h5>
+              <div class="detailed-product-info d-flex justify-content-between">
+                <div>
+                  <p>$<%= product.price %>/unit</p>
                 </div>
+                <div>
+                  <% product.certifications.each do |certification| %>
+                    <p><%= certification.category %> </p>
+                  <% end %>
+                </div>
+                <%# <p>Category: <%= product.category</p> %>
+                <%# <p>In Stock: <%= product.production_quantity</p> %>
+                <%# <p>Minimum order: <%= product.minimum_order_quantity</p> %>
               </div>
+            </div>
+
             <% end %>
-          <% end %>
-        </div>
-      </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
+
   </div>
 </div>
