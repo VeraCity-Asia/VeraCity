@@ -1,20 +1,17 @@
 <div class="row" style="justify-content: center;">
   <div class="search-box my-5">
     <%= form_tag products_path, class: "d-flex", method: :get do %>
-        <%= text_field_tag :query,
+      <%= text_field_tag :query,
             params[:query],
             class: "form-inline form-control",
             placeholder: "Search by Product name or Certification type" %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
-
 <div class="container d-flex justify-content-between">
-
   <div class="side-col">
     <h1>Filter</h1>
-
     <div class="filter-container">
       <%= simple_form_for :filter, url: products_path, method: "GET", remote: true, html: { id: "filter-form" } do |f| %>
         <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
@@ -25,13 +22,11 @@
       <% end %>
     </div>
   </div>
-
   <div class="mid-col">
     <% @products.each do |product| %>
       <%= render :partial => 'shared/cards/product_card', locals: {:product => product } %>
     <% end %>
   </div>
-
   <div class="side-col">
     <h5><em>Most Viewed</em></h5>
     <%= render 'shared/mv_product_card', size: '100x100'%>
@@ -39,9 +34,5 @@
     <%= render 'shared/mv_product_card', size: '100x100'%>
     <%= render 'shared/mv_product_card', size: '100x100'%>
   </div>
-
 </div>
-
-
-
 </div>
