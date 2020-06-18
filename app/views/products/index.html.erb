@@ -29,7 +29,7 @@
   </div>
   <div class="side-col">
     <h5><em>Most Viewed</em></h5>
-    <% @products[2..6].reverse_each do |p| %>
+    <% @products[2..7].reverse_each do |p| %>
       <div class="img-product">
         <%= link_to product_path(p) do %>
           <% p.photos.each do |photo| %>
