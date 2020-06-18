@@ -1,10 +1,21 @@
 .search-box {
-  margin: 32px 0;
+  justify-content: center;
+  width: 40rem;
+  margin: 2rem 0;
 
   .btn {
-    margin-left: 2em;
-    height: 100%;
+    margin-left: 1rem;
+    height: 48px;
+    font-weight: 600;
   }
+}
+
+#query {
+  line-height: 1.4rem;
+  height: 48px;
+  border-radius: 4px;
+  border: 2px solid black;
+  padding: 0 1rem;
 }
 
 .filter {
@@ -28,7 +39,7 @@
 .mid-col {
   flex-grow: 1;
   // padding: 0 32px;
-  margin-right: 32px;
+  margin-right: 3rem;
   max-width: 40rem;
 }
 
@@ -46,6 +57,17 @@
     margin-bottom: 32px;
     border-radius: 4px;
   }
+}
+
+.left-side-col {
+  margin-right: 3rem;
+  width: 200px;
+  flex-shrink: 0;
+  background-color: white;
+  padding: 1em 0.5em;
+  border-radius: 6px;
+  height: fit-content;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .container-fluid {
