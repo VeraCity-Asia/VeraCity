@@ -86,10 +86,10 @@
           <a class="nav-link active" id="pills-products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="pills-products" aria-selected="true">My Products</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="pills-pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pills-pending" aria-selected="false">Pending Offers</a>
+          <a class="nav-link" id="pills-pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pills-pending" aria-selected="false">Pending Offers — <%= current_user.supplier.offers.where(approved: nil).count %></a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="pills-closed-tab" data-toggle="tab" href="#closed" role="tab" aria-controls="pills-closed" aria-selected="false">Closed Offers</a>
+          <a class="nav-link" id="pills-closed-tab" data-toggle="tab" href="#closed" role="tab" aria-controls="pills-closed" aria-selected="false">Closed Offers — <%= current_user.supplier.offers.where.not(approved: nil).count %></a>
         </li>
       </ul>
       <!-- tab contents -->
@@ -97,76 +97,90 @@
         <!-- My Products-->
         <div class="tab-pane show active" id="products" role="tabpanel" aria-labelledby="products-tab">
           <div class="d-flex flex-wrap flex-fill justify-content-between">
-            <% @user.supplier.products.each do |p| %>
-              <%= link_to product_path(p) do %>
-                <div class="col-sm-12 col-md-6 col-lg-3">
-                  <div class="card" style="width: 15rem;">
-                    <%= image_tag "mask.jpg", {:style => "width:100%; height:75%;"} %>
-                    <div class="card-body">
-                      <p class="card-text"><%= p.name %></p>
-                      <% p.certifications.each do |c|  %>
-                        <% if c.photos.attached?  %>
-                          <% c.photos.each do |photo| %>
-                            <%= cl_image_tag photo.key, height: 150, width: 200, crop: :fill %>
-                          <% end %>
-                        <% else %>
-                          <%= image_tag "sample_FDA.jpg", height: 150, width: 200, crop: :fill %>
-                        <% end %>
-                        <p>Certifictions: <%= c.category %></p>
-                      <% end %>
-                      <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-supplier" %>
-                      <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-supplier" %>
+            <table class="table table-hover table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Price/unit</th>
+                  <th scope="col">Certification</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @user.supplier.products.each do |p| %>
+                <%= link_to product_path(p) do %>
+                  <tr>
+                    <td><%= p.name %></td>
+                    <td><%= p.category %></td>
+                    <td>$<%= p.price %></td>
+                    <% p.certifications.each do |c|  %>
+                      <td><%= c.category %></td>
+                    <% end %>
+                    <td>
+                      <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-info" %>
+                      <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-warning" %>
                       <%= link_to "Delete", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
-                    </div>
-                  </div>
-                </div>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
-            <% end %>
+              </tbody>
+            </table>
           </div>
         </div>
+
         <!-- Pending Offers -->
         <div class="tab-pane" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+          <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Destination</th>
+                <th scope="col">Payment</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
           <% @user.supplier.offers.each do |offer| %>
-            <%  if offer.approved.nil?  %>
-              <%= link_to suppliers_offer_path(offer) do %>
-                <div class="card-offer">
-                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
-                  <div class="card-offer-infos">
-                    <p> Destination: <%= offer.destination %></p>
-                    <p> Payment: <%= offer.payment %> </p>
-                    <hr>
-                    <% offer.products.each do | product| %>
-                      <p>Product Name: <%= product.name %></p>
-                      <p>Product Category: <%= product.category %></p>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
+          <%  if offer.approved.nil?  %>
+            <%= link_to suppliers_offer_path(offer) do %>
+            <%= render partial: 'shared/tables/offer', locals: { offer: offer } %>
+          </div>
             <% end %>
-          <% end %>
-        </div>
+        <% end %>
+        <% end %>
+
+        </tbody>
+      </table>
+      </div>
+
         <!-- Closed Offers -->
         <div class="tab-pane" id="closed" role="tabpanel" aria-labelledby="closed-tab">
+          <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price/unit</th>
+                <th scope="col">Certification</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+
           <% @user.supplier.offers.each do |offer| %>
-            <%  if offer.approved.present?  %>
+            <%  unless offer.approved.nil? %>
               <!-- use present to condition -->
               <%= link_to suppliers_offer_path(offer) do %>
-                <div class="card-offer">
-                  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
-                  <div class="card-offer-infos">
-                    <p> <%= offer.approved %></p>
-                    <p> Destination: <%= offer.destination %></p>
-                    <p> Payment: <%= offer.payment %> </p>
-                    <hr>
-                    <% offer.products.each do |product| %>
-                      <p>Product Name: <%= product.name %></p>
-                      <p>Product Category: <%= product.category %></p>
-                    <% end %>
-                  </div>
-                </div>
+                <%= render partial: 'shared/tables/offer', locals: { offer: offer } %>
               <% end %>
             <% end %>
           <% end %>
+            </tbody>
+          </table>
+
         </div>
       </div>
       <!-- pills dashboard-->
