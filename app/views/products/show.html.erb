@@ -96,20 +96,27 @@
         </div>
       </div>
     </div>
-    <div type="button" class="btn btn-supplier">
-      <%= link_to "Supplier", supplier_path(@product.supplier), target: "_blank", rel: "noopener noreffer" %>
-    </div>
+
+    <% unless @product.supplier_id == current_user.supplier.id %>
+      <div type="button" class="btn btn-supplier">
+        <%= link_to "View Supplier", supplier_path(@product.supplier), target: "_blank", rel: "noopener noreffer" %>
+      </div>
+    <% end %>
+
     <% if current_user.purchaser? %>
       <div class="buttons">
         <h5><%= link_to "Request quote", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-quote", target: "_blank", rel: "noopener noreferrer" %></h5>
       </div>
     <% end %>
+
     <% if policy([:suppliers, @product]).edit? %>
       <div><%= link_to "Edit product", edit_suppliers_product_path(@product), class: "btn btn-supplier" %></div>
     <% end %>
+
     <% if policy([:suppliers, @product]).destroy? %>
       <div><%= link_to "Destroy product", suppliers_product_path(@product.id), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} %></div>
     <% end %>
+    
   </div>
 </div>
 <%# <p>For Christine:^)</p> %>
