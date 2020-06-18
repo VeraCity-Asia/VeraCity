@@ -1,4 +1,5 @@
 .search-box {
+  justify-content: center;
   width: 40rem;
   margin: 2rem 0;
 
@@ -38,7 +39,7 @@
 .mid-col {
   flex-grow: 1;
   // padding: 0 32px;
-  margin-right: 32px;
+  margin-right: 3rem;
   max-width: 40rem;
 }
 
@@ -56,6 +57,17 @@
     margin-bottom: 32px;
     border-radius: 4px;
   }
+}
+
+.left-side-col {
+  margin-right: 3rem;
+  width: 200px;
+  flex-shrink: 0;
+  background-color: white;
+  padding: 1em 0.5em;
+  border-radius: 6px;
+  height: fit-content;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .container-fluid {
