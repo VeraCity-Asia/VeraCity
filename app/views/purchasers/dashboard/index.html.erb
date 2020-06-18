@@ -42,34 +42,36 @@
           <table class="table table-hover table-dark">
             <thead>
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Product</th>
+                <th scope="col">Payment</th>
                 <th scope="col">Price/unit</th>
-                <th scope="col">Certification</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
 
           <% @user.offers.each do |offer| %>
-            <%  if offer.approved.nil?  %>
+            <% if offer.approved.nil?  %>
               <%= link_to purchasers_offer_path(offer) do %>
                 <tr>
-                  <td><%= p.name %></td>
-                  <td><%= p.category %></td>
-                  <td>$<%= p.price %></td>
-                  <% p.certifications.each do |c|  %>
-                    <td><%= c.category %></td>
-                  <% end %>
+                  <td><%= offer.destination %></td>
+                  <% offer.products.each do |p| %>
+                    <td><%= p.name %></td>
+                    <td><%= offer.payment %></td>
+                    <td>$<%= p.price %></td>
                   <td>
                     <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-info" %>
                     <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-warning" %>
                     <%= link_to "Delete", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+                  <% end %>
                   </td>
                 </tr>
               <% end %>
             <% end %>
           <% end %>
+            </tbody>
+          </table>
         </div>
 
         <%# TODO: closed tab should be `Approved` %>
