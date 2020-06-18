@@ -1,7 +1,7 @@
 <!-- product info -->
 <div class="container">
   <div class="row my-4">
-    <h1><%= @product.name %></h1>
+    <h1 class="display-4"><%= @product.name %></h1>
   </div>
 
   <div class="product-container bg-light border d-flex align-self-center my-5" >
@@ -34,38 +34,37 @@
         <h4>Product Detail</h4>
         <p><em>Some information about the product here</em></p>
       </div>
-      <div class="container-boxes">
-        <div class="boxes d-flex justify-content-start p-3">
-          <div class="box">
-            <p><em>Category</em></p>
-            <h6><%= @product.category %></h6>
-          </div>
-          <% @product.certifications.each do |certification| %>
-            <div class="box">
-              <p><em>Certification</em></p>
-              <h6><%= certification.category %></h6>
+
+      <dl class="row description-list">
+        <dt class="col-sm-3">Category</dt>
+        <dd class="col-sm-9"><%= @product.category %></dd>
+
+        <dt class="col-sm-3">Certification</dt>
+        <dd class="col-sm-9">
+        <% @product.certifications.each do |certification| %>
+          <p><%= certification.category %></p>
+        <% end %>
+        </dd>
+
+        <dt class="col-sm-3">Minimum Order</dt>
+        <dd class="col-sm-9"><%= @product.minimum_order_quantity %> <small>units</small></dd>
+
+        <dt class="col-sm-3">Price (per unit)</dt>
+        <dd class="col-sm-9">$<%= @product.price %>.00 <small>USD</small></dd>
+        
+        <dt class="col-sm-3">In Stock</dt>
+        <dd class="col-sm-9"><%= @product.production_quantity %> <small>units</small></dd>
+        
+        <% unless @product.supplier_id == current_user.supplier&.id %>
+          <dt class="col-sm-3 text-truncate">Supplier</dt>
+          <dd class="col-sm-9">
+            <div type="button" class="btn btn-outline-primary">
+              <%= link_to "View #{@product.supplier.name} >", supplier_path(@product.supplier) %>
             </div>
-          <% end %>
-          <div class="box">
-            <p><em>MOQ</em></p>
-            <h6><%= @product.minimum_order_quantity %></h6>
-          </div>
-        </div>
-        <div class="boxes d-flex justify-content-start p-3">
-          <div class="box">
-            <p><em>Price</em></p>
-            <h6>$<%= @product.price %>/unit</h6>
-          </div>
-          <div class="box">
-            <p><em>Available</em></p>
-            <h6><%= @product.production_quantity %></h6>
-          </div>
-          <div class="box">
-            <p><em>Supplier</em></p>
-            <h6><%= @product.supplier.name %></h6>
-          </div>
-        </div>
-      </div>
+          </dd>
+          
+        <% end %>
+      </dl>
     </div>
   </div>
 
@@ -102,12 +101,6 @@
           </div>
         </div>
       </div>
-
-      <% unless @product.supplier_id == current_user.supplier&.id %>
-        <div type="button" class="btn btn-supplier">
-          <%= link_to "View Supplier", supplier_path(@product.supplier), target: "_blank", rel: "noopener noreffer" %>
-        </div>
-      <% end %>
 
       <% if current_user.purchaser? %>
         <div class="buttons">
