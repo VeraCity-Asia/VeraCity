@@ -112,12 +112,12 @@ masks = ["Reusable Cotton Face Mask", "Reusable Face Covering", "Disposable 3 La
 thermometers = ["Thermometer for Adults and Kids, Fast and Accurate, C/F Switchable", "Non-Contact Infrared Thermometer", "Non-Contact Digital Laser Infrared Thermometer Temperature Gun"]
 bandages = ["Maximum Hold Waterproof Bandages", "Medical Gauze Stretch Bandage Roll", "Premium Brand Adhesive Bandage Pads"]
 category = ["Mask","Thermometer","Bandage"]
-mask1 = 'https://img1.quadmed.com/prodimage/ProductImage/800/e2bb39c5-2215-41f9-8653-33714d76b7ae.jpg'
-mask2 = 'https://bestarmobile.com/wp-content/uploads/2020/03/disposable-medical-mask.png'
-bandage1 = 'https://images-na.ssl-images-amazon.com/images/I/91FeE5s13QL._AC_SX466_.jpg'
-bandage2 = 'https://www.csd.com.tw/archive/product/item/%E8%8B%B1%E6%96%87%E7%94%A2%E5%93%81/ELASTIC-BANDAGE.jpg'
-thermometer1 = 'https://www.heartsmart.com/assets/images/AMPTMPTH1.jpg'
-thermometer2 = 'https://www.thevetstore.net/wp-content/uploads/2013/05/Thermometer-New.jpg'
+mask1 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592471703/2t3gvqxqtfyvl2kdy94kjgb8vqpy.jpg'
+mask2 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592471677/wnaffp7ycdmg091nkttv9ejf2ofs.png'
+bandage1 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592471718/cbenf8rc2w8n70rlaa9a5gm76o3v.jpg'
+bandage2 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592405102/veracity/default_photos_seed/gtjvkki7552vrgzru1kqs13d57ms.jpg'
+thermometer1 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592471709/u05xyniuxgfwnex86jaakfrad4gj.jpg'
+thermometer2 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592405082/veracity/default_photos_seed/dv1exgeomo2bgvqu0itfcxuvp49o.jpg'
 Supplier.all.each do |s|
   m = Product.create!(
     name: masks.sample,
