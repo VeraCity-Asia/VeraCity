@@ -1,0 +1,9 @@
+      <tr>
+        <td><%= offer.destination %></td>
+        <td><%= offer.payment %></td>
+        <td><%= offer.products.first.name %></td>
+        <td><%= offer.products.first.category %></td>
+        <td>
+          <%= link_to "View details", suppliers_offer_path(offer), class: "btn btn-info" %>
+        </td>
+      </tr>

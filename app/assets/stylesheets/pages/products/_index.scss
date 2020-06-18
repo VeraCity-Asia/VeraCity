@@ -1,13 +1,11 @@
 .search-box {
   margin: 32px 0;
-  
 
   .btn {
     margin-left: 2em;
     height: 100%;
   }
 }
-
 
 .filter {
   text-align: left;
@@ -31,6 +29,7 @@
   flex-grow: 1;
   // padding: 0 32px;
   margin-right: 32px;
+  max-width: 40rem;
 }
 
 .side-col {
