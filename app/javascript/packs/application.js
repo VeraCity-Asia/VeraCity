@@ -30,9 +30,12 @@ import "bootstrap";
 // import { productsFilter } from './products_filter';
 // import { swiperNoSwiping } from './products_swiper';
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
   // swiperNoSwiping();
   // productsFilter();
+
 });
