@@ -6,11 +6,11 @@ class Suppliers::ProductPolicy < ApplicationPolicy
   end
 
   def update?
-    record.supplier.user == user
-  end  
+    return record.supplier == user.supplier && user.supplier&.information_complete?
+  end
   
   def create?
-    return record.supplier&.information_complete?
+    user.supplier&.information_complete?
   end
 
   def destroy?

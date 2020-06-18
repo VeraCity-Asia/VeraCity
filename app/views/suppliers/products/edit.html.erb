@@ -9,10 +9,11 @@
           <%= f.input :category %>
           <%= f.input :production_quantity %>
           <%= f.input :minimum_order_quantity %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         </div>
         <div class="form-actions">
           <%= f.button :submit, value: "Update" %>
-          <%= link_to "Back", products_path %>
+          <%= link_to "Back", suppliers_dashboard_path %>
         </div>
       <% end %>
     </div>

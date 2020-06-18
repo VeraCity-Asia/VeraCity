@@ -1,31 +1,80 @@
 .supplier-show {
     background-color: white;
-    padding: 2em 32px;
+    padding: 32px 64px;
     border-radius: 8px;
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 
     .supplier-info {
         text-align: left;
         line-height: 1.2em;
+        h2 {
+            font-size: 36px;
+        }
+        
         .detailed-info {
             margin-top: 3em;
         }
-    }
-    #others {
-        margin-top: 3em;
-    }
-    .other-products-row {
-        margin-top: 1em;
-        .supplier-product-info {
-            margin-top: 0 32px;
-            border: thin gray solid;
-            box-sizing: border-box;
-            padding: 1em 1em;
-            margin: 32px 0;
-            border-radius: 4px;
-            text-align: justify;
-            line-height: 1em;
 
+        .business-licenses {
+            h4 {
+                margin-bottom: 1.2em;
+            }
+            p {
+                margin: 8px 8px;
+            }
+        }    
+    }
+
+
+    .supplier-more-products {
+        text-align: left;
+        line-height: 1.2em;
+
+        #others {
+            font-size: 36px;
+            margin-top: 6em;
+        }
+
+        .other-products-row {
+            margin: 1em auto;
+            padding-right: 48px;
+            width: 100%;
+            background-color: floralwhite;
+            width: unset;
+    
+            .supplier-product-info {
+                margin-top: 0 32px;
+                box-sizing: border-box;
+                padding: 1em 1em;
+                margin: 32px 0;
+                border-radius: 4px;
+                text-align: justify;
+                line-height: 1em;
+                // width: 100px;
+            }
+        
+            .other-product {
+                width: 33%;
+                margin: 1%;
+                border-radius: 4px;
+                word-wrap: break-word;
+                box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+                background-color: white;
+                
+                .prod-img {
+                    margin-bottom: 16px;
+                }
+                .detailed-product-info {
+
+                }
+            }
         }
     }
+
+    .supplier-info-avatar {
+        border-radius: 50%;
+        border: 4px $dark-blue solid;
+    }
+
 }
+

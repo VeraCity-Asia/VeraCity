@@ -61,21 +61,28 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: #f8f8ff;
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: "Noticia Text", serif;
+  }
+
+  a:hover {
+    text-decoration: none;
   }
 
   .container {
     box-sizing: border-box;
     margin: 3em auto;
-}
+  }
 
-.filler-page {
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
+  .filler-page {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
 
-.container-fluid {
-  width: 70vw;
-}
+  .container-fluid {
+    width: 70vw;
+  }
 }
