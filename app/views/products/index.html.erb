@@ -10,46 +10,38 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-3">
-    <div class="left-side-col">
-      <h1>Filter</h1>
+<div class="container d-flex justify-content-between">
 
-      <div class="filter-container">
-        <%= simple_form_for :filter, url: products_path, method: "GET", remote: true, html: { id: "filter-form" } do |f| %>
-          <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
-          <%= f.input :minimum_order_quantity, label: "minimum order", collection: $minimum_order_quantity, as: :check_boxes %>
-          <%= f.fields_for :certifications do |s| %>
-            <%= s.input :category, label: "Certification", collection: $certification, as: :check_boxes %>
-          <% end %>
+  <div class="side-col">
+    <h1>Filter</h1>
+
+    <div class="filter-container">
+      <%= simple_form_for :filter, url: products_path, method: "GET", remote: true, html: { id: "filter-form" } do |f| %>
+        <%= f.input :category, label: "Product Type", collection: $category, as: :check_boxes %>
+        <%= f.input :minimum_order_quantity, label: "minimum order", collection: $minimum_order_quantity, as: :check_boxes %>
+        <%= f.fields_for :certifications do |s| %>
+          <%= s.input :category, label: "Certification", collection: $certification, as: :check_boxes %>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 
-  <div class="col-6">
-    <div class="mid-col">
-      <div class="product-cards-container">
-        <div class="card-products" id="products">
-
-          <% @products.each do |product| %>
-            <%= render :partial => 'shared/cards/product_card', locals: {:product => product } %>
-          <% end %>
-        </div>
-      </div>
-    </div>  
+  <div class="mid-col">
+    <% @products.each do |product| %>
+      <%= render :partial => 'shared/cards/product_card', locals: {:product => product } %>
+    <% end %>
   </div>
 
-  <div class="col-3">
-    <div class="side-col">
-      <h5><em>Most Viewed</em></h5>
-      <%= render 'shared/mv_product_card', size: '100x100'%>
-      <%= render 'shared/mv_product_card', size: '100x100'%>
-      <%= render 'shared/mv_product_card', size: '100x100'%>
-      <%= render 'shared/mv_product_card', size: '100x100'%>
-    </div>
+  <div class="side-col">
+    <h5><em>Most Viewed</em></h5>
+    <%= render 'shared/mv_product_card', size: '100x100'%>
+    <%= render 'shared/mv_product_card', size: '100x100'%>
+    <%= render 'shared/mv_product_card', size: '100x100'%>
+    <%= render 'shared/mv_product_card', size: '100x100'%>
   </div>
+
 </div>
+
 
 
 </div>
