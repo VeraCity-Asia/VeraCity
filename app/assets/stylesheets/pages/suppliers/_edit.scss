@@ -4,6 +4,7 @@
   border-radius: 50%;
   width: 120px;
   height: 120px;
+  margin: 20px;
   animation: spin 2s linear infinite;
 }
 
@@ -12,7 +13,7 @@
   100% { transform: rotate(360deg); }
 }
 
-.modal-body {
-  width: 25rem;
+#supplier-edit {
+  width: 50%;
   margin: auto;
 }

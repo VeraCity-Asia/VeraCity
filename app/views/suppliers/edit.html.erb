@@ -16,7 +16,7 @@
           <%= f.input :name, label:"Company name" %>
           <%= f.input :location %>
           <%= f.input :industry %>
-          <%= f.input :delivery_terms, as: :check_boxes, collection: Supplier::DELIVERYTERM, wrapper: :vertical_collection_inline %>
+          <%= f.input :delivery_terms, collection: Supplier::DELIVERYTERM,prompt: :translate %>
           <%= f.input :payment_terms, collection: Supplier::PAYMETTERM, prompt: :translate %>
           <%= f.input :fei_number, label: "FEI Number" %>
           <%= f.input :nearest_port %>
@@ -36,7 +36,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body" id="supplier-edit">
                     <div class="loader" mx-5></div>
                     <p>Please click the button below to see if a match was found.</p>
                     <%= f.button :submit, value: "Display Result" %>
