@@ -6,6 +6,8 @@
     <% if @offer.approved.nil? %>
       <%= link_to "Back to Products", products_path, :class => "btn btn-outline-dark mx-3", :id => "btn-browse" %>
       <h3><small>Status: Pending</small></h3>
+    <% elsif @offer.approved.present? %>
+      <h3><small>Status: Approved</small></h3>
     <% end %>
   </div>
 
@@ -56,7 +58,7 @@
           <%= link_to 'Submit Offer', purchasers_offer_path(@offer, confirmed: true), method: :put, :class =>"btn btn-lg btn-success mx-3" %>
         </div>
       <% else %>
-        <div class="btn btn-light mx-3" id="btn-browse">You have confirmed the offer</div>
+        <%= render 'shared/flashes', alert: "Offer submitted successfully!" %>
       <% end %>
     <% elsif @offer.approved.present? %>
       <h6>Your offer has been approved</h6>
