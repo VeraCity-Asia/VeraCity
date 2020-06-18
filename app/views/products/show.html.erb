@@ -97,7 +97,7 @@
       </div>
     </div>
 
-    <% unless @product.supplier_id == current_user.supplier.id %>
+    <% unless @product.supplier_id == current_user.supplier&.id %>
       <div type="button" class="btn btn-supplier">
         <%= link_to "View Supplier", supplier_path(@product.supplier), target: "_blank", rel: "noopener noreffer" %>
       </div>
