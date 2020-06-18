@@ -108,79 +108,95 @@
                 </tr>
               </thead>
               <tbody>
-              <% @user.supplier.products.each do |p| %>
-                <%= link_to product_path(p) do %>
-                  <tr>
-                    <td><%= p.name %></td>
-                    <td><%= p.category %></td>
-                    <td>$<%= p.price %></td>
-                    <% p.certifications.each do |c|  %>
-                      <td><%= c.category %></td>
-                    <% end %>
-                    <td>
-                      <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-info" %>
-                      <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-warning" %>
-                      <%= link_to "Delete", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
-                    </td>
-                  </tr>
+                <% @user.supplier.products.each do |p| %>
+                  <%= link_to product_path(p) do %>
+                    <tr>
+                      <td><%= p.name %></td>
+                      <td><%= p.category %></td>
+                      <td>$<%= p.price %></td>
+                      <% p.certifications.each do |c|  %>
+                        <td><%= c.category %></td>
+                      <% end %>
+                      <td>
+                        <%= link_to "Add Certifictions", new_suppliers_certification_path(product_id: p.id), class: "btn btn-info" %>
+                        <%= link_to "Edit", edit_suppliers_product_path(p), class: "btn btn-warning" %>
+                        <%= link_to "Delete", suppliers_product_path(p), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+                      </td>
+                    </tr>
+                  <% end %>
                 <% end %>
-              <% end %>
               </tbody>
             </table>
           </div>
         </div>
-
         <!-- Pending Offers -->
         <div class="tab-pane" id="pending" role="tabpanel" aria-labelledby="pending-tab">
           <table class="table table-hover table-dark">
             <thead>
               <tr>
                 <th scope="col">Destination</th>
+                <th scope="col">Products</th>
                 <th scope="col">Payment</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Total price of offer</th>
+                <th scope="col">Detail</th>
               </tr>
             </thead>
             <tbody>
-          <% @user.supplier.offers.each do |offer| %>
-          <%  if offer.approved.nil?  %>
-            <%= link_to suppliers_offer_path(offer) do %>
-            <%= render partial: 'shared/tables/offer', locals: { offer: offer } %>
-          </div>
-            <% end %>
-        <% end %>
-        <% end %>
-
-        </tbody>
-      </table>
-      </div>
-
+              <% @user.supplier.offers.each do |offer| %>
+                <%  if offer.approved.nil?  %>
+                  <%= link_to suppliers_offer_path(offer) do %>
+                    <tr>
+                      <td><%= offer.destination %></td>
+                      <td>
+                        <% offer.products.each do |p| %>
+                          <p> <%= p.name %>
+                            $<%= p.price %> </p>
+                        <% end %>
+                      </td>
+                      <td><%= offer.payment %></td>
+                      <td><%= offer.price %></td>
+                      <td><%= link_to "Detail", purchasers_offer_path(offer), class: "btn btn-info" %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
         <!-- Closed Offers -->
         <div class="tab-pane" id="closed" role="tabpanel" aria-labelledby="closed-tab">
           <table class="table table-hover table-dark">
             <thead>
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Price/unit</th>
-                <th scope="col">Certification</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Products</th>
+                <th scope="col">Payment</th>
+                <th scope="col">Total price of offer</th>
+                <th scope="col">Detail</th>
               </tr>
             </thead>
             <tbody>
-
-          <% @user.supplier.offers.each do |offer| %>
-            <%  unless offer.approved.nil? %>
-              <!-- use present to condition -->
-              <%= link_to suppliers_offer_path(offer) do %>
-                <%= render partial: 'shared/tables/offer', locals: { offer: offer } %>
+              <% @user.supplier.offers.each do |offer| %>
+                <%  unless offer.approved.nil? %>
+                  <!-- use present to condition -->
+                  <%= link_to suppliers_offer_path(offer) do %>
+                    <tr>
+                      <td><%= offer.destination %></td>
+                      <td>
+                        <% offer.products.each do |p| %>
+                          <p> <%= p.name %>
+                            $<%= p.price %> </p>
+                        <% end %>
+                      </td>
+                      <td><%= offer.payment %></td>
+                      <td><%= offer.price %></td>
+                      <td><%= link_to "Detail", purchasers_offer_path(offer), class: "btn btn-info" %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
               <% end %>
-            <% end %>
-          <% end %>
             </tbody>
           </table>
-
         </div>
       </div>
       <!-- pills dashboard-->
