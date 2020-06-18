@@ -1,6 +1,5 @@
 <% if @supplier.verifications.empty? %>
   <p>Step 1 - complete company profile</p>
-  <button type="button" data-target="#confirmModal" data-toggle="modal" >Press me</button>
   <div class="progress my-5 py2">
     <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
   </div>
@@ -26,26 +25,26 @@
         </div>
         <div class="form-actions">
           <button type="button" data-target="#confirmModal" data-toggle="modal" >Check and Save</button>
-          <%= link_to "Back", suppliers_dashboard_path %>
-        </div>
-        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="confirmModalLabel">Searching VeraCity Database…</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="loader" mx-2></div>
-                <p>Please click the button below to see if a match was found.</p>
-                <%= f.button :submit, value: "Display Result" %>
+          <span><%= link_to "Back", suppliers_dashboard_path, class:"btn btn-primary my-3" %><span>
+            </div>
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="confirmModalLabel">Searching VeraCity Database…</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="loader" mx-5></div>
+                    <p>Please click the button below to see if a match was found.</p>
+                    <%= f.button :submit, value: "Display Result" %>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-</div>
