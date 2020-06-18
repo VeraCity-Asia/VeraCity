@@ -1,18 +1,37 @@
 .supplier-show {
     background-color: white;
-    padding: 2em 32px;
+    padding: 32px 64px;
     border-radius: 8px;
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 
     .supplier-info {
         text-align: left;
         line-height: 1.2em;
+        h2 {
+            font-size: 36px;
+        }
+        
         .detailed-info {
             margin-top: 3em;
         }
+
+        .business-licenses {
+            h4 {
+                margin-bottom: 1.2em;
+            }
+            p {
+                margin: 8px 8px;
+            }
+        }
     }
+
+    .supplier-info-avatar {
+        border-radius: 50%;
+        border: 4px $dark-blue solid;
+    }
+
     #others {
-        margin-top: 3em;
+        margin-top: 6em;
     }
     .other-products-row {
         margin-top: 1em;
@@ -28,4 +47,30 @@
 
         }
     }
+}
+
+// Slider
+$img-w: 5912px;
+$img-h: 389px;
+$shrink: 2;
+$ratio: 1 / $shrink;
+$speed: 50s;
+
+.slider {
+  position: absolute;
+  width: 100%;
+  top: calc(50% - #{$img-h * $ratio / 2});
+  overflow: hidden;
+  .slider-row {
+    width: $img-w * $ratio;
+    height: $img-h * $ratio;
+    // background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/111863/ubiquity-summit-web-01.png);
+    background-size: $img-w * $ratio $img-h * $ratio;
+    animation: slide $speed linear infinite;    
+  }
+}
+
+@keyframes slide {
+  from { background-position-x: 0; }
+  to   { background-position-x: -$img-w * $ratio; }
 }
