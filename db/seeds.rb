@@ -109,7 +109,7 @@ puts "#######################################################################"
 puts "Creating products"
 
 masks = ["Reusable Cotton Face Mask", "Reusable Face Covering", "Disposable 3 Layer Face Mask with Comfortable Earloop"]
-thermometers = ["Thermometer for Adults and Kids, Fast and Accurate, C/F Switchable", "Non-Contact Infrared Thermometer", "Non-Contact Digital Laser Infrared Thermometer Temperature Gun"]
+thermometers = ["Thermometer for Adults, C/F Switchable", "Non-Contact Infrared Thermometer", "Digital Laser Infrared Thermometer"]
 bandages = ["Maximum Hold Waterproof Bandages", "Medical Gauze Stretch Bandage Roll", "Premium Brand Adhesive Bandage Pads"]
 category = ["Mask","Thermometer","Bandage"]
 mask1 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592471703/2t3gvqxqtfyvl2kdy94kjgb8vqpy.jpg'
