@@ -1,79 +1,68 @@
+<div class="row d-flex justify-content-center">
+  <h1>Preview Offer</h1>
+</div>
 <div class="offer-container my-5">
-  <div class="offer-top-bar row justify-content-between">
-    <div class="quote-name">
-      <h1>Quote Confirmation</h1>
-    </div>
-    <div class="action-btn d-flex  my-2 mx-2">
-      <% if @offer.approved.nil? %>
-        <%= link_to 'Browse more products', products_path, :class => "btn btn-light mx-3", :id => "btn-browse" %>
-      <% end %>
-      <% if @offer.approved.nil? %>
-        <% if @offer.confirmed.blank? %>
-          <%= link_to 'Confirmed', purchasers_offer_path(@offer, confirmed: true), method: :put, :class =>"btn btn-success" %>
-          <%= link_to 'Cancel request', purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger" %>
-        <% else %>
-          <div class="btn btn-light mx-3" id="btn-browse">You have confirmed the offer</div>
-        <% end %>
-      <% elsif @offer.approved.present? %>
-        <h6>Your offer has been approved</h6>
-      <% else %>
-        <p>Your request has been rejected</p>
-      <% end %>
-    </div>
+  <div class="row">
+    <% if @offer.approved.nil? %>
+      <%= link_to "Back to Products", products_path, :class => "btn btn-outline-dark mx-3", :id => "btn-browse" %>
+      <h3><small>Status: Pending</small></h3>
+    <% end %>
   </div>
-  <div class="offer-info row">
-    <div class="some-info col-sm-6">
-      <h6>Destination</h6>
-      <hr>
-      <%= @offer.destination %>
-    </div>
-    <div class="some-info col-sm-6">
-      <h6>Payment</h6>
-      <hr>
-      <%= @offer.payment %>
-    </div>
-    <div class="some-info col-sm-6 my-3">
-      <h6>Approved Date</h6>
-      <hr>
+
+  <div class="row text-align-left my-5" style="width: 50%;">
+    <dt class="col-sm-3">Status</dt>
+    <dd class="col-sm-9">
       <% if @offer.approved.nil? %>
         <p>Pending</p>
       <% else %>
         <%= @offer.approved_date %>
       <% end %>
-    </div>
-    <div class="some-info col-sm-6 my-3">
-      <h6>Supplier</h6>
-      <hr>
-      <%= @offer.supplier.name %>
-    </div>
-    <div class="some-info col-sm-6 my-3">
-      <h6>Total amount</h6>
-      <hr>
-      <%= @offer.product_offers.sum(:amount) %>
-    </div>
-    <div class="some-info col-sm-6 my-3">
-      <h6>Totol price</h6>
-      <hr>
-      <%= @offer.price %>
-    </div>
+    </dd>
+
+    <dt class="col-sm-3">Destination</dt>
+    <dd class="col-sm-9"><%= @offer.destination %></dd>
+
+    <dt class="col-sm-3">Payment</dt>
+    <dd class="col-sm-9"><%= @offer.payment %></dd>
+    
+
+    <dt class="col-sm-3">Supplier</dt>
+    <dd class="col-sm-9"><%= @offer.supplier.name %></dd>
+    
+    <dt class="col-sm-3">Quantity</dt>
+    <dd class="col-sm-9"><%= @offer.product_offers.sum(:amount) %></dd>
+
+    <dt class="col-sm-3">Total Price</dt>
+    <dd class="col-sm-9">$<%= @offer.price %></dd>
   </div>
-  <div class="row justify-content-center">
+
+  <div class="row flex-column justify-content-center my-5">
     <% if @offer.products.empty? %>
       Products have been removed from platfrom, please contact <%= @offer.supplier.name %> for more information.
     <% else %>
-      <% @offer.products.each do |p| %>
-        <%= link_to product_path(p) do %>
-          <div class="card my-3" style="width: 12rem;">
-            <%= image_tag "mask.jpg", {:style => "width:100%; height:80%;"} %>
-            <div class="card-body">
-              <p class="card-text">
-                Name: <%= p.name %>
-                $<%= p.price %>
-              </p>
-            </div>
-          </div>
-        <% end %>
+      <% @offer.products.uniq.each do |product| %>
+        <%= render partial: 'shared/cards/product_card', locals: { product: product } %>
       <% end %>
     <% end %>
   </div>
+</div>
+
+  <div class="row d-flex ml-auto my-2 mx-2">
+    <% if @offer.approved.nil? %>
+      <% if @offer.confirmed.blank? %>
+        <%= link_to 'Delete Offer', purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-lg btn-outline-danger mx-3" %>
+        <div class="ml-auto">
+          <%= link_to "Cancel", products_path, :class => "btn btn-lg btn-outline-secondary mx-3", :id => "btn-browse" %>
+          <%= link_to 'Submit Offer', purchasers_offer_path(@offer, confirmed: true), method: :put, :class =>"btn btn-lg btn-success mx-3" %>
+        </div>
+      <% else %>
+        <div class="btn btn-light mx-3" id="btn-browse">You have confirmed the offer</div>
+      <% end %>
+    <% elsif @offer.approved.present? %>
+      <h6>Your offer has been approved</h6>
+    <% else %>
+      <p>Your request has been rejected</p>
+    <% end %>
+  </div>
+
 </div>

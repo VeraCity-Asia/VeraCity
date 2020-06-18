@@ -1,45 +1,44 @@
 .offer-container {
-    background-color: white;
-    padding: 3em;
-    border-radius: 8px;
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  padding: 3em;
+  border-radius: 8px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 
-    .offer-top-bar {
-        box-sizing: border-box;
-    }
-    .action-btn {
-        height: fit-content;
-        transition: 0.3s;
+  .offer-top-bar {
+    box-sizing: border-box;
+  }
+  .action-btn {
+    height: fit-content;
+    transition: 0.3s;
 
-        .btn {
-            border-radius: 4px;
-            align-items: center;
-            height: 100%;
-        }
-
-        .btn-danger:hover {
-            background-color: #ff5329;
-        }
-
-        #btn-browse {
-            background-color:#DCDCDC;
-
-            &:hover {
-            background-color:#e7e7e7;
-            }
-        }
+    .btn {
+      border-radius: 4px;
+      align-items: center;
+      height: 100%;
     }
 
-    .offer-info {
-        border-radius: 4px;
-        width: 98%;
-        
-        .some-info {
-            margin: 32px 0;
-        }
-        h6 {
-            font-weight: bolder;
-        }
-
+    .btn-danger:hover {
+      background-color: #ff5329;
     }
+
+    #btn-browse {
+      background-color: #dcdcdc;
+
+      &:hover {
+        background-color: #e7e7e7;
+      }
+    }
+  }
+
+  .offer-info {
+    border-radius: 4px;
+    width: 98%;
+
+    .some-info {
+      margin: 32px 0;
+    }
+    h6 {
+      font-weight: bolder;
+    }
+  }
 }
