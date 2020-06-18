@@ -41,5 +41,5 @@ yarn-debug.log*
 .DS_Store
 .env*
 .env*
-.env
+.env*
 .env*
