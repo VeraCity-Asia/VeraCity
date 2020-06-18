@@ -13,10 +13,10 @@
         <% if current_user.supplier.photo.attached?  %>
           <%= cl_image_tag current_user.supplier.photo.key, id: "navbarDropdown", class: "avatar-img", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
-          <%= image_tag "avatar.png", id: "navbarDropdown", class: "avatar-img", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag("https://res.cloudinary.com/demyxeys9/image/upload/v1592292947/veracity/avatar-png-1_wblzc1.png", id: "navbarDropdown", class: "avatar-img", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
         <% end %>
       <% else %>
-        <%= image_tag "avatar.png", id: "navbarDropdown", class: "avatar-img", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <%= cl_image_tag("https://res.cloudinary.com/demyxeys9/image/upload/v1592292947/veracity/avatar-png-1_wblzc1.png", id: "navbarDropdown", class: "avatar-img", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
       <% end %>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
         <% if current_user.user_type == "supplier"%>
