@@ -2,7 +2,8 @@
   <div class="row">
     <%# <div class="col-xs-12 col-sm-4 col-offset-6"> %>
     <div class="form">
-      <h1>Make new offer</h1>
+      <h1>Offer for: <%= @product.name %></h1>
+      <h6><small><%= @product.supplier.name %></small></h6>
       <%= simple_form_for @offer, url: purchasers_offers_path, method: :POST  do |f| %>
         <div class="form-inputs">
           <%= f.input :destination, disabled: @offer.id.present? %>
@@ -12,10 +13,14 @@
           <% end %>
           <%= f.hidden_field :product_id, :value => @product.id %>
         </div>
-        <div class="form-actions">
-          <%= f.button :submit, :value => "Send offer" %>
+        <div class="d-flex justify-content-between align-items-center ml-auto" style="width: 25%;">
+          <div>
+            <%= link_to "Cancel", product_path(@product), class: "btn btn-outline-secondary" %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, :value => "Send offer", class: "btn btn-lg btn-primary" %>
+          </div>
         </div>
-        <%= link_to "Back to offer index", purchasers_offers_path %>
       <% end %>
     </div>
     <%# </div> %>
