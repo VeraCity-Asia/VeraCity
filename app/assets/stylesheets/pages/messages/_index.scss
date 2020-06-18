@@ -12,31 +12,31 @@
 }
 
 .messages-bg {
-    background-color: lighten($color: black, $amount: 85);
-    padding: 3em;
-    border-radius: 4px;
-    h1 {
-        text-align: left;
-    }
-
-    img {
-        border-radius: 50%;
-        width: 75px;
-    }
-}
-
-.alert {
-  padding: 16px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(20, 210, 255, 0.3);
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  background-color: lighten($color: black, $amount: 85);
+  padding: 3em;
   border-radius: 4px;
-  margin: 8px;
-  color: #193b68;
+  h1 {
+    text-align: left;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 75px;
+  }
 }
+
+// .alert {
+//   padding: 16px 24px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   background: rgba(20, 210, 255, 0.3);
+//   box-shadow: 0 0 8px rgba(0,0,0,0.2);
+//   border-radius: 4px;
+//   margin: 8px;
+//   color: #193b68;
+// }
 
 .messages {
-  text-align:left;
+  text-align: left;
 }
