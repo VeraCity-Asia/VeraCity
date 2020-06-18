@@ -1,14 +1,12 @@
 <%= link_to product_path(product) do %>
   <div class="card-product">
-
-  <% if product.photos.attached?  %>
-    <% product.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% if product.photos.attached?  %>
+      <% product.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    <% else %>
+      <%= image_tag "mask.jpg" %>
     <% end %>
-  <% else %>
-    <%= image_tag "mask.jpg" %>
-  <% end %>
-
     <div class="row flex-column" id="title-container">
       <div class="scroopy">
         <div class="card-product-infos d-flex align-items-start flex-column">
@@ -24,49 +22,42 @@
               <span><small><%= Faker::Lorem.paragraph %></small></span>
             </div>
           </div>
+        </div>
       </div>
-    </div>
-
-    <div class="noopers">
-      <div class="row">
-        <div>
-          <div class="modifiers-light">
-            <label for="price" id="price-label"><small>Cost</small></label>
+      <div class="noopers">
+        <div class="row">
+          <div>
+            <div class="modifiers-light">
+              <label for="price" id="price-label"><small>Cost</small></label>
+            </div>
+            <div class="product-values">
+              <div class="modifiers">
+                <span class="">$</span>
+                <span class="bump-left" id="product-price"><%= product.price %></span>
+                <small class="modifiers-light bump-left">/unit</small>
+              </div>
+            </div>
           </div>
-
-          <div class="product-values">
-
-            <div class="modifiers">
-              <span class="">$</span>
-              <span class="bump-left" id="product-price"><%= product.price %></span>
-              <small class="modifiers-light bump-left">/unit</small>
+          <div>
+            <div class="modifiers-light">
+              <label for="category"><small>Category</small></label>
+            </div>
+            <div class="product-values">
+              <span><%= product.category %></span>
+            </div>
+          </div>
+          <div>
+            <div class="modifiers-light">
+              <label for="certification"><small><%= product.certifications.first&.category %></small> #</label>
+            </div>
+            <div class="product-values">
+              <span>
+                <%= product.certifications.first&.number %>
+              </span>
             </div>
           </div>
         </div>
-
-        <div>
-          <div class="modifiers-light">
-            <label for="category"><small>Category</small></label>
-          </div>
-          <div class="product-values">
-            <span><%= product.category %></span>
-          </div>
-        </div>
-
-
-        <div>
-          <div class="modifiers-light">
-            <label for="certification"><small><%= product.certifications.first.category %></small> #</label>
-          </div>
-          <div class="product-values">
-            <span>
-              <%= product.certifications.first.number %>
-            </span>
-          </div>
-        </div>
       </div>
     </div>
-
   </div>
-</div>
 <% end %>
