@@ -33,6 +33,7 @@ class MessagesController < ApplicationController
     authorize @message
 
     if @message.save
+      flash[:alert] = "Your message submitted successfully!"
       redirect_to messages_path
     else
       # TODO: add alert describing error message
