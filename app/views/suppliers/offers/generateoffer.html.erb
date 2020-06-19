@@ -68,7 +68,7 @@
         </td>
         <td>
           <% @offer.product_offers.each do |product_offer| %>
-            <textarea class="qty"><%= product_offer.amount * product_offer.product.price %> USD</textarea>
+            <textarea class="qty"><%= product_offer.amount.to_i * product_offer.product.price.to_i %> USD</textarea>
           <% end %>
         </td>
       </tr>
@@ -82,7 +82,7 @@
         <td class="total-value">
           <div id="total">
             <%= @offer.price %> USD
-            Quantity: <%= @offer.product_offers.sum(:amount)%>
+            Quantity: <%= @offer.product_offers.sum("CAST(COALESCE(amount, '0') AS DECIMAL)").round %>
           </div>
         </td>
       </tr>

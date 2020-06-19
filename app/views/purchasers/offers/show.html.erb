@@ -10,7 +10,6 @@
       <h3><small>Status: Approved</small></h3>
     <% end %>
   </div>
-
   <div class="row text-align-left my-5" style="width: 50%;">
     <dt class="col-sm-3">Status</dt>
     <dd class="col-sm-9">
@@ -20,25 +19,17 @@
         <%= @offer.approved_date %>
       <% end %>
     </dd>
-
-    <dt class="col-sm-3">Supplier</dt>
-    <dd class="col-sm-9"><%= @offer.supplier.name %></dd>
-
     <dt class="col-sm-3">Destination</dt>
     <dd class="col-sm-9"><%= @offer.destination %></dd>
-
     <dt class="col-sm-3">Payment</dt>
     <dd class="col-sm-9"><%= @offer.payment %></dd>
-    
-    
+    <dt class="col-sm-3">Supplier</dt>
+    <dd class="col-sm-9"><%= @offer.supplier.name %></dd>
     <dt class="col-sm-3">Quantity</dt>
-    <dd class="col-sm-9"><%= @offer.product_offers.sum(:amount) %></dd>
-
+    <dd class="col-sm-9"><%= @offer.product_offers.sum("CAST(COALESCE(amount, '0') AS DECIMAL)").round %></dd>
     <dt class="col-sm-3">Total Price</dt>
     <dd class="col-sm-9">$<%= @offer.price %></dd>
-
   </div>
-
   <div class="row flex-column justify-content-center my-5">
     <% if @offer.products.empty? %>
       Products have been removed from platfrom, please contact <%= @offer.supplier.name %> for more information.
@@ -49,21 +40,19 @@
     <% end %>
   </div>
 </div>
-
-  <div class="row d-flex ml-auto my-2 mx-2">
-    <% if @offer.approved.nil? %>
-      <% if @offer.confirmed.blank? %>
-        <%= link_to 'Delete Offer', purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-lg btn-outline-danger mx-3" %>
-        <div class="ml-auto">
-          <%= link_to "Cancel", products_path, :class => "btn btn-lg btn-outline-secondary mx-3", :id => "btn-browse" %>
-          <%= link_to 'Submit Offer', purchasers_offer_path(@offer, confirmed: true), method: :put, :class =>"btn btn-lg btn-success mx-3" %>
-        </div>
-      <% end %>
-    <% elsif @offer.approved.present? %>
-      <h6>Your offer has been approved</h6>
-    <% else %>
-      <p>Your request has been rejected</p>
+<div class="row d-flex ml-auto my-2 mx-2">
+  <% if @offer.approved.nil? %>
+    <% if @offer.confirmed.blank? %>
+      <%= link_to 'Delete Offer', purchasers_offer_path(@offer.id), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-lg btn-outline-danger mx-3" %>
+      <div class="ml-auto">
+        <%= link_to "Cancel", products_path, :class => "btn btn-lg btn-outline-secondary mx-3", :id => "btn-browse" %>
+        <%= link_to 'Submit Offer', purchasers_offer_path(@offer, confirmed: true), method: :put, :class =>"btn btn-lg btn-success mx-3" %>
+      </div>
     <% end %>
-  </div>
-
+  <% elsif @offer.approved.present? %>
+    <h6>Your offer has been approved</h6>
+  <% else %>
+    <p>Your request has been rejected</p>
+  <% end %>
+</div>
 </div>
