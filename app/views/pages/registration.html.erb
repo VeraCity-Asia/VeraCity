@@ -1,15 +1,21 @@
-<div class="py-5">
-  <div class="row justify-content-center my-5">
-    <h1 class="display-4 my-4">Begin your VeraCity journey.</h1>
-    <h2 class="lead my-4">
+
+
+
+<%= image_tag 'Registion.png', size: '150x150', style: 'margin-top: 0'%>
+<div class="py-3">
+  <div class="row justify-content-center">
+    <h1 class="display-4 my-1">Begin your VeraCity journey...</h1>
+    <h2 class="lead my-1">
       Are you a <strong>Purchaser</strong> or a <strong>Manufacturer</strong>?
     </h2>
   </div>
+
+  <div class="container">
   <div class="row">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Purchasers</h5>
+        <h5 class="card-title"><strong>Purchasers</strong></h5>
         <p class="card-text">Register an account to purchase from VeraCity Verified™ manufacturers.</p>
         <%= link_to "Join as a buyer", new_user_registration_path(user_type: "purchaser"), class: "btn btn-success" %>
       </div>
@@ -18,7 +24,7 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Manufacturers</h5>
+        <h5 class="card-title"><strong>Manufacturers</strong></h5>
         <p class="card-text">Begin your journey to becoming a VeraCity Verified™ supplier.</p>
         <%= link_to "Join as a supplier", new_user_registration_path(user_type: "supplier"), class: "btn btn-primary" %>
       </div>
@@ -26,8 +32,9 @@
   </div>
   <div class="row">
     <div>
-      <h2 class="my-5">Questions about the process?</h2>
+      <h2 class="my-3">Questions about the process?</h2>
       <%= link_to "See our FAQ", about_path(user_type: "supplier"), class: "btn btn-info" %>
     </div>
   </div>
+</div>
 </div>
