@@ -4,7 +4,7 @@
 
 <!-- Contact Us Form -->
 <div class="contact-us d-flex">
-  <form>
+  <form class="w-50 flex-shrink-0">
     <!-- You are "ROLE" -->
     <div class="form-group">
       <label for="exampleFormControlSelect1">You are</label>
@@ -45,9 +45,11 @@
     </div>
   </form>
 
-<!-- Left side image and email -->
-  <div>
-    <%= image_tag 'contactus.png', size: '350x320', style: 'margin-bottom: 20px'%>
-    <h2><i class="fas fa-envelope"></i>support@veracity.com</h2>
+<!-- Right side image and email -->
+  <div class="d-flex justify-content-center align-items-center flex-column">
+    <%= image_tag 'contactus.png', class: "img-contact"%>
+    <div><i class="fas fa-envelope"></i> support@veracity.asia</div>
+    <div><i class="fab fa-weixin"></i> veracity support</div>
+    <%= image_tag 'official.jpeg', size: '80x80', class: "my-3" %>
   </div>
 </div>
