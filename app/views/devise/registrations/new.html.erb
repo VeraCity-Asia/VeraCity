@@ -1,42 +1,48 @@
 <div class="container">
   <div class="row">
     <%# <div class="col-xs-12 col-sm-4 col-offset-6"> %>
-      <div class="form">
-        <h2>Register as a <%= params[:user_type]&.titlecase || params[:user][:user_type]&.titlecase %></h2>
-        
-        <%# raise %>
-
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name,
+    <div class="form">
+      <h2>Register as a <%= params[:user_type]&.titlecase || params[:user][:user_type]&.titlecase %></h2>
+      <%# raise %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :name,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "name" }%>
-    <%= f.input :email,
+          <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
+          <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :user_type, as: :hidden,
+          <%= f.input :user_type, as: :hidden,
                 required: true,
                 input_html: { value: params[:user_type] || params[:user][:user_type] } %>
-    <%= f.input :password_confirmation,
+          <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <% if params[:user_type] == "supplier" %>
-      <%= render "devise/shared/supplier_form", f: f, object: @supplier %>
-    <% end %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-    <% end %>
-  </div>
+          <% if params[:user_type] == "supplier" %>
+            <%= render "devise/shared/supplier_form", f: f, object: @supplier %>
+          <% end %>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target=".bd-example-modal-lg">Terms and Conditons</button>
+        <small class="form-text text-muted">By signing up you agree to our Terms and Conditions.</small>
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+        <% end %>
       </div>
+    </div>
     <%# </div> %>
+  </div>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= render 'shared/terms_condition' %>
+    </div>
   </div>
 </div>
