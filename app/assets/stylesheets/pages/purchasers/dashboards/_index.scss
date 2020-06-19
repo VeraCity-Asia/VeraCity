@@ -28,7 +28,7 @@
   .header-name {
     // position: absolute;
     text-align: left;
-    }
+  }
 
   .status-check {
     margin-top: 1.5em;
@@ -55,8 +55,7 @@
   .nav-tabs .nav-link.active {
     color: $dark-blue;
     background-color: white;
-    border-color: #dee2e6 #dee2e6 #F4F4F4;
+    border-color: #dee2e6 #dee2e6 #f4f4f4;
     border-top-style: inset;
   }
 }
-
