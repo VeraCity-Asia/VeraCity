@@ -5,8 +5,9 @@
       <div class="form-inputs">
         <%= f.input :title, label: "Subject" %>
         <%= f.input :content, label: "Body" %>
-        <%= f.hidden_field :product_id, :value => @product.id %>
-        <%= f.hidden_field :receiver_id, :value => @receiver.id %>
+        <%= f.hidden_field :product_id, :value => product_id %>
+        <%= f.hidden_field :receiver_id, :value => receiver_id %>
+        <%= f.hidden_field :sender_id, :value => current_user.id %>
       </div>
       <div class="form-actions">
         <%= f.button :submit, value: "Send Message" %>
