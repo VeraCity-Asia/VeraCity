@@ -12,6 +12,7 @@ class MessagesController < ApplicationController
     @product = Product.find(params[:product_id])
     @messages = Message.conversation(params[:interlocutors], @product)
     authorize @messages
+    @message = Message.new
   end
 
   def new
