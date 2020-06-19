@@ -1,23 +1,41 @@
+$blue: #1479FF;
+$dark-blue: #193B68;
+
 .contact-us {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 8px;
     box-sizing: border-box;
-    padding: 32px 0px;
+    padding: 32px;
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .form-group{
   text-align: left;
-  margin-bottom: 20px;
   color: #193b68;
 }
 
-
-.d-flex{
-  color:#193b68;
-  font-family: 'open sans';
+.btn-dark {
+  background: $blue;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
 }
 
-.qr {
-  justify-content: center;
+.btn-dark:hover {
+  background: $dark-blue;
+}
+
+.img-contact {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  margin: 16px 0;
+}
+
+.contact-weixin {
+  height: 24px;
+  width: 24px;
+  object-fit: contain;
 }
