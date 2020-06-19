@@ -1,3 +1,61 @@
-.purchaser-dashboard h4 {
-  color: $gray;
+.dashboard {
+  position: relative;
+  margin: 5em;
+
+  .profile-img {
+    // position: absolute;
+    justify-content: left;
+    margin-bottom: 32px;
+  }
+
+  .company-info {
+    text-align: left;
+    margin: 32px 0;
+    p {
+      font-size: small;
+    }
+  }
+  .licenses-info {
+    text-align: left;
+    .license {
+      margin-bottom: 3em;
+    }
+    p {
+      font-size: small;
+    }
+  }
+
+  .header-name {
+    // position: absolute;
+    text-align: left;
+  }
+
+  .status-check {
+    margin-top: 1.5em;
+    justify-content: left;
+  }
+}
+
+.nav-pills-dashboard {
+  margin: 6em 0;
+  .tab-pane {
+    margin: 32px auto;
+    a {
+      color: $dark-blue;
+      &:hover {
+        text-decoration: none;
+        color: silver;
+      }
+    }
+    .btn-danger {
+      border-radius: 4px;
+      color: white;
+    }
+  }
+  .nav-tabs .nav-link.active {
+    color: $dark-blue;
+    background-color: white;
+    border-color: #dee2e6 #dee2e6 #f4f4f4;
+    border-top-style: inset;
+  }
 }

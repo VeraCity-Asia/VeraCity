@@ -1,0 +1,36 @@
+<%= link_to product_path(product) do %>
+  <div class="card-product">
+    <% if product.photos.attached?  %>
+      <% product.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    <% else %>
+      <%= image_tag "mask.jpg" %>
+    <% end %>
+    
+    <div style="width:100%;" class="pl-3 d-flex flex-column justify-content-between">
+      <h5><%= product.name %></h5>
+
+      <div class="d-flex justify-content-between">
+        <div class="flex-grow-1">
+          <div class="header-sm">Cost</div>
+          <span class="">$</span>
+          <span id="product-price"><%= product.price %></span>
+          <span>/unit</span>
+        </div>
+        
+        <div class="flex-grow-1">
+          <div class="header-sm">Category</div>
+
+          <div><%= product.category %></div>
+        </div>
+        
+        <div class="flex-grow-1">
+          <div class="header-sm"><%= product.certifications.first&.category %>#</div>
+          <%= product.certifications.first&.number %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>

@@ -9,14 +9,13 @@
         <%= @offer.user.name %>
         <%= @offer.user.email %>
         <%= @offer.user.country %>
-        <%= @offer.id %>
         Phone: (410) 410-4100</textarea>
       <div id="logo">
         <div id="logoctr">
         </div>
         <div id="logohelp">
         </div>
-        <%= image_tag "logo.png", width: 200, height: 150 %>
+        <img src="https://upload.cc/i1/2020/06/17/v68oEw.png" />
       </div>
     </div>
     <div style="clear:both"></div>
@@ -59,7 +58,7 @@
         </td>
         <td>
           <% @offer.products.each do |product| %>
-            <textarea class="cost"><%= product.price %></textarea>
+            <textarea class="cost"><%= product.price %> USD</textarea>
           <% end %>
         </td>
         <td>
@@ -69,7 +68,7 @@
         </td>
         <td>
           <% @offer.product_offers.each do |product_offer| %>
-            <textarea class="qty"><%= product_offer.amount * product_offer.product.price %></textarea>
+            <textarea class="qty"><%= product_offer.amount.to_i * product_offer.product.price.to_i %> USD</textarea>
           <% end %>
         </td>
       </tr>
@@ -81,8 +80,9 @@
         <td colspan="2" class="blank"> </td>
         <td colspan="2" class="total-line">Total</td>
         <td class="total-value">
-          <div id="total">Price: <%= @offer.price %>
-            Quanity: <%= @offer.product_offers.sum(:amount) %>
+          <div id="total">
+            <%= @offer.price %> USD
+            Quantity: <%= @offer.product_offers.sum("CAST(COALESCE(amount, '0') AS DECIMAL)").round %>
           </div>
         </td>
       </tr>

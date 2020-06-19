@@ -51,31 +51,39 @@
 
 // Suppliers
 @import "pages/suppliers/show";
+@import "pages/suppliers/edit";
 @import "pages/suppliers/offers/show";
 @import "pages/purchasers/dashboards/index";
 @import "pages/suppliers/dashboards/index";
 
 body {
-  text-align: center;
+  // text-align: center;
   margin-bottom: 1em;
-  font-family: "Open Sans", sans-serif;
-  background-color: #f8f8ff;
+  font-family: $font-family-sans-serif;
+  background-color: $body-bg;
 
-  h1, h2, h3, h4 {
-    font-family: "Noticia Text", serif;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: $headings-font-family;
+  }
+
+  a:hover {
+    text-decoration: none;
   }
 
   .container {
     box-sizing: border-box;
     margin: 3em auto;
-}
+  }
 
-.filler-page {
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
+  .filler-page {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
 
-.container-fluid {
-  width: 70vw;
-}
+  .container-fluid {
+    width: 70vw;
+  }
 }

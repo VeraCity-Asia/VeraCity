@@ -1,146 +1,85 @@
 <!-- product info -->
 <div class="container">
-
-<div class="product-container bg-light border d-flex align-self-center" >
-
-  <div class="bd-highlight">
-    <div id="arouselExampleControls" style="height: 400px; width: 500px; "class="carousel slide" data-ride="carousel">
-      
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= image_tag 'medikit.jpg', size: '500x400', style: 'object-fit: cover;'%>
-        </div>
-
-        <div class="carousel-item">
-        <%= image_tag 'medikit.jpg', size: '500x400', style: 'object-fit: cover;'%>
-        </div>
-
-
-        <div class="carousel-item">
-          <%= image_tag 'medikit.jpg', size: '500x400', style: 'object-fit: cover;'%>
-        </div>
-      </div>
-      
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-
-
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
+  <div class="row my-4">
+    <h1 class="display-4"><%= @product.name %></h1>
   </div>
-
-  <div class="product-show p-3 d-flex flex-column justify-content-between flex-fill">
-    <div class="product-header">
-      <h1><%= @product.name %></h1>
-      <p><em>Some information about the product here</em></p>
-    </div>
-
-    <div class="container-boxes">
-      <div class="boxes d-flex justify-content-start p-3">
-        <div class="box">
-          <p><em>Category</em></p>
-          <h6><%= @product.category %></h6>
+  <div class="product-container bg-light d-flex align-self-center my-5" >
+    <div class="bd-highlight">
+      <div id="arouselExampleControls" style="height: 400px; width: 400px; "class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% if @product.photos.attached?  %>
+            <% @product.photos.each do |photo| %>
+              <div class="carousel-item active">
+                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+              </div>
+            <% end %>
+          <% else %>
+            <%= image_tag("mask.jpg", style: "height: 400px; width: 400px;") %>
+          <% end %>
         </div>
-
-        <% @product.certifications.each do |certification| %>
-          <div class="box">
-            <p><em>Certification</em></p>
-            <h6><%= certification.category %></h6>
-          </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <div class="product-show p-3 d-flex flex-column justify-content-between flex-fill">
+      <div class="product-header">
+        <h4>Product Detail</h4>
+        <p><em>Some information about the product here</em></p>
+      </div>
+      <dl class="row description-list">
+        <dt class="col-sm-3">Category</dt>
+        <dd class="col-sm-9"><%= @product.category %></dd>
+        <dt class="col-sm-3">Certification</dt>
+        <dd class="col-sm-9">
+          <% @product.certifications.each do |certification| %>
+            <p><%= certification.category %></p>
+          <% end %>
+        </dd>
+        <dt class="col-sm-3">Minimum Order</dt>
+        <dd class="col-sm-9"><%= @product.minimum_order_quantity %> <small>units</small></dd>
+        <dt class="col-sm-3">Price (per unit)</dt>
+        <dd class="col-sm-9">$<%= @product.price %>.00 <small>USD</small></dd>
+        <dt class="col-sm-3">In Stock</dt>
+        <dd class="col-sm-9"><%= @product.production_quantity %> <small>units</small></dd>
+        <% unless @product.supplier_id == current_user.supplier&.id %>
+          <dt class="col-sm-3 text-truncate">Supplier</dt>
+          <dd class="col-sm-9">
+            <div type="button" class="btn btn-sm btn-outline-primary">
+              <%= link_to "View #{@product.supplier.name} >", supplier_path(@product.supplier) %>
+            </div>
+          </dd>
         <% end %>
-        
-        <div class="box">
-          <p><em>MOQ</em></p>
-          <h6><%= @product.minimum_order_quantity %></h6>
-        </div>
-      </div>
-      
-      <div class="boxes d-flex justify-content-start p-3">
-        <div class="box">
-          <p><em>Price</em></p>
-          <h6>$<%= @product.price %>/unit</h6>
-        </div>
-
-        <div class="box">
-          <p><em>Available</em></p>
-          <h6><%= @product.production_quantity %></h6>
-        </div>
-
-        <div class="box">
-          <p><em>Supplier</em></p>
-          <h6><%= @product.supplier.name %></h6>
-        </div>
-
-      </div>
-    </div>
-    
-  </div>
-</div>
-
-<hr>
-
-<!-- action buttons -->
-<div class="button-group d-flex">
-  <div class="buttons">
-    <button type="button" class="btn btn-supplier" data-toggle="modal" data-target="#exampleModal">
-      Message
-      <%# <%= icon('far', 'envelope') %> 
-    </button>
-
-    <!-- Modal -->
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Write</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+      </dl>
+      <div class="row action-buttons">
+        <div class="button-group d-flex">
+          <div class="buttons align-items-end">
+            <% if current_user.purchaser? %>
+              <button type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
+                Send Message
+                <%# <%= icon('far', 'envelope') %>
               </button>
-            </div>
-            <div class="modal-body">
-              <%= render 'shared/message_form' %>
-            </div>
-            <div class="modal-footer">
-              <%# <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Send</button> %>
-            </div>
+            <% end %>
+            <%= render 'shared/message_modal', product: @product, receiver_id: @product.supplier.user_id %>
+            <% if current_user.purchaser? %>
+              <div>
+                <%= link_to "Make an Offer", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-lg btn-primary" %>
+              </div>
+            <% end %>
+            <% if policy([:suppliers, @product]).edit? %>
+              <div><%= link_to "Edit product", edit_suppliers_product_path(@product), class: "btn btn-primary" %></div>
+            <% end %>
+            <% if policy([:suppliers, @product]).destroy? %>
+              <div><%= link_to "Destroy product", suppliers_product_path(@product.id), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} %></div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-  <div type="button" class="btn btn-supplier">
-    <%= link_to "Supplier", supplier_path(@product.supplier), target: "_blank", rel: "noopener noreffer" %>
-  </div>
-
-  <div class="buttons">
-    <h5><%= link_to "Request quote", new_purchasers_offer_path(product_id: @product.id), class: "btn btn-quote", target: "_blank", rel: "noopener noreferrer" %></h5>
-  </div>
-
-  <% if policy([:suppliers, @product]).edit? %>
-    <div><%= link_to "Edit product", edit_suppliers_product_path(@product), class: "btn btn-supplier" %></div>
-  <% end %>
-
-  <% if policy([:suppliers, @product]).destroy? %>
-    <div><%= link_to "Destroy product", suppliers_product_path(@product.id), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} %></div>
-  <% end %>
 </div>
-
-
-</div>
-<%# <p>For Christine:^)</p> %>
-<%# certification information %>
-<%# <% @product.certifications.each do |certification| %>
-  <%# <p>Number: <%= certification.number</p> %>
-  <%# <p>Category: <%= certification.category</p> %>
-  <%# <p>Code: <%= certification.code</p> %>
-  <%# <p>Authority: <%= certification.authority</p> %>
-<%# <% end %>

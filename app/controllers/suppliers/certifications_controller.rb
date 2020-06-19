@@ -5,15 +5,17 @@ class Suppliers::CertificationsController < ApplicationController
 
   def new
     @certification = Certification.new
-    @product = current_user.supplier.products.last
+    @product = Product.find(params[:product_id])
     authorize([:suppliers, @certification])
   end
 
   def create
     @certification = Certification.new(certification_params)
+    @product = Product.find(params[:certification][:product_id])
+    @certification.products << @product
     authorize([:suppliers, @certification])
     if @certification.save
-      redirect_to suppliers_dashboard
+      redirect_to suppliers_dashboard_path
     else
       render :new
     end

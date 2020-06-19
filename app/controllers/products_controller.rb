@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
+
   def index
-    @products = policy_scope(Product)
+    @products = policy_scope(Product).order('updated_at ASC')
     @query = params[:query]
 
     if @query.present?
@@ -13,7 +14,9 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @message = Message.new
+    @receiver = @product.supplier.user
     authorize @product
+    # raise
   end
 
   private

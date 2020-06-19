@@ -1,10 +1,6 @@
 class Purchasers::OffersController < ApplicationController
   before_action :find_offer, only: [:show, :destroy, :update]
 
-  def index
-    @offers = policy_scope([:purchasers, Offer])
-  end
-
   def show
     # policy_class: app/policies/purchasers/offer_policy#show
     authorize([:purchasers, @offer])
@@ -22,6 +18,7 @@ class Purchasers::OffersController < ApplicationController
     @offer = Offer.add_product(current_user, @product, product_offer_params[:amount], offer_params)
     authorize([:purchasers, @offer])
     if @offer.id
+      flash[:alert] = "Offer submitted successfully!"
       redirect_to purchasers_offer_path(@offer)
     else
       render :new

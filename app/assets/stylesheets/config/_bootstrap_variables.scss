@@ -4,22 +4,26 @@
 // 3. You can override them below!
 
 // General style
-$font-family-sans-serif:  $body-font;
-$headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$font-family-sans-serif: "Open Sans", sans-serif;
+$headings-font-family: "Noticia Text", serif;
+$body-bg: #fafaff;
 $font-size-base: 1rem;
 
 // Colors
-$body-color: $gray;
-$primary:    $blue;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+$body-color: #193b68 !default;
+$primary: #1479ff !default;
+$success: #b0f2b4 !default;
+$info: #f3d090 !default;
+$danger: #ff5d73 !default;
+$warning: #ef8354 !default;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
+$border-radius: 2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+$soft-bg: rgba(
+  $color: #193b68,
+  $alpha: 0.7,
+);

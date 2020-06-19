@@ -11,20 +11,21 @@
   border-radius: 4px;
 }
 .banner-a {
-  background-image: url('aboutus.jpg');
+  background-image: url("https://res.cloudinary.com/demyxeys9/image/upload/v1592535806/veracity/aboutus_oswjxa.jpg");
 }
 
 .banner-b {
-  background-image: url('https://res.cloudinary.com/demyxeys9/image/upload/v1592281621/faq_atpfy1.jpg');
+  background-image: url("https://res.cloudinary.com/demyxeys9/image/upload/v1592281621/veracity/faq_atpfy1.jpg");
 }
 .tab-content {
   h1 {
     margin: 32px 0;
+    text-align: center;
     letter-spacing: 2px;
-    text-shadow: 4px 4px 6px rgba(0,0,0,0.4);
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
     font-weight: 600;
   }
-  
+
   p {
     text-align: left;
   }
@@ -36,14 +37,13 @@
   }
 }
 
-#about{
-  color:$dark-blue;
-
+#about {
+  color: $dark-blue;
 }
 
-#faq{
+#faq {
   color: $dark-blue;
-  
+
   .card {
     background: none;
     text-align: left;
@@ -55,7 +55,6 @@
   }
 }
 
-.card-header{
+.card-header {
   background-color: white;
 }
-
