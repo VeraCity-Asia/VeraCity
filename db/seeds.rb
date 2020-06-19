@@ -46,14 +46,14 @@ User.create!(
 )
 puts "Test SUPPLIER account email: #{User.last.email}"
 Supplier.first.update!(
-  name: "SIEMENS SHENZHEN MAGNETIC RESONANCE LTD.",
+  name: "SEKISUI MEDICAL CO., LTD.",
   location: cities.sample,
   industry: "Medical Supplies",
   delivery_terms: ["FOB", "EXW", "FAS", "FCA", "CFR", "CPT", "CIF", "CIP", "DES", "DAF", "DEQ", "DDP", "DDU"].sample,
   payment_terms: ["T/T", "L/C", "D/P", "Western Union", "Moneygram"].sample,
   nearest_port: "Shanghai Port",
   whitelisted: nil,
-  fei_number:3004754211,
+  fei_number:3006769061,
   established: Date.today - rand(200..10000),
   user: User.last
 )
