@@ -9,7 +9,7 @@
           <%= f.input :destination, disabled: @offer.id.present? %>
           <%= f.input :payment , collection: Offer::PAYMENT, prompt: :translate, disabled: @offer.id.present? %>
           <%= f.simple_fields_for :product_offer do |ff|  %>
-            <%= ff.input :amount , label: 'Quanity:'%>
+            <%= ff.input :amount , label: 'Quantity:'%>
           <% end %>
           <%= f.hidden_field :product_id, :value => @product.id %>
         </div>
