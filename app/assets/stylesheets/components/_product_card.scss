@@ -22,6 +22,7 @@
   width: 100%;
 }
 
+
 .product-values {
   font-size: 1.4rem;
   line-height: 1.4rem;
@@ -32,7 +33,7 @@
 }
 
 #product-price {
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .bump-left {
@@ -43,6 +44,7 @@
   height: 100%;
   width: 160px;
   object-fit: cover;
+  border-radius: 4px;
 }
 
 .card-product h3 {
@@ -63,4 +65,11 @@
   background-color: $body-bg;
   right: 165px;
   top: 80px;
+}
+
+
+
+.header-sm {
+  opacity: 0.7;
+  font-size: 1rem;
 }

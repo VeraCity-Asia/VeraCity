@@ -7,57 +7,30 @@
     <% else %>
       <%= image_tag "mask.jpg" %>
     <% end %>
-    <div class="row flex-column" id="title-container">
-      <div class="scroopy">
-        <div class="card-product-infos d-flex align-items-start flex-column">
-          <div class="row flex-column" >
-            <div class="product-content">
-              <div>
-                <h5>
-                  <%= product.name %>
-                </h5>
-              </div>
-            </div>
-            <div class="modifiers-light">
-              <span><small><%= Faker::Lorem.paragraph(sentence_count: 2) %></small></span>
-            </div>
-          </div>
+    
+    <div style="width:100%;" class="pl-3 d-flex flex-column justify-content-between">
+      <h5><%= product.name %></h5>
+
+      <div class="d-flex justify-content-between">
+        <div class="flex-grow-1">
+          <div class="header-sm">Cost</div>
+          <span class="">$</span>
+          <span id="product-price"><%= product.price %></span>
+          <span>/unit</span>
+        </div>
+        
+        <div class="flex-grow-1">
+          <div class="header-sm">Category</div>
+
+          <div><%= product.category %></div>
+        </div>
+        
+        <div class="flex-grow-1">
+          <div class="header-sm"><%= product.certifications.first&.category %>#</div>
+          <%= product.certifications.first&.number %>
         </div>
       </div>
-      <div class="noopers">
-        <div class="row">
-          <div>
-            <div class="modifiers-light">
-              <label for="price" id="price-label"><small>Cost</small></label>
-            </div>
-            <div class="product-values">
-              <div class="modifiers">
-                <span class="">$</span>
-                <span class="bump-left" id="product-price"><%= product.price %></span>
-                <small class="modifiers-light bump-left">/unit</small>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="modifiers-light">
-              <label for="category"><small>Category</small></label>
-            </div>
-            <div class="product-values">
-              <span><%= product.category %></span>
-            </div>
-          </div>
-          <div>
-            <div class="modifiers-light">
-              <label for="certification"><small><%= product.certifications.first&.category %></small> #</label>
-            </div>
-            <div class="product-values">
-              <span>
-                <%= product.certifications.first&.number %>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 <% end %>
