@@ -1,26 +1,31 @@
 // Specific CSS for your home-page
 h2 {
-    font-size: larger;
+  font-size: larger;
+}
+
+h1,
+p {
+  text-align: center;
 }
 
 .certification-checks-icons {
-    padding: 24px 32px;
-    height: 120px;
-    width: 70%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-    .certification-logo {
-        height: 100%;
+  padding: 24px 32px;
+  height: 120px;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
-        img {
-            height: 100%;
-        }
+  .certification-logo {
+    height: 100%;
+
+    img {
+      height: 100%;
     }
+  }
 }
 
 .container-info h1 {
-    margin: 2em 0;
+  margin: 2em 0;
 }

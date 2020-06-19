@@ -9,27 +9,28 @@
     display: flex;
     align-items: center;
 
-    .banner-container-half {
-      width: 50%;
+  .banner-container-half {
+    width: 50%;
+    text-align: left;
+    margin-left: 2em;
+
+    h1 {
+      letter-spacing: 2px;
+      margin: 0;
+      color: $dark-blue;
+      text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+      font-size: 64px;
+      font-weight: bold;
       text-align: left;
-      margin-left: 2em;
-
-      h1 {
-        letter-spacing: 2px;
-        margin: 0;
-        color: $dark-blue;
-        text-shadow: 4px 4px 6px rgba(0,0,0,0.4);
-        font-size: 64px;
-        font-weight: bold;
-      }
-      p {
-        margin: 2em auto;
-        letter-spacing: 1px;
-        font-size: 20px;
-        color: $dark-blue;
-        opacity: .7;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-      }
     }
-
+    p {
+      margin: 2em auto;
+      text-align: left;
+      letter-spacing: 1px;
+      font-size: 20px;
+      color: $dark-blue;
+      opacity: 0.7;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
   }
+}
