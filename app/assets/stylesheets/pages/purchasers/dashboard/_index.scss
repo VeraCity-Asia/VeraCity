@@ -1,3 +1,19 @@
+.table-dark {
+  background-color: $soft-bg;
+  font-size: 1.2rem;
+}
+
+.nav-tabs {
+  font-size: 1.2rem;
+  margin-bottom: -32px;
+  color: $body-bg;
+}
+
+.nav-link:active {
+  background-color: $soft-bg;
+  color: $body-bg;
+}
+
 // .about-me {
 //     background-color: white;
 //     border-radius: 16px;
@@ -29,30 +45,30 @@
 //     justify-items: left;
 //     width: 600px;
 // }
-  
+
 //   .card-offer img {
 //     height: 100%;
 //     width: 120px;
 //     object-fit: cover;
 //   }
-  
+
 //   .card-offer h3 {
 //     font-size: 16px;
 //     font-weight: bold;
 //     margin: 0;
 //   }
-  
+
 //   .card-offer p {
 //     font-size: 12px;
 //     line-height: 1.4;
 //     opacity: .7;
 //     margin-top: 8px;
 //   }
-  
+
 //   .card-offer .card-offer-infos {
 //     padding: 16px;
 //   }
-  
+
 // .card-offer a {
 //     color: black;
 //     &:hover {
