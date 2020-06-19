@@ -21,21 +21,22 @@
       <% end %>
     </dd>
 
+    <dt class="col-sm-3">Supplier</dt>
+    <dd class="col-sm-9"><%= @offer.supplier.name %></dd>
+
     <dt class="col-sm-3">Destination</dt>
     <dd class="col-sm-9"><%= @offer.destination %></dd>
 
     <dt class="col-sm-3">Payment</dt>
     <dd class="col-sm-9"><%= @offer.payment %></dd>
     
-
-    <dt class="col-sm-3">Supplier</dt>
-    <dd class="col-sm-9"><%= @offer.supplier.name %></dd>
     
     <dt class="col-sm-3">Quantity</dt>
     <dd class="col-sm-9"><%= @offer.product_offers.sum(:amount) %></dd>
 
     <dt class="col-sm-3">Total Price</dt>
     <dd class="col-sm-9">$<%= @offer.price %></dd>
+
   </div>
 
   <div class="row flex-column justify-content-center my-5">

@@ -3,12 +3,12 @@
     <div class="quote-name">
       <h1>Quote Confirmation</h1>
     </div>
-    <div class="action-btn d-flex  my-2 mx-2">
+    <div class="action-btn d-flex my-2 mx-2">
       <% if @offer.approved.nil? %>
         <%= link_to 'Approve', suppliers_offer_path(@offer, approved: true), method: :put, :class =>"btn btn-success" %>
         <%= link_to 'Reject', suppliers_offer_path(@offer, approved: false), method: :put, :class=>"btn btn-danger mx-3" %>
       <% elsif @offer.approved.present? %>
-        <%= link_to 'generate quote here', generateoffer_suppliers_offer_path(@offer), :class => "btn btn-info" %>
+        <%= link_to 'Generate quote', generateoffer_suppliers_offer_path(@offer), :class => "btn btn-info" %>
       <% else  %>
         <p>You have rejected the request</p>
       <% end %>
