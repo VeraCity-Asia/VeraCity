@@ -1,22 +1,23 @@
 <div class="messages-container">
-  <div class="flash flash-primary alert alert-dismissible fade show" role="alert">
+  <!-- <div class="flash flash-primary alert alert-dismissible fade show" role="alert">
     <span><strong>Yay!</strong> 🎉 Your message has been submitted successfully!</span>
     <a data-dismiss="alert" aria-label="Close">
-      <%= icon('fas', 'times') %>
+       <i class="fas fa-times"></i>
     </a>
+  </div> -->
+  <div class="d-flex justify-content-between ">
+    <p>
+      <%= link_to "Back to Inbox",  messages_path %>
+    </p>
+    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
+      Reply
+    </button>
   </div>
-
   <div class="d-flex flex-inline justify-content-between">
     <h2 style="text-align:left; padding:8px;">
       Messages about <strong><%= @product.name %></strong> with <strong><%= @product.supplier.name %></strong>
     </h2>
-    
-    <p>
-      <%= link_to "Back to Inbox",  messages_path %>
-    </p>
   </div>
-
-
   <div class="messages row">
     <% if @messages.empty? %>
       <h3>Hmm.. Maybe you should message someone</h3>
@@ -28,8 +29,7 @@
           <th>Sender</th>
           <th>Receiver</th>
           <th>Title</th>
-          <th class="d-flex row justify-space-between">Message <%= link_to "Reply⏎", new_message_path(product_id: @product, receiver_id: message.outgoing?(current_user) ? message.receiver.id : message.sender.id) %></th>
-          <!-- <th>Product</th> -->
+          <th></th>
         </tr>
         <% @messages.each do |message| %>
           <tbody>
@@ -42,10 +42,9 @@
               <!-- <td><%#= message.product.name %></td> -->
             </tr>
           </tbody>
-        <% end %> 
-    </table>
-    <% end %> 
+        <% end %>
+      </table>
+      <%= render 'shared/message_modal', product: @product, receiver_id: message.outgoing?(current_user) ? message.receiver.id : message.sender.id %>
+    <% end %>
   </div>
 </div>
-
-
