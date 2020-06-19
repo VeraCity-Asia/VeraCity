@@ -17,6 +17,7 @@
     </div>
   </div>
 </div>
+
 <div class="container-info mx-auto">
   <h1>We make your procurements easier and safer</h1>
   <div class="cards">
@@ -24,4 +25,13 @@
     <%= render partial: 'shared/cards', locals: { step: "Step 2", info: "Message and make an inquiry", img: "https://res.cloudinary.com/demyxeys9/image/upload/v1591933830/veracity/step_2-email_message_ogcghd.svg" } %>
     <%= render partial: 'shared/cards', locals: { step: "Step 3", info: "Accept and ready for trade", img: "https://res.cloudinary.com/demyxeys9/image/upload/v1591936137/veracity/Step3_wnbzad.png" } %>
   </div>
+</div>
+
+
+<div class="btn-home-action">
+  <% unless user_signed_in? %>
+        <a href="/welcome" class="btn btn-lg btn-dark" style="border-radius:4px;">Become a member</a>
+  <% else %>
+    <a href="/products" class="btn btn-lg btn-dark" style="border-radius:4px;">Browse products</a>
+  <% end %>
 </div>
