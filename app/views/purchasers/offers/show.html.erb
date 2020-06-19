@@ -57,8 +57,6 @@
           <%= link_to "Cancel", products_path, :class => "btn btn-lg btn-outline-secondary mx-3", :id => "btn-browse" %>
           <%= link_to 'Submit Offer', purchasers_offer_path(@offer, confirmed: true), method: :put, :class =>"btn btn-lg btn-success mx-3" %>
         </div>
-      <% else %>
-        <%= render 'shared/flashes', alert: "Offer submitted successfully!" %>
       <% end %>
     <% elsif @offer.approved.present? %>
       <h6>Your offer has been approved</h6>
