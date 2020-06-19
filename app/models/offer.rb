@@ -17,7 +17,7 @@ class Offer < ApplicationRecord
 
     ActiveRecord::Base.transaction do
       offer.save!
-      ProductOffer.create!(product: product, offer: offer, amount: amount)
+      ProductOffer.create!(product: product, offer: offer, amount: amount.to_i)
       offer.calculate_price
     end
     return offer
@@ -32,7 +32,7 @@ class Offer < ApplicationRecord
   end
 
   def calculate_price
-    prices = product_offers.map { |po| po.product.price * po.amount }
+    prices = product_offers.map { |po| po.product.price.to_i * po.amount.to_i }
     self.update(price: prices.sum)
   end
 end

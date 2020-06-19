@@ -39,10 +39,10 @@
     <div class="some-info col-sm-6 my-3">
       <h6>Total amount</h6>
       <hr>
-      <%= @offer.product_offers.sum(:amount) %>
+      $<%= @offer.product_offers.sum("CAST(COALESCE(amount, '0') AS DECIMAL)").round %>.00
     </div>
     <div class="some-info col-sm-6 my-3">
-      <h6>Totol price</h6>
+      <h6>Total price</h6>
       <hr>
       <%= @offer.price %>
     </div>
