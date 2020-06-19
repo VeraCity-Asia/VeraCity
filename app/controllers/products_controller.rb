@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @products = policy_scope(Product).order('updated_at DESC')
+    @products = policy_scope(Product).order('updated_at ASC')
     @query = params[:query]
 
     if @query.present?
