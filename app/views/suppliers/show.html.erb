@@ -5,7 +5,7 @@
       
       <h1><%= @supplier.name %></h1>
 
-      <div class="supplier-profile d-flex row">
+      <div class="supplier-profile my-4 d-flex row">
         <div class="detailed-info">
           <h5><strong>Location:</strong> <%= @supplier.location %></h5>
           <h5><strong>Industry:</strong> <%= @supplier.industry %></h5>
@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <div class="business-licenses">
+      <div class="business-licenses my-6">
         <h4>Business License(s):</h4>
         <% @supplier.licenses.each do |license| %>
         <div class="license-details d-flex">
@@ -63,13 +63,14 @@
               <% end %>
             </div>
 
-            <div class="product-section row">
+            <div class="product-section column text-align-center justify-content-between">
               <h5><strong> <%= product.name %></strong></h5>
-              <div class="detailed-product-info d-flex justify-content-between">
-                <div>
+              <div class="detailed-product-info d-flex row justify-content-between mt-3">
+                <div class="d-flex flex-grow-1">
                   <p>$<%= product.price %>/unit</p>
                 </div>
-                <div>
+
+                <div class="d-flex flex-grow-1">
                   <% product.certifications.each do |certification| %>
                     <p><%= certification.category %> </p>
                   <% end %>
