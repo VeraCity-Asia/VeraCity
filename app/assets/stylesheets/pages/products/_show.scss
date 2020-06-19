@@ -50,3 +50,10 @@
   width: 100%;
   justify-content: center;
 }
+
+.carousel-inner {
+  height: inherit;
+  img {
+    object-fit: scale-down;;
+  }
+}

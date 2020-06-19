@@ -13,12 +13,12 @@
           <% end %>
           <%= f.hidden_field :product_id, :value => @product.id %>
         </div>
-        <div class="d-flex justify-content-between align-items-center ml-auto" style="width: 25%;">
+        <div class="d-flex justify-content-between align-items-center ml-auto", style="width:28%">
           <div>
             <%= link_to "Cancel", product_path(@product), class: "btn btn-outline-secondary" %>
           </div>
           <div class="form-actions">
-            <%= f.button :submit, :value => "Send offer", class: "btn btn-lg btn-primary" %>
+            <%= f.button :submit, :value => "Send offer", class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>

@@ -7,9 +7,15 @@ $dark-blue: #193B68;
   border-radius: 4px;
   background: $blue;
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  // border: 1px solid #0F60C4;
 }
 
 .btn-primary:hover {
   background: $dark-blue;
+}
+
+.btn-outline-secondary {
+  padding: 9px 24px;
+  border-radius: 4px;
+  border: 1px solid black;
 }
