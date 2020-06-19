@@ -1,3 +1,14 @@
+
+.container{
+  margin-top:10px;
+  text-align:center;
+}
+
+.image_tag{
+  text-align: center;
+  margin-top:5px;
+}
+
 .card-body{
     height: 200px;
     display: flex;
@@ -35,6 +46,7 @@
   border-color: rgba(25, 55, 104, 0.1);
   color: #193b68;
   margin-top: 0px;
+  margin-right: 20px;
 }
 
 .btn-info:hover{

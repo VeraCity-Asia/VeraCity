@@ -1,11 +1,12 @@
 
 
-
-<%= image_tag 'Registion.png', size: '150x150', style: 'margin-top: 0'%>
+<div class="image_tag">
+  <%= image_tag 'Registion.png', size: '150x150'%>
+</div>
 <div class="py-3">
   <div class="row justify-content-center">
-    <h1 class="display-4 my-1">Begin your VeraCity journey...</h1>
-    <h2 class="lead my-1">
+    <h1 class="display-4">Begin your VeraCity journey...</h1>
+    <h2 class="lead">
       Are you a <strong>Purchaser</strong> or a <strong>Manufacturer</strong>?
     </h2>
   </div>
@@ -16,7 +17,7 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title"><strong>Purchasers</strong></h5>
-        <p class="card-text">Register an account to purchase from VeraCity Verified™ manufacturers.</p>
+        <p class="card-text">Begin to purchase from VeraCity Verified™ manufacturers.</p>
         <%= link_to "Join as a buyer", new_user_registration_path(user_type: "purchaser"), class: "btn btn-success" %>
       </div>
     </div>
