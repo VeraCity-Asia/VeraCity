@@ -18,6 +18,7 @@ class Purchasers::OffersController < ApplicationController
     @offer = Offer.add_product(current_user, @product, product_offer_params[:amount], offer_params)
     authorize([:purchasers, @offer])
     if @offer.id
+      flash[:alert] = "Offer submitted successfully!"
       redirect_to purchasers_offer_path(@offer)
     else
       render :new
