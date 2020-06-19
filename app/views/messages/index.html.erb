@@ -1,48 +1,46 @@
 <div class="messages-container">
-  <div class="flash flash-primary alert alert-dismissible fade show" role="alert">
+  <!--   <div class="flash flash-primary alert alert-dismissible fade show" role="alert">
     <span><strong>Yay!</strong> 🎉 your message has been submitted successfully!</span>
     <a data-dismiss="alert" aria-label="Close">
       <i class="fas fa-times"></i>
     </a>
   </div>
-  <div>
-    <h1>Inbox</h1>
-  </div>
-  <div class="messages row">
-    <% if @messages.empty? %>
-      <h3>Hmm.. Maybe you should message someone</h3>
-    <% else %>
-      <table class="table table-hover">
-        <tr>
+  <div> -->
+  <h1>Inbox</h1>
+</div>
+<div class="messages row">
+  <% if @messages.empty? %>
+    <h3>Hmm.. Maybe you should message someone</h3>
+  <% else %>
+    <table class="table table-hover">
+      <tr>
         <th>Time</th>
         <th>Direction</th>
         <th>Contact</th>
         <th>Title</th>
         <th>Product</th>
         <th>Details</th>
-        </tr>
-        <% @messages.each do |message| %>
-          <tbody>
-            <tr>
-              <td><%= message.created_at.strftime("%m-%e-%y %H:%M") %></td>
-              <% if message.outgoing?(current_user) %>
-                <td>Outgoing: </td>
-              
-                <td><%= message.receiver.name %></td>
-                <td>⏎<%= message.title %> </td>
-              <% else %>
-                <td>Incoming</td>
-                
-                <td><%= message.sender.name %></td>
-                <td><%= message.title %> </td>
-              <% end %>
-              <td><strong><%= message.product.name %></strong> </td>
-              <td><%= link_to "More", by_product_messages_path(product_id: message.product_id, interlocutors: [message.sender_id, message.receiver_id]) %></td>
-            </tr>
-          </tbody>
-        </div>
-      <% end %>
-    </table>
-  <% end %>
+      </tr>
+      <% @messages.each do |message| %>
+        <tbody>
+          <tr>
+            <td><%= message.created_at.strftime("%m-%e-%y %H:%M") %></td>
+            <% if message.outgoing?(current_user) %>
+              <td>Outgoing: </td>
+              <td><%= message.receiver.name %></td>
+              <td>⏎<%= message.title %> </td>
+            <% else %>
+              <td>Incoming</td>
+              <td><%= message.sender.name %></td>
+              <td><%= message.title %> </td>
+            <% end %>
+            <td><strong><%= message.product.name %></strong> </td>
+            <td><%= link_to "More", by_product_messages_path(product_id: message.product_id, interlocutors: [message.sender_id, message.receiver_id]) %></td>
+          </tr>
+        </tbody>
+      </div>
+    <% end %>
+  </table>
+<% end %>
 </div>
 </div>

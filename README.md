@@ -53,10 +53,12 @@
 
 
 ## Meet the Team
+
 On Backend... 
 - Jasmine
 - Joel
 
 On Frontend...
-- Christine
 - Lizzy
+
+And managed by: Christine
