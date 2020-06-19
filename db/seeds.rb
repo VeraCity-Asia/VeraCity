@@ -111,14 +111,22 @@ puts "Creating products"
 masks = ["Reusable Cotton Face Mask", "Reusable Face Covering", "Disposable 3 Layer Face Mask with Comfortable Earloop"]
 thermometers = ["Thermometer for Adults, C/F Switchable", "Non-Contact Infrared Thermometer", "Digital Laser Infrared Thermometer"]
 bandages = ["Maximum Hold Waterproof Bandages", "Medical Gauze Stretch Bandage Roll", "Premium Brand Adhesive Bandage Pads"]
+# face_shields = ["Reusable Safety Face Shield", "Safety Face Shield Full Protection Cap", "All-Round Protection Hat"]
 category = ["Mask","Thermometer","Bandage"]
-mask1 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592471703/2t3gvqxqtfyvl2kdy94kjgb8vqpy.jpg'
-mask2 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592471677/wnaffp7ycdmg091nkttv9ejf2ofs.png'
+mask1 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592529635/veracity/default_photos_seed/mask5_j94k9d.jpg'
+mask2 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592529603/veracity/default_photos_seed/mask4_kvd8ml.jpg'
 bandage1 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592471718/cbenf8rc2w8n70rlaa9a5gm76o3v.jpg'
+bandage3 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592531690/veracity/default_photos_seed/bandage5_lxlkc7.png'
 bandage2 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592405102/veracity/default_photos_seed/gtjvkki7552vrgzru1kqs13d57ms.jpg'
-thermometer1 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592471709/u05xyniuxgfwnex86jaakfrad4gj.jpg'
-thermometer2 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592405082/veracity/default_photos_seed/dv1exgeomo2bgvqu0itfcxuvp49o.jpg'
+thermometer1 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592405114/veracity/default_photos_seed/cl0r6giograw34m6smvuj5jpkp7s.jpg'
+thermometer2 = 'https://res.cloudinary.com/demyxeys9/image/upload/v1592531690/veracity/default_photos_seed/therm4_rc5iye.jpg'
 Supplier.all.each do |s|
+  mask = [mask1, mask2].sample
+  thermometer = [thermometer1, thermometer2].sample
+  bandage = [bandage1, bandage2, bandage3].sample
+  puts "#" * 50
+  p mask
+  puts "#" * 50
   m = Product.create!(
     name: masks.sample,
     price: Faker::Commerce.price(range: 2..48.0, as_string: false),
@@ -127,9 +135,14 @@ Supplier.all.each do |s|
     minimum_order_quantity: [100,200,300].sample,
     supplier: s,
   )
-  m.photos.attach(io: URI.open([mask1, mask2].sample) , filename: 'mask.png', content_type: 'image/png')
+  m.photos.attach(io: URI.open(mask) , filename: 'mask.png', content_type: 'image/png')
   m.save!
+
+  puts "#" * 50
+  p thermometer
+  puts "#" * 50
   t = Product.create!(
+
     name: thermometers.sample,
     price: Faker::Commerce.price(range: 2..48.0, as_string: false),
     category: category[1],
@@ -137,10 +150,15 @@ Supplier.all.each do |s|
     minimum_order_quantity: [100,200,300].sample,
     supplier: s
   )
-  t.photos.attach(io: URI.open([thermometer1, thermometer2].sample) , filename: 'mask.png', content_type: 'image/png')
+  t.photos.attach(io: URI.open(thermometer) , filename: 'mask.png', content_type: 'image/png')
   t.save!
 
+  puts "#" * 50
+  p bandage
+  puts "#" * 50
+
   b = Product.create!(
+
     name: bandages.sample,
     price: Faker::Commerce.price(range: 2..48.0, as_string: false),
     category: category[2],
@@ -148,7 +166,7 @@ Supplier.all.each do |s|
     minimum_order_quantity: [100,200,300].sample,
     supplier: s
   )
-  b.photos.attach(io: URI.open([bandage1, bandage2].sample) , filename: 'mask.png', content_type: 'image/png')
+  b.photos.attach(io: URI.open(bandage) , filename: 'mask.png', content_type: 'image/png')
   b.save!
 end
 
