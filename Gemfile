@@ -28,7 +28,7 @@ gem 'enumerize'
 gem 'pundit'
 
 # add pdfkit for generate pdf
-gem 'pdfkit', '~> 0.8.4.2'
+gem 'pdfkit', '~> 0.8.7.2'
 gem 'wkhtmltopdf-binary', '~> 0.12.3'
 gem 'wkhtmltopdf-heroku'
 
